@@ -1,0 +1,96 @@
+################################################################################
+##*/**
+##** @file lesson01Introduction.a
+##**
+##** Module: lessons
+##** Description: introduction
+##** $Source: $
+##** $Revision: $
+##** $Date: $
+##** $Author: $
+##**
+##**/
+################################################################################
+_lesson01Introduction_a_
+
+	.public X_S_Introduction
+	
+lesson01_Introduction_code    .code_ovly
+
+################################################################################
+
+################################################################################
+##*/**
+##** @Author  Acanski Milan
+##** @Date 24. September 2008.
+##**
+##** Function:
+##** X_S_Introduction
+##**
+##** @param - none
+##**
+##** @return - nothing
+##**
+##** Trashes: -
+##** Comment: -
+##**
+##** E-mail: milan.acanski@rt-sp.com
+##**/
+##*void _S_Introduction()
+##*{
+##*
+##*}
+################################################################################
+X_S_Introduction:
+#-------------------------------------------------------------------------------
+#
+#           1. Coyote 32-bit DSP core is a fixed point, fully programmable digital
+#              signal processor
+#
+#           2. The core consists of a program control unit, parallel Address
+#              Generation Units (AGUs) and parallel Data Paths
+#
+#           3. AGUs contain twelve 16-bit registers for address generation (i0 - i11)
+#              and twelve 16-bit registers (nm0-nm11) that work in conjunction with
+#              the index registers to provide different addressing modes.
+#              (i8, i9, ..., i11 and nm8, nm9, ..., nm11 are used by OS and they can
+#              not be used in application development). Using nm registers one can
+#              configure AHU to update index registers using one of following types of
+#              addressing:
+#                           - Linear
+#                           - Reverse Binary
+#                           - Modulo
+#
+#           4. Each data path has four 32-bit general-purpose registers and four 72-bit
+#              accumulators (eight each, total).
+#
+#              Accumulators:                    a0, a1, a2, a3
+#                                               b0, b1, b2, b3
+#
+#              general-purpose registers:       x0, x1, x2, x3
+#                                               y0, y1, y2, y3
+#              Each 72-bit accumulator is the concatenation of three registers:
+#              7      0  31                              0  31                              0
+#              gggggggg   hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh   llllllllllllllllllllllllllllllll
+#                Guard                High                              Low
+#
+#
+#           5. The data representation used in this processor is the two's complement
+#              fractional notation
+#
+#           6. It supports up to Eight nested hardware loops (some of them are
+#              reserved by OS - the number of reserved depends on OS and it can be
+#              from one to four).
+#
+#           7. The subroutine stack is used to store the return PC for subroutine calls. It is
+#              16-bits wide and implemented as a 16-entry, circular buffer with overflow and
+#              underflow interrupts
+#
+#           8. The LogExp peripheral implements four primitive operations that may be used to
+#              approximate logarithm, divide, power, square root and other mathematical functions.
+#              These functions can be accessed by writing a command using the address range
+#              0xD000-0xDFFF with the EXT instruction, which supplies 64-bit data.
+#-------------------------------------------------------------------------------
+Introduction_End:
+    ret
+################################################################################

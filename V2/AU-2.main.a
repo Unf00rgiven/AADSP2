@@ -1,0 +1,83 @@
+main_xmem .xdata_ovly
+
+real_ret .bss (1)
+real_ret_array .bss (10)
+
+main_xmem_circbuf .xdata_ovly align 16
+
+circular_buff .bss (16)
+
+main_code .code_ovly
+
+main: 
+	
+	# int a = 4;
+	uhalfword(a0) = (0x4)
+	# int b = 6;
+	uhalfword(b0) = (0x6)
+	
+	# int ret = a + b;
+	a1 = a0 + b0
+	
+	# real_ret = ret * a;
+	x0 = a1
+	y0 = a0
+	b0 = x0 * y0
+	b0 = b0 >> 1
+	xmem[real_ret] = b0l
+	
+	# if (real_ret > ret)
+	# b0l - real_ret 
+	# a1 - ret 
+	b0 = b0l
+	b0 - a1
+	if(b <= 0) jmp>else
+	
+	#	for (int i = 1; i <= 10; i++)
+	# 		real_ret_array[i] = i
+		i0 = (real_ret_array)
+		uhalfword(a0) = (1)
+		uhalfword(b0) = (1)
+		do(10),>loop
+			xmem[i0] = a0; i0+=1
+%loop:		a0 = a0 + b0
+		
+
+		jmp>return
+		
+%else:
+	# else 
+	# 	for (int i = 9; i >= 0; i--)
+	#		real_ret_array[i] = 10 - i
+		i0 = (real_ret_array + 9)
+		uhalfword(a0) = (1)
+		uhalfword(b0) = (1)
+		do(10),>loop
+			xmem[i0] = a0; i0-=1
+%loop:		a0 = a0 + b0
+	
+	# int* p_circular_buff = circular_buff; // velicina 16 reci
+	i0 = (circular_buff)
+	uhalfword(a0) = (1)
+	uhalfword(b0) = (1)
+	mr_sr = (0x1)
+	nm0 = (0x3000)
+	# for (int i = 0; i < 34; i++)
+	# {
+	# 	*p_circular_buff = i/2; 
+	#	p_circular_buff++;
+	#   if (p_circular_buff == circular_buff_end) 
+	#		p_circular_buff = circular_buff;
+	# }	
+	do(34),>loop
+%loop: 	a0 = a0 + b0; xmem[i0] = a0; i0 += 1
+		
+	mr_sr = (0)
+	nm0 = (0)
+
+%return:
+	# return ret
+	a0 = a1
+	ret
+	
+	

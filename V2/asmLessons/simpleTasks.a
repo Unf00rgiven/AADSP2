@@ -1,0 +1,224 @@
+################################################################################
+##*/**
+##** @file simpleTasks.a
+##**
+##** Module: asmLessons
+##** Description:  Simple exercise
+##** $Source: $
+##** $Revision: 1.0 $
+##** $Date: <date> $
+##** $Author: <student name> $
+##**
+##**/
+################################################################################
+_simpleTasks_a_
+
+	.public X_S_simpleTask
+
+#---------------------------------------------------------------------------
+# Allocate X_BX_Buffer1 in X memory (length is 128, need to be
+# aligned to buffer size).
+
+	# Your code here...
+
+#---------------------------------------------------------------------------
+
+#---------------------------------------------------------------------------
+# Allocate X_BY_Buffer2 in Y memory (length is 128).
+	
+	# Your code here...
+
+#---------------------------------------------------------------------------
+
+
+
+simpleTasks_code    .code_ovly
+################################################################################
+
+################################################################################
+##*/**
+##** @Author	<student name>
+##** @Date		<date>
+##**
+##** Function:
+##** X_S_init
+##**
+##** @param - none
+##**
+##** @return - nothing
+##**
+##** Trashes: a0, a1, a2, b0, x0, y0, y1, i0, i1, i4, i5
+##** Comment: Initialize X_BX_Buffer1 and X_BY_Buffer2
+##**
+##** E-mail:	<email>
+##**/
+##*void X_S_init()
+##*{
+##*}
+################################################################################
+X_S_init
+
+	# Set a0 to zero
+
+
+	# Load 1 to a1
+
+
+	# Load X_BX_Buffer1 to i0
+
+
+	# In HW loop store a0 to xmem[i0], increment i0, and add a1 to a0
+
+
+	# Load X_BX_Buffer1 to i0
+
+
+	# Set nm0 to 0x6003
+
+
+	# Load X_BY_Buffer2 to i4
+
+
+	# In HW loop:
+	#    - load xmem[i0] to a0 and increment i0 with n
+	#    - store a0 to ymem[i4] and increment i4
+
+
+	# Set nm0 to 0
+
+
+X_S_init_end:
+#-------------------------------------------------------------------------------
+  ret
+
+################################################################################
+##*/**
+##** @Author	<student name>
+##** @Date		<date>
+##**
+##** Function:
+##** X_S_mean
+##**
+##** @param - none
+##**
+##** @return - nothing
+##**
+##** Trashes: a0, a1, a2, b0, x0, y0, y1, i0, i1, i4, i5
+##** Comment: Calculate mean values between elements of X_BX_Buffer1 and X_BY_Buffer2
+##**
+##** E-mail:	<email>
+##**/
+##*void X_S_mean ()
+##*{
+##*}
+################################################################################
+X_S_mean
+
+	# Load X_BX_Buffer1 to i0
+
+
+	# Load X_BY_Buffer2 to i4
+
+
+	# Set mr_sr to 0x1
+
+
+	# In HW loop:
+	#    - load xmem[i0] to a0
+	#    - load ymem[i4] to b0 and increment i4
+	#    - Put sum of a0 and a1 to a0
+	# 	  - store a0 to xmem[i0] and increment i0
+
+
+	# Set mr_sr to 0x0
+
+
+
+X_S_mean_end:
+#-------------------------------------------------------------------------------
+  ret
+
+################################################################################
+##*/**
+##** @Author	<student name>
+##** @Date		<date>
+##**
+##** Function:
+##** X_S_mean
+##**
+##** @param - i0 - input buffer address
+##**    	- i1 - buffer length
+##**
+##** @return - a0 - median value
+##**
+##** Trashes: a0, a1, a2, b0, x0, y0, y1, i0, i1, i4, i5
+##** Comment: Simple tasks
+##**
+##** E-mail:	<email>
+##**/
+##*void X_S_mean ()
+##*{
+##*}
+################################################################################
+X_S_median
+
+	# Your code here...
+
+X_S_median_end:
+#-------------------------------------------------------------------------------
+  ret
+################################################################################
+##*/**
+##** @Author
+##** @Date
+##**
+##** Function:
+##** X_S_simpleTask
+##**
+##** @param - none
+##**
+##** @return - nothing
+##**
+##** Trashes: a0, a1, a2, b0, x0, y0, y1, i0, i1, i4, i5
+##** Comment: Simple tasks
+##**
+##** E-mail:
+##**/
+##*void X_S_simpleTask()
+##*{
+##*}
+################################################################################
+X_S_simpleTask
+
+	#---------------------------------------------------------------------------
+	# Call X_S_init
+
+	# Your code here...
+
+	#---------------------------------------------------------------------------
+
+	#---------------------------------------------------------------------------
+	# Call X_S_mean
+
+	# Your code here..
+
+	#---------------------------------------------------------------------------
+
+
+	#---------------------------------------------------------------------------
+	# Put X_BY_Buffer2 to i0
+
+
+	# Put 128 to i1
+
+
+	# Call X_S_median
+
+
+	#---------------------------------------------------------------------------
+
+X_S_simpleTask_end:
+#-------------------------------------------------------------------------------
+  ret
+
+

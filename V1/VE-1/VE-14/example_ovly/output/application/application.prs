@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings built="true" last_build_time="1665668856125">
+	<dependencies>
+		<source_file last_build_time="1665668854713" path="gen/src/example_ovly_odt.a">
+			<dependency>../../../../../../../CirrusDSP_7_1_7/crystal32/common/inc/ovly_version.h</dependency>
+		</source_file>
+	</dependencies>
+</settings>

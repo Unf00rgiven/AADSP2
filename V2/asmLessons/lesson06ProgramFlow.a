@@ -1,0 +1,194 @@
+################################################################################
+##*/**
+##** @file lesson04ProgramFlow.a
+##**
+##** Module: lessons
+##** Description: Execution Control Instructions
+##** $Source: $
+##** $Revision: $
+##** $Date: $
+##** $Author: $
+##**
+##**/
+################################################################################
+_lesson04ProgramFlow_a_
+
+	.public X_S_ProgramFlow
+
+lesson04ProgramFlow_code    .code_ovly
+
+################################################################################
+
+################################################################################
+##*/**
+##** @Author  Milan Acanski
+##** @Date 25. November 2008.
+##**
+##** Function:
+##** X_S_ProgramFlow
+##**
+##** @param - none
+##**
+##** @return - nothing
+##**
+##** Trashes: a0, a1, b0, i0
+##** Comment: Examples of program flow instructions
+##**
+##** E-mail: milan.acanski@rt-sp.com
+##**/
+##*void X_S_ProgramFlow()
+##*{
+##*
+##*}
+################################################################################
+X_S_ProgramFlow:
+    #---------------------------------------------------------------------------
+    # Hardware loop
+
+    # Example 1. constant as loop counter
+    a0 = 0
+    uhalfword(b0) = (1)
+    do(32),>Loop            #<--| do(32)
+%Loop: a0 = a0 + b0         #<--|   a0++;
+
+    # Example 2. loop counter as value in index reg.
+    i0 = (32)
+    a0 = 0
+    do(i0),>Loop            #<--| do(32)
+%Loop:  a0 = a0 + b0        #<--|   a0++;
+    #---------------------------------------------------------------------------
+
+    #---------------------------------------------------------------------------
+    # Hardware loop break
+    i0 = (32)
+    a0 = 0
+    uhalfword(a1) = (8)
+    do(i0),>Loop                    #<--| do(32)
+        a0 - a1
+        if (a==0) jmp >LoopBreak    #<--|   if (a0==8) break;
+%Loop:  a0 = a0 + b0                #<--|   a0++;
+
+    jmp  >LoopFinishedWithoutBreak  #<--| If loop is finished without break skip enddo
+                                    #^__| because stack pointer is already decremented
+
+%LoopBreak: enddo                   #<--| Here loop is terminated before last iteraton so decramant
+                                    #^__| stack pointer
+%LoopFinishedWithoutBreak:
+    #---------------------------------------------------------------------------
+
+    #---------------------------------------------------------------------------
+    # Conditional and unconditional jump to address as symbol
+
+    # Example 1. Unconditional jump
+    jmp >unconditionalLabel
+    nop
+    nop
+%unconditionalLabel:
+
+    # Example 2. Unconditional jump to adress in index registar
+    i0 = (unconditionalLabel1)
+    nop
+    jmp (i0)
+    nop
+    nop
+unconditionalLabel1:
+
+    # Example 3. Conditional jump
+    a0 = 0
+    a0 & a0
+    if (a==0) jmp >A0IsZero     #<--| Here A0 zero flag is set and we will jump
+        nop
+        nop
+%A0IsZero:
+
+    uhalfword(a0) = (1)
+    a0 & a0
+    if (a==0) jmp >A0IsZero     #<--| Here A0 zero flag is not set and we will not jump
+        nop
+        nop
+%A0IsZero:
+
+    #---------------------------------------------------------------------------
+
+    #---------------------------------------------------------------------------
+    # Routines call
+
+    # Example 1. Function call
+    call X_S_SampleFunction
+    nop                         #<--| After function execution is finished this
+                                #^__| will be next executed instruction
+
+    # Example 1. Function call
+    callint X_S_SampleFunctionInterruptControll  #<--| Call functio and disable interrupts
+    nop                         #<--| After function execution is finished this
+                                #^__| will be next executed instruction
+    #---------------------------------------------------------------------------
+
+ProgramFlow_End:
+    ret
+################################################################################
+
+################################################################################
+##*/**
+##** @Author  Milan Acanski
+##** @Date 04. December 2008.
+##**
+##** Function:
+##** X_S_SampleFunction
+##**
+##** @param - none
+##**
+##** @return - nothing
+##**
+##** Trashes: nothing
+##** Comment: Show call and refurn functionality
+##**
+##** E-mail: milan.acanski@rt-sp.com
+##**/
+##*void X_S_SampleFunction()
+##*{
+##*
+##*}
+################################################################################
+X_S_SampleFunction:
+    #------------------------------------------------------
+    #TODO: Place Function Body Here.
+    nop
+    nop
+    #------------------------------------------------------
+SampleFunction_End:
+    ret
+################################################################################
+
+################################################################################
+##*/**
+##** @Author  Milan Acanski
+##** @Date 04. December 2008.
+##**
+##** Function:
+##** X_S_SampleFunctionInterruptControll
+##**
+##** @param - none
+##**
+##** @return - nothing
+##**
+##** Trashes: nothing
+##** Comment: Show call and refurn functionality with intreeupt disable-enable
+##**          example
+##**
+##** E-mail: milan.acanski@rt-sp.com
+##**/
+##*void X_S_SampleFunctionInterruptControll()
+##*{
+##*
+##*}
+################################################################################
+X_S_SampleFunctionInterruptControll:
+    #------------------------------------------------------
+    #TODO: Place Function Body Here.
+    nop
+    nop
+    #------------------------------------------------------
+SampleFunctionInterruptControl_End:
+    retcc       #<--| Return from funcion and enable interupts
+################################################################################

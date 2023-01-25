@@ -1,0 +1,140 @@
+main_xdata .xdata_ovly
+
+X_BX_buf1 .bsc (16), 0xabba 
+
+main_ydata .ydata_ovly
+
+X_BY_buf2 .bsc (32), 0x50000000
+
+main_xydata .data_ovly
+
+X_BL_buf3 .bsc (20), 0xFFFFFFFFEEEEEEEE
+
+main_code .code_ovly
+main
+
+	jmp>ve22
+#----------------------------VE-21---------------------------#
+	#a0 <- 128 [32:47]
+	uhalfword(a0) = (0x128)
+	
+	#x0 <- oxFFEE [0:15],  y0 <- 0x8000 [0:15]
+	halfword(x0) = (0xffee)
+	uhalfword(y0) = (0x8000)
+	
+	#a0 <- x0 [0:31]
+	a0l = x0
+	
+	#a0 <- 0.75
+	fixed16(a0) = (0x6000)
+	
+	#b0 <- 0xDEADBEEF [32:63]
+	ufixed16(b0h) = (0xdead)
+	lo16(b0h) = (0xbeef)
+	
+	#i0 <- 0x20
+	i0 = (0x20)
+	
+	#a0 <- a0 + b0
+	a1 = a0 + b0
+	
+	#a2 <- x0*y0
+	a2 = x0*y0
+	
+	#b1 <- b0/2
+	b0 = b0 >> 1
+	
+	#a0 <- a0*4
+	a0 = a0 << 1
+	a0 = a0 << 1
+	
+	#y0 <- a0 [32:63]
+	#x0 <- a0 [0:31]
+	y0 = a0h
+	x0 = a0l
+	
+	#if (a > b) b = 1;
+	a0 - b0
+	if (a > 0) jmp>loop
+%loop:	uhalfword(b0) = (1)
+	
+	a0 - b0		
+	#if (a < b) a = 1;
+	#else a = 1
+	if (a < 0) jmp>loop
+		uhalfword(a0) = (2)
+		jmp>end
+%loop:	uhalfword(a0) = (1) 
+%end:
+
+	#for(int i = 0; i < 16; ++i)
+	#	{
+	#		a++;
+	#	}
+	do(16), >loop
+	uhalfword(b1) = (1)
+%loop:	a0 = a0 + b1
+	
+	#for(int i = 0; i < 16; ++i)
+	#	{
+	#		b += a;
+	#		a++;
+	#	} 
+	do(16), >loop
+	b2 = b2 + a0
+%loop: a0 = a0 + b1
+
+	#const int n = 32;
+	#for(int i = 0; i < 16; ++i)
+	#	{
+	#		a++;
+	#	}
+	uhalfword(b3l) = (32)
+	do(32), >loop
+%loop:	a0 = a0 + b1
+#----------------------------VE-22---------------------------#
+%ve22:	
+	#x0 <- X_BX_buf1
+	x0 = xmem[X_BX_buf1]
+	
+	#y0 <- X_BY_buf2
+	y0 = ymem[X_BY_buf2]
+	
+	#a0 <- x0 * y0
+	a0 = x0 * y0
+	
+	#b0 <- x0 + y0
+	AnyReg(a1l, x0)
+	AnyReg(b1l, y0)
+	b0 = b1 + a1
+	
+	#8.
+	xmem[X_BL_buf3] = b0
+	
+	#9.
+	ymem[X_BL_buf3] = a0
+	
+	#10.
+	i0 = (X_BX_buf1)
+	do(16), >loop
+		a0 = xmem[i0] 
+		a0 =  a0 >> 1
+		xmem[i0] = a0		
+%loop:	i0 += 2
+
+	#11. a2 <- X_BX_buf1/16 
+	i1 = (X_BX_buf1)
+	a2 = (0)
+	do(16), >loop
+		b3 = xmem[i1]
+		a2 = a2 + b3	
+%loop:	i1 += 1
+	a2 = a2 >> 1
+	a2 = a2 >> 1
+	a2 = a2 >> 1
+	a2 = a2 >> 1	
+
+	
+	#return
+	ret
+

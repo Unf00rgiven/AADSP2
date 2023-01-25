@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>example_composer_module</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>dsp.composer.model.dspmodulebuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>clide.debug.core.CLBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>dsp.composer.model.dspmodulenature</nature>
+		<nature>clide.common.CLNature</nature>
+		<nature>clide.common.basenature</nature>
+	</natures>
+</projectDescription>

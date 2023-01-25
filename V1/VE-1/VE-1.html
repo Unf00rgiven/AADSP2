@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AADSP2 22 23</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="aadsp2-202223">AADSP2 2022/23</h1>
+<h2 id="laboratorijska-vežba-ve-1">Laboratorijska vežba VE-1</h2>
+<h4 id="ve-10-prvi-program-u-clide-u">VE-10 Prvi program u CLIDE-u</h4>
+<p>Napraviti <em>Standalone (ULD)</em> projekat (sa targetom <em>Cirrus DSP Core</em>) naziva “standalone”, dodati main.c u src folder projekta i napisati kratak C program koji ispisuje pozdravnu poruku “Hello World” u konzolu. Ako konzola <em>Simulator Log</em> nije vidljiva u okviru CLIDE okruženja, dodati je kroz opciju <em>Window</em>.</p>
+<h4 id="ve-11-argumenti-komandne-linije-u-clide-u">VE-11 Argumenti komandne linije u CLIDE-u</h4>
+<p>U prethodno napisanom programu dodati ispise imena, prezimena i indeksa studenta, pri čemu se te informacije prosleđuju kroz argumente main funkcije. Proširiti i izmeniti prototip main funkcije tako da prima argumente. Verifikovati rad programa.</p>
+<h4 id="ve-12-rad-sa-wav-fajlovima">VE-12 Rad sa WAV fajlovima</h4>
+<p>Napraviti novi <em>Standalone (ULD)</em> projekat naziva “standaloneWav” i dodati u projekat main.c iz foldera VE-12. Proslediti kao argumente main funkije ulazni wav i izlazni wav fajl (za navođenje putanje koristiti forward-slash znake “/”). Staviti breakpoint na deo koda koji iščitava informacije iz WAV hedera i na papiru zabeležiti te informacije (koristiti registarski ili Expressions prikaz). Nastaviti izvršavanje programa (koji radi običan “pass-through”) i proveriti da li je u izlaznom fajlu dobijen identičan signal kao u ulaznom fajlu. Za potrebe poređenja upotrebiti alate Audacity, za subjektivno, i PCMCompare, za objektivno poređenje.</p>
+<p>Napomena: Generisanje izlaza u simulatoru može potrajati i do nekoliko minuta, pa samim tim nije potrebno čekati da se izgeneriše ceo izlazni fajl, za potrebe poređenja dovoljno sačekati minut do dva da se izgeneriše samo prvi deo izlaznog signala.</p>
+<h4 id="ve-13-rad-sa-wav-fajlovima-2">VE-13 Rad sa WAV fajlovima (2)</h4>
+<p>U prethodnom projektu unutar procesing petlje u potpunosti utišati levi kanali, tako da se u izlaznom wav fajlu dobije tišina na tom kanalu (levi kanal je upisan u nulti niz sampleBuffer ulazno-izlazne matrice). Proveriti i verifikovati izlaz u Audacity-u.</p>
+<p>Bonus zadatak: Utišavanje signala na levom kanalu napraviti da se dešava nakon 3.5 sekundi ulaznog fajla.</p>
+<h4 id="ve-14-pass-through-primer-za-cirrus-os">VE-14 Pass-through primer za Cirrus OS</h4>
+<p>U CLIDE importovati projekte example_module, example_ovly i example_app iz foldera VE-14. Tim redom izbildovati (prevesti) svaki od projekata. U okviru example_app projekta navesti putanju do ulaznog fajla (unutar OS modula PCM Decoder), navesti putanju do izlaznog fajla (unutar OS modula AM) i pokrenuti izvršavanje. Sačekati par minuta dok se na izlazu ne izgeneriše signal, pa izlazni fajl uporediti sa ulazom pomoću PCMCompare alata (ili sa izlazom iz standalone projekta iz VE-12).</p>
+<p>Bonus zadatak: Menjanjem Input Remap (u PCM Decoderu) i Output Remap  kontrola (u AM-u) izgenerisati multi-channel izlaz (sa bar 3 izlazna kanala).</p>
+<h4 id="ve-15-multi-channel-primer-za-cirrus-os">VE-15 Multi-channel primer za Cirrus OS</h4>
+<p>U CLIDE importovati projekte example_composer_module, example_composer_ovly i example_composer_app iz foldera VE-15. Tim redom izbildovati (prevesti) svaki od projekata. Otvoriti “Page 1” example_composer_module projekta i izanalizirati DSP procesing. Da li se radi o stereo ili multi-channel processingu? Igrati se sa menjanjem Freq (i/ili Gain) kontrola u Highpass filtru i verifikovati rad filtra koristeći spektralnu analizu u Audacity-u. Menjati Gain i Simple Delay kontrole i verifikovati rad ovih modula kroz vremensku analizu signala u Audiacity-u. Verifikovati pass-through kanal i poslednji kanal koji Delay granu sabira sa ulaznim L kanalom. Prilikom verifikacije svakog od kanala, napravi screenshot odgovarajućih analiza iz Audacity-ja i imenovati svaki screenshot tako da odgovara konfiguraciji koja je za taj kanal korištena po principu “imeStrima_nazivIzlaznogKanala_glavnaKonfiguracija”. Recimo, ako se radi verifikacija Highpass filtra sa Freq kontrolom od 800Hz koristeći WhiteNoise ulazni signal, navesti ime screenshota kao “whiteNoise_ch0_highpass_800Hz.jpg”.</p>
+<p>Bonus zadatak:  example_composer_module integrisati u example_ovly i example_app iz VE-14. Ako je nepohodno izvršiti odgovarajuća remapiranja kanala i verifikovati rad DSP aplikacije.</p>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<clide_project core="DSP_A" name="cirrus_dsp_architecture" target="Cirrus DSP Core" type="buildable" version="6.8.2">
+	<source_file disk_path="./lesson02SRSUnit.a" ws_path="lesson02SRSUnit.a"/>
+	<source_file disk_path="./main.a" ws_path="main.a"/>
+	<source_file disk_path="./lesson01Introduction.a" ws_path="lesson01Introduction.a"/>
+	<source_file disk_path="./lesson03AGU.a" ws_path="lesson03AGU.a"/>
+	<source_file disk_path="./lesson04ProgramFlow.a" ws_path="lesson04ProgramFlow.a"/>
+	<source_file disk_path="./lesson05MemoryMoves.a" ws_path="lesson05MemoryMoves.a"/>
+	<source_file disk_path="./lesson06MACUnit.a" ws_path="lesson06MACUnit.a"/>
+	<source_file disk_path="./lesson07ALUUnit.a" ws_path="lesson07ALUUnit.a"/>
+	<osInterfaceGenerated>false</osInterfaceGenerated>
+	<specs>
+		<casm_spec>
+			<emit_debug_info>true</emit_debug_info>
+			<assembler_is_case_sensitive>false</assembler_is_case_sensitive>
+			<emit_local_symbols_in_the_object_file>false</emit_local_symbols_in_the_object_file>
+			<treat_warnings_as_errors>true</treat_warnings_as_errors>
+			<generate_listing_file>false</generate_listing_file>
+			<stop_on_error_encountered>true</stop_on_error_encountered>
+			<casm_additional_cmdLine_parameters></casm_additional_cmdLine_parameters>
+		</casm_spec>
+		<ccc_spec>
+			<silent>true</silent>
+			<use_dead_code_elimination>true</use_dead_code_elimination>
+			<use_common_subexpresion_elimination>true</use_common_subexpresion_elimination>
+			<use_optimized_loops>true</use_optimized_loops>
+			<write_DWARF2_debug_info>true</write_DWARF2_debug_info>
+			<emit_corresponding_c_line_for_every_instruction_block>true</emit_corresponding_c_line_for_every_instruction_block>
+			<emit_debug_info_as_comments_in_s_file>true</emit_debug_info_as_comments_in_s_file>
+			<ignore_functions_debug_attributes>false</ignore_functions_debug_attributes>
+			<stop_on_error_encountered>false</stop_on_error_encountered>
+			<ccc_additional_cmdLine_parameters></ccc_additional_cmdLine_parameters>
+		</ccc_spec>
+		<ccc2_spec>
+			<use_ccc2>true</use_ccc2>
+			<use_common_subexpresion_elimination>true</use_common_subexpresion_elimination>
+			<use_optimized_loops>true</use_optimized_loops>
+			<constant_propagation>true</constant_propagation>
+			<dont_create_hw_loops>false</dont_create_hw_loops>
+			<compacting_parallelization>true</compacting_parallelization>
+			<inline_functions>false</inline_functions>
+			<ignore_inline_function_attribute>false</ignore_inline_function_attribute>
+			<compile_all_at_once>false</compile_all_at_once>
+			<do_not_treat_signed_integer_overflow>false</do_not_treat_signed_integer_overflow>
+			<write_DWARF2_debug_info>false</write_DWARF2_debug_info>
+			<ignore_functions_debug_attributes>false</ignore_functions_debug_attributes>
+			<emit_debug_info_as_comments_in_s_file>false</emit_debug_info_as_comments_in_s_file>
+			<try_several_compilation_strategies>false</try_several_compilation_strategies>
+			<relax_calling_convention_restrictions>false</relax_calling_convention_restrictions>
+			<create_constant_pool_in_memory>false</create_constant_pool_in_memory>
+			<const_pool_memory>P</const_pool_memory>
+			<dont_init_static_to_zero>false</dont_init_static_to_zero>
+			<emit_hints>false</emit_hints>
+			<use_static_frame_for_function_arguments>false</use_static_frame_for_function_arguments>
+			<perform_alias_analysis>false</perform_alias_analysis>
+			<stop_on_error_encountered>false</stop_on_error_encountered>
+			<ccc2_additional_cmdLine_parameters></ccc2_additional_cmdLine_parameters>
+		</ccc2_spec>
+		<overlay_settings>
+			<COMMON_INCLUDE_ROOT>$(SDK_INSTALL_DIR)\$(TARGET_FAMILY)</COMMON_INCLUDE_ROOT>
+			<OVLY_REVISION>01</OVLY_REVISION>
+			<MEMORY_MAP>01</MEMORY_MAP>
+			<CORE>DSP_A</CORE>
+			<OVLY>STANDALONE</OVLY>
+			<USABLE_CONFIG>sd_a</USABLE_CONFIG>
+			<SLOT></SLOT>
+			<memory_map_file>$(COMMON_INC_ROOT)\crystal32.mem.xml</memory_map_file>
+			<image_output_filename>$(PROJECT_NAME).uld</image_output_filename>
+			<image_output_folder>$(PROJECT_DIR)\</image_output_folder>
+			<macro_include_file>$(COMMON_INC_ROOT)\common\inc\base.h</macro_include_file>
+			<custom_symbols>
+				<custom_symbol>_TOOLS_VERSION_=$(SDK_VERSION)</custom_symbol>
+				<custom_symbol>_OVLY_=$(OVLY)</custom_symbol>
+				<custom_symbol>_SLOT_=$(SLOT)</custom_symbol>
+				<custom_symbol>_OVLY_REVISION_=0101FF</custom_symbol>
+				<custom_symbol>_VERSION_=$(MEMORY_MAP)</custom_symbol>
+				<custom_symbol>_DSP_=$(CORE)</custom_symbol>
+				<custom_symbol>_COMMON_INC_PATH_=$(COMMON_INC_ROOT)\common\inc\</custom_symbol>
+			</custom_symbols>
+			<libraryFolders>
+				<libraryFolder>$(SDK_INSTALL_DIR)\lib\dsplib</libraryFolder>
+				<libraryFolder>$(SDK_INSTALL_DIR)\lib\dsplib\$(TARGET_FAMILY)</libraryFolder>
+			</libraryFolders>
+			<prelink_step enabled="false">
+				<cmdline></cmdline>
+				<description></description>
+			</prelink_step>
+			<postbuild_step enabled="false">
+				<cmdline></cmdline>
+				<description></description>
+			</postbuild_step>
+		</overlay_settings>
+		<clink_spec>
+			<disable_sorting_of_segments_in_a_class>false</disable_sorting_of_segments_in_a_class>
+			<display_all_classes_in_a_map_file>false</display_all_classes_in_a_map_file>
+			<emits_only_specified_class_type type="ram">true</emits_only_specified_class_type>
+			<encrypt_code key="" keyType="secondary">false</encrypt_code>
+			<clink_additional_cmdLine_parameters></clink_additional_cmdLine_parameters>
+		</clink_spec>
+	</specs>
+</clide_project>

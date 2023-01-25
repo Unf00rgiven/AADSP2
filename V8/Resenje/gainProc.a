@@ -1,0 +1,94 @@
+// _PROC_ASM
+
+_INPUT_NUM_CHANNELS	.equ 2
+_LEFT_CH			.equ 0
+_RIGHT_CH			.equ 1
+_CENTER_CH			.equ 2
+_BLOCK_SIZE			.equ 16
+
+	.public _gainProcessing
+	.extern _preGain
+	.extern _postGain
+	.extern _variablesGain
+	.extern _limiterThreshold
+	
+ 	.code_ovly 
+ 	
+ 	# prema CCC2 pozivnoj konvenciji: 
+ 	# i0 - parametar pokazivac, pIn
+ 	# i1 - parametar pokazivac, pOut
+_gainProcessing:
+	
+	# Stack guard.
+	ymem[i7] = i2; i7 += 1
+	ymem[i7] = i3; i7 += 1
+	
+	#i0								#<--| Left input channel pointer.
+	i2 = i0 + 1						#<--| Right input channel pointer.
+	#i1								#<--| Left center channel pointer.
+	i3 = i1 + 1						#<--| Right output channel pointer.
+	i4 = i1 + 2						#<--| Center output channel pointer.
+	
+	do(_BLOCK_SIZE), >	
+		###########################################################
+		
+		# Pre gain.
+		y0 = ymem[i0]				#<--| Load left input channel sample.
+		x0 = xmem[_preGain]			#<--| Load pre-gain.
+		a0 = y0 * x0				#<--| Add pre-gain.
+		ymem[i0] = a0				#<--| Write back into input memory.
+		
+		y0 = ymem[i2]				#<--| Load right input channel sample.
+		x0 = xmem[_preGain]			#<--| Load pre-gain.
+		a0 = y0 * x0				#<--| Add pre-gain.
+		ymem[i2] = a0				#<--| Write back into input memory.
+
+		###########################################################
+
+		# Variable gain.
+		y0 = ymem[i0]				#<--| Load left input channel sample.
+		x0 = xmem[_variablesGain]	#<--| Load left variable gain.
+		a0 = y0 * x0				#<--| Add variable gain.
+		a0 = a0 << 1;				#<--| Undo the pre-gain shift.
+		b0 = xmem[_limiterThreshold]#<--| Load limiter threshold.
+		if (b0 < a0) a0 = b0		#<--| Take the minimum of the 2 values into a0.
+		ymem[i1] = a0				#<--| Write into output memory.
+		
+		y0 = ymem[i2]				#<--| Load right input channel sample.
+		x0 = xmem[_variablesGain+1]	#<--| Load right variable gain.
+		a0 = y0 * x0				#<--| Add variable gain.
+		a0 = a0 << 1;				#<--| Undo the pre-gain shift.
+		b0 = xmem[_limiterThreshold]#<--| Load limiter threshold.
+		if (b0 < a0) a0 = b0		#<--| Take the minimum of the 2 values into a0.
+		ymem[i3] = a0				#<--| Write into output memory.
+
+		###########################################################
+		
+		# Post gain.
+		a0 = ymem[i1]				#<--| Load left output channel.
+		b0 = ymem[i3]				#<--| Load right output channel.
+		a0 = a0 + b0				#<--| Add them.
+		a0 = a0 >> 1
+		a0 = a0 >> 1				#<--| Pre post-gain shift for avoiding saturation.
+		AnyReg(x0, a0)				#<--| Move the value to a data register for multiplication.
+		y0 = xmem[_postGain]		#<--| Load the post-gain.
+		a0 = x0 * y0				#<--| Add the post gain.
+		a0 = a0 << 1
+		a0 = a0 << 1				#<--| Post post-gain shift that undoes the previous one.
+		ymem[i4] = a0				#<--| Write into output memory.
+
+		###########################################################
+
+		i0 += 1						#<--| Go to next sample.
+		i2 += 1						#<--| Go to next sample. 
+		i1 += 1						#<--| Go to next sample.
+		i3 += 1						#<--| Go to next sample.
+		i3 += 1						#<--| Go to next sample.
+%
+	
+	# Stack guard off.
+	i7 -= 1
+	i3 = ymem[i7]; i7 -= 1
+	i2 = ymem[i7]
+
+	ret

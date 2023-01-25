@@ -1,0 +1,164 @@
+################################################################################
+##*/**
+##** @file lesson02SRSUnit.a
+##**
+##** Module: lessons
+##** Description: SRS unit
+##** $Source: $
+##** $Revision: $
+##** $Date: $
+##** $Author: $
+##**
+##**/
+################################################################################
+_lesson02SRSUnit_a_
+
+	.public X_S_SRSUnit
+
+lesson02SRSUnit_code    .code_ovly
+
+################################################################################
+
+################################################################################
+##*/**
+##** @Author  Milan Acanski
+##** @Date 24. November 2008.
+##**
+##** Function:
+##** X_S_SRSUnit
+##**
+##** @param - none
+##**
+##** @return - nothing
+##**
+##** Trashes: a0, x0, x1, x2, x3, y0
+##** Comment: Show examples of operations performed by SRS unit.
+##**
+##** E-mail: milan.acanski@rt-sp.com
+##**/
+##*void X_S_SRSUnit()
+##*{
+##*
+##*}
+################################################################################
+X_S_SRSUnit:
+    #---------------------------------------------------------------------------
+    # Saturation examples
+
+    # Example 1.
+    ufixed16(a0) = (0xc000)         #<--| Set a0 t0 0x00.C0000000.00000000 (1.5)
+
+    x0 = a0                         #<--| a0 is saturated to 0x7fffffff (0.99999999953) and moved to x0
+
+    y0 = a0h                        #<--| if only high or low part of accumulator
+                                    #^  | is moved to the X oy Y data bus
+                                    #^__| saturation will not occur (y0 = -0.5).
+    # Example 2.
+    a0g = (0x80)                    #<--|
+    ufixed16(a0h) = (0xc000)        #^__| Set a0 t0 0x08.C0000000.00000000 (-254.5)
+
+    x0 = a0                         #<--| a0 is saturated to 0x80000000 (-1.0)and moved to x0
+
+    y0 = a0h                        #<--| if only high or low part of accumulator
+                                    #^  | is moved to the X oy Y data bus
+                                    #^__| saturation will not occur (y0 = -0.5).
+    # Example 3.
+    halfword(a0) = (-1)             #<--| Set a0 t0 0xff.ffffffff.00000000 (-4.65661287307739257813e-10)
+
+    x0 = a0                         #<--| x0 is 0xffffffff (-4.7e-10) (a0 not saturated)
+
+    y0 = a0h                        #<--| if only high or low part of accumulator
+                                    #^  | is moved to the X oy Y data bus
+                                    #^__| saturation will not occur (y0 = -4.7e-10).
+    #---------------------------------------------------------------------------
+
+
+
+    #---------------------------------------------------------------------------
+    # Rounding examples
+
+    # Example 1.
+    uhalfword(a0) = (1)             #<--|
+    ufixed16(a0l) = (0x8000)        #^__| Set a0 to 0x00.00000001.80000000
+
+    mr_sr = (0x0)                   #<--| Set roudning mode to "truncate"
+    x0 = a0                         #<--| x0 is 0x00000001
+
+    mr_sr = (0x4)                   #<--| Set roudning mode to "add 0.5 and truncate"
+    x1 = a0                         #<--| x0 is 0x00000002
+
+    mr_sr = (0x8)                   #<--| Set roudning mode to "round to zero"
+    x2 = a0                         #<--| x0 is 0x00000001
+
+    mr_sr = (0xC)                   #<--| Set roudning mode to "Dither"
+    x3 = a0                         #<--| x0 is 0x00000001 or 0x00000002
+
+    # Example 2.
+    fixed16(a0) = (0x8000)          #<--|
+    uhalfword(a0l) = (1)            #^__| Set a0 to 0xff.80000000.00000001
+
+    mr_sr = (0x0)                   #<--| Set roudning mode to "truncate"
+    x0 = a0                         #<--| x0 is 0x80000000
+
+    mr_sr = (0x4)                   #<--| Set roudning mode to "add 0.5 and truncate"
+    x1 = a0                         #<--| x0 is 0x80000000
+
+    mr_sr = (0x8)                   #<--| Set roudning mode to "round to zero"
+    x2 = a0                         #<--| x0 is 0x80000001
+
+    mr_sr = (0xC)                   #<--| Set roudning mode to "Dither"
+    x3 = a0                         #<--| x0 is 0x80000000  or 0x80000001
+    #---------------------------------------------------------------------------
+
+
+    #---------------------------------------------------------------------------
+    # SRS shift examples
+
+    # Example 1. - shift with rounding mode set to "truncate"
+    a0g = (0x00)                    #<--|
+    ufixed16(a0h) = (0x8000)        #   | Set a0 to 0x00.80000001.40000000
+    lo16(a0h) = (0x0001)            #   |
+    ufixed16(a0l) = (0x4000)        #<--|
+
+    mr_sr = (0x0)                   #<--| Set shift mode to "no shift"
+    x0 = a0                         #<--| x0 is 0x7fffffff
+
+    mr_sr = (0x1)                   #<--| Set shift mode to ">>1"
+    x1 = a0                         #<--| x0 is 0x40000000
+
+    mr_sr = (0x2)                   #<--| Set shift mode to ">>2"
+    x2 = a0                         #<--| x0 is 0x20000000
+    
+    ufixed16(a0h) = (0x0000)        #   | Set a0 to 0x00.00000001.40000000
+    lo16(a0h) = (0x0001)   
+    
+    mr_sr = (0x3)                   #<--| Set shift mode to "<<1"
+    x3 = a0                         #<--| x0 is 0x00000002
+
+    # Example 2. - shift with rounding mode set to "add 0.5 and truncate"
+    a0g = (0x00)                    #<--|
+    ufixed16(a0h) = (0x8000)        #   | Set a0 to 0x00.80000001.00000000
+    lo16(a0h) = (0x0001)            #   |
+    ufixed16(a0l) = (0x4000)        #<--|
+
+    mr_sr = (0x4)                   #<--| Set shift mode to "no shift"
+    x0 = a0                         #<--| x0 is 0x7fffffff
+
+    mr_sr = (0x5)                   #<--| Set shift mode to ">>1"
+    x1 = a0                         #<--| x0 is 0x40000001
+
+    mr_sr = (0x6)                   #<--| Set shift mode to ">>2"
+    x2 = a0                         #<--| x0 is 0x20000000
+
+    ufixed16(a0h) = (0x0000)        #   | Set a0 to 0x00.00000001.40000000
+    lo16(a0h) = (0x0001)   
+
+    mr_sr = (0x7)                   #<--| Set shift mode to "<<1"
+    x3 = a0                         #<--| x0 is 0x00000003
+
+    #---------------------------------------------------------------------------
+
+    mr_sr = (0x0)                   #<--| Reset mode register to it's initial value
+SRSUnit_End:
+    ret
+################################################################################

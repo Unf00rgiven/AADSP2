@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "multitapEcho_model0", "multitapEcho_model0\multitapEcho_model0.vcxproj", "{27D0776B-DAFF-4002-A7CF-635A7072A7ED}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "multitapEcho_model1", "multitapEcho_model1\multitapEcho_model1.vcxproj", "{6DE9BDF3-63E9-4EFA-9E23-548350F6BA77}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "multitapEcho_model2", "multitapEcho_model2\multitapEcho_model2.vcxproj", "{267C7232-5D7E-42C8-9FBD-00F9EEF5A1DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27D0776B-DAFF-4002-A7CF-635A7072A7ED}.Debug|Win32.ActiveCfg = Debug|Win32
+		{27D0776B-DAFF-4002-A7CF-635A7072A7ED}.Debug|Win32.Build.0 = Debug|Win32
+		{27D0776B-DAFF-4002-A7CF-635A7072A7ED}.Release|Win32.ActiveCfg = Release|Win32
+		{27D0776B-DAFF-4002-A7CF-635A7072A7ED}.Release|Win32.Build.0 = Release|Win32
+		{6DE9BDF3-63E9-4EFA-9E23-548350F6BA77}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6DE9BDF3-63E9-4EFA-9E23-548350F6BA77}.Debug|Win32.Build.0 = Debug|Win32
+		{6DE9BDF3-63E9-4EFA-9E23-548350F6BA77}.Release|Win32.ActiveCfg = Release|Win32
+		{6DE9BDF3-63E9-4EFA-9E23-548350F6BA77}.Release|Win32.Build.0 = Release|Win32
+		{267C7232-5D7E-42C8-9FBD-00F9EEF5A1DF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{267C7232-5D7E-42C8-9FBD-00F9EEF5A1DF}.Debug|Win32.Build.0 = Debug|Win32
+		{267C7232-5D7E-42C8-9FBD-00F9EEF5A1DF}.Release|Win32.ActiveCfg = Release|Win32
+		{267C7232-5D7E-42C8-9FBD-00F9EEF5A1DF}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

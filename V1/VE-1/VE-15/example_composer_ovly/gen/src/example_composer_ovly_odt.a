@@ -1,0 +1,31 @@
+#                                                                
+# example_composer_ovly ODT (Overlay Definition Table) file, produced by CLIDE version 7.1.8
+#                                                            
+
+
+EXAMPLE_COMPOSER_OVLY_ODT_PTR .odt_ptr_ovly               
+     .dw (X_BL_MODULES)                                        
+
+EXAMPLE_COMPOSER_OVLY_MODULE_TABLE .data_ovly               
+
+#========================= ODT ======================            
+X_BL_MODULES                                                     
+     .if !defined(_M70_CC_MIF)
+       .extern _M70_CC_MIF
+     .endif
+     .dw   _M70_CC_MIF, 112
+     .dw 0,0 # end of table
+#=================== end of ODT =====================
+
+#=================== overlay ID =====================
+_OVLY_ID_ .equ "EXAMPLE_COMPOSER_OVLY"
+    .include strcat(_COMMON_INC_PATH_, "ovly_version.h")
+#====================================================
+
+#===================  heapst  =====================
+     .if defined(USE_HEAPSTEAL)
+       .extern _CL_HEAPSTEAL_
+HEAPSTEAL .equ _CL_HEAPSTEAL_
+     .endif
+#====================================================
+

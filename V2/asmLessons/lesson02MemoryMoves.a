@@ -1,0 +1,186 @@
+################################################################################
+##*/**
+##** @file lesson05MemoryMoves.a
+##**
+##** Module: lessons
+##** Description: Memory move instructions
+##** $Source: $
+##** $Revision: $
+##** $Date: $
+##** $Author: $
+##**
+##**/
+################################################################################
+_lesson05MemoryMoves_a_
+
+	.public X_S_MemoryMoves
+
+
+lesson05MemoryMoves_data    .data_ovly
+
+X_VL_SourceLMemVariable         .dw (0xbaba), (0xdeda)
+X_VL_DestLMemVariable           .dw (0), (0)
+
+lesson05MemoryMoves_xdata   .xdata_ovly
+
+X_VX_SourceXMemVariable         .dw 0x12345678
+X_VX_DestinationXMemVariable    .dw 0
+
+lesson05MemoryMoves_ydata   .ydata_ovly
+
+X_VY_SourceYMemVariable         .dw 0x87654321
+X_VY_DestinationYMemVariable    .dw 0
+
+lesson05MemoryMoves_code    .code_ovly
+
+################################################################################
+
+################################################################################
+##*/**
+##** @Author  Milan Acanski
+##** @Date 07. December 2008.
+##**
+##** Function:
+##** X_S_MemoryMoves
+##**
+##** @param - none
+##**
+##** @return - nothing
+##**
+##** Trashes: a0, a1, a2, a3, b0, b1, b3, x0, x1, y0, i0, i1
+##** Comment: Examples of memory moves and paths of data in DSP
+##**
+##** E-mail: milan.acanski@rt-sp.com
+##**/
+##*void X_S_MemoryMoves()
+##*{
+##*
+##*}
+################################################################################
+X_S_MemoryMoves:
+
+    #---------------------------------------------------------------------------
+    # X data memory to register
+
+    # Example 1. Using direct addressing
+    a0 = xmem[0x800]                            #<--| a0 will have value present
+                                                #^__| on address 0x800 in X memory
+
+    # Example 2. Using symbol as address
+    a0 = xmem[X_VX_SourceXMemVariable]          #<--| a0 will be 0x12345678
+
+    # Example3. Using index register
+    i0 = (X_VX_SourceXMemVariable)
+    nop
+    x0 = xmem[i0]                               #<--| x0 will be 0x12345678
+    #---------------------------------------------------------------------------
+
+
+    #---------------------------------------------------------------------------
+    # register to X data memory
+    uhalfword(a0) = (0xbaba)
+
+    # Example 1. Using direct addressing
+    xmem[0x800] = a0                            #<--| address 0x800 in X memory
+                                                #^__| will have value present in a0
+
+    # Example 2. Using symnol as address
+    xmem[X_VX_DestinationXMemVariable] = a0     #<--| X_VX_SourceXMemVariable will be 0xbaba
+
+    # Example3. Using indes register
+    i0 = (X_VX_DestinationXMemVariable)
+    nop
+    xmem[i0] = a0                               #<--| X_VX_SourceXMemVariable will be 0xbaba
+    #---------------------------------------------------------------------------
+
+
+    #---------------------------------------------------------------------------
+    # Y data memory to register
+
+    # Example 1. Using direct addressing
+    a1 = ymem[0x800]                            #<--| a1 will have value present
+                                                #^__| on address 0x800 in Y memory
+
+    # Example 2. Using symbol as address
+    b1 = ymem[X_VY_SourceYMemVariable]          #<--| b10 will be 0x87654321
+
+    # Example3. Using index register
+    i0 = (X_VY_SourceYMemVariable)
+    nop
+    x1 = ymem[i0]                               #<--| x1 will be 0x12345678
+    #---------------------------------------------------------------------------
+
+
+    #---------------------------------------------------------------------------
+    # register to Y data memory
+    uhalfword(a0) = (0xdeda)
+
+    # Example 1. Using direct addressing
+    ymem[0x800] = a0                            #<--| address 0x800 in Y memory
+                                                #^__| will have value present in a0
+
+    # Example 2. Using symnol as address
+    ymem[X_VY_DestinationYMemVariable] = a0     #<--| X_VX_SourceXMemVariable will be 0xdeda
+
+    # Example3. Using indes register
+    i0 = (X_VY_DestinationYMemVariable)
+    nop
+    ymem[i0] = a0                               #<--| X_VX_SourceXMemVariable will be 0xdeda
+    #---------------------------------------------------------------------------
+
+
+    #---------------------------------------------------------------------------
+    # Immediate register loads
+    lo16(a0l) = (8)                             #<--| a0 = 0x00.00000000.00000008
+    fixed16(a0h) = (0xff00)                     #<--| a0 = 0x00.ff000000.00000008
+    fixed16(b0) = (0x8000)                      #<--| b0 = 0xff.80000000.80000000
+    uhalfword(y0) = (255)                       #<--| y0 = 0x000000ff
+    halfword(x0) = (-255)                       #<--| x0 = 0xffffff01
+    #---------------------------------------------------------------------------
+
+
+    #---------------------------------------------------------------------------
+    # AnyReg instruction
+    AnyReg(a2, y0)                              #<--| a2 = 0x00.000000ff.00000000
+    AnyReg(b3, a2), (a3, x0)                    #<--| b3 = 0x00.000000ff.00000000, a3 = 0xff.ffffff01.00000000
+    #---------------------------------------------------------------------------
+
+
+    #---------------------------------------------------------------------------
+    # Bit manipulation instructions
+    BitTst lo(y0), (0x1)                        #<--| y0 = 0x000000ff
+    if (z==0) jmp >                             #<--| is bit 0 of y0 set to one?
+        nop                                     #<--| yes, so this instruction will be executed
+%
+    BitTst hi(y0), (0x1)                        #<--| y0 = 0x000000ff
+    if (z==0) jmp >                             #<--| is bit 16 of y0 set to one?
+        nop                                     #<--| no, so this instruction will not be executed
+%
+
+    BitSet hi(y0), (0x1)                        #<--| y0 will be 0x000100ff
+
+    BitClr hi(y0), (0x1)                        #<--| y0 will be 0x000000ff
+
+    BitChg lo(y0), (0x1003)                     #<--| y0 will be 0x000010fc
+    #---------------------------------------------------------------------------
+
+
+    #---------------------------------------------------------------------------
+    # XY memory moves
+    i0 = (X_VL_SourceLMemVariable)
+    i1 = (X_VL_DestLMemVariable)
+
+    x0, y0 = xymem[i0]                          #<--| x0 = 0x0000baba y0 = 0x0000deda
+
+    xymem[i1] = x0, y0                          #<--| X_VL_DestLMemVariable has value 0x0000baba.0000deda
+
+    a0 = xymem[i0]                              #<--| a0 = 0x00.0000baba.0000deda
+
+    halfword(b0) = (-1)
+    xymem[i1] = b0                              #<--| X_VL_DestLMemVariable has value 0xffffffff.00000000
+    #---------------------------------------------------------------------------
+
+
+MemoryMoves_End:
+    ret
+################################################################################

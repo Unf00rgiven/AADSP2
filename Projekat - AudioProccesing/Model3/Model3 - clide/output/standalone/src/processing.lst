@@ -1,0 +1,349 @@
+1     	 0000				_PROCESSING_ASM
+2     						
+3     							.if defined(_PROCESSING_ASM)
+4     							
+5     						# constants
+6     	 0002				_INPUT_NUM_CHANNELS .equ 2
+7     	 0002				_OUTPUT_NUM_CHANNELS_2 .equ 2
+8     	 0005				_DEFAULT_OUTPUT_NUM_CHANNELS .equ 5
+9     	 0010				_BLOCK_SIZE .equ 16
+10    	 001F				_FILTER_LEN .equ 31
+11    						
+12    						# channels
+13    	 0000				_LEFT_CH .equ 0
+14    	 0001				_RIGHT_CH .equ 1
+15    	 0002				_LS_CH .equ 2
+16    	 0003				_RS_CH .equ 3
+17    	 0004				_C_CH .equ 4
+18    						
+19    	 0000					.public _Processing
+20    	 0000					.public _fir_circular
+21    	 0000					.extern _variablesGainL
+22    	 0000					.extern _variablesGainR
+23    	 0000					.extern _variablesGainLS
+24    	 0000					.extern _variablesGainRS
+25    	 0000					.extern _variablesGainC
+26    	 0000					.extern _historyL
+27    	 0000					.extern _historyR
+28    	 0000					.extern _historyLS
+29    	 0000					.extern _historyRS
+30    	 0000					.extern _historyC
+31    	 0000					.extern _pStateL
+32    	 0000					.extern _pStateR
+33    	 0000					.extern _pStateLS
+34    	 0000					.extern _pStateRS
+35    	 0000					.extern _pStateC
+36    	 0000					.extern _Mode
+37    	 0000					.extern _LPFmode
+38    	 0000					.extern _gained
+39    	 0000					.extern _out
+40    	 0000					.extern _filterCoeff
+41    						
+42    							
+43    							.code_ovly
+43     >> start of macro: .code_ovly
+1+    									seg_single , "CODE_OVLY", CODE
+1+     >> start of macro: seg_single
+1+    						  .if ( "" != "" ) & defined( ___SegStart_CODE_ )
+2+    						    segment
+3+    						  .else
+4+    						    segment "CODE_OVLY"
+5+    							.if "" != ""
+6+    						___SegStart_CODE_
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .code_ovly
+44    							
+45    							#a0 - input
+46    							#i0 - **p_state
+47    							#i1 - *state_start
+48    							#i4 - *state_end
+49    	 0000				_fir_circular:
+50    																			#*state = *p_state;
+51    	 0000	 B9140000		i5 = xmem[i0]									#*state
+52    																			#ptrCoeffs = (coeffs + FILTER_LEN - 1);
+53    	 0001	 B24A0000		i2 = (_filterCoeff)
+54    	 0002	 894A001F		uhalfword(a1) = (_FILTER_LEN)
+55    	 0003	 B209000C		AnyReg(b0, i2)									#b0 = _coeffs
+56    	 0004	 8D4A0001		uhalfword(b1) = (0x0001)
+57    	 0005	 0000442C		b0 = b0 + a1									#_coeffs + _FILTER_LEN
+58    	 0006	 00007FFF		nop
+59    																			#ptrCoeffs = (_coeffs + _FILTER_LEN) - 1
+60    	 0007	 0000444C		b0 = b0 - b1										
+61    	 0008	 00007FFF		nop
+62    	 0009	 8C090033		AnyReg(i3, b0)									#i3 = *ptrCoeffs
+63    																			#*state = input;
+64    	 000A	 88540015		xmem[i5] = a0; i5 += 1
+65    																			#if (++state >= state_end)	
+66    	 000B	 B909000C		AnyReg(b0, i5)									#b0 -> ++state 
+67    	 000C	 B8090008		AnyReg(a0, i4)									#a0 -> *state_end
+68    	 000D	 00004F24		b0 - a0
+69    						
+70    	 000E	 86880010		if(b < 0) jmp>over1								#state = state_start;
+71    	 000F	 B1090039			i5 = i1
+72    	 0010				%over1:
+73    	 0010	 00004DC4		b0 = 0
+74    	 0011	 81F0001C		do(_FILTER_LEN), >loop
+75    	 0012	 80140003			x0 = xmem[i3]								#ptrCoeffs				
+76    	 0013	 84140015			y0 = xmem[i5]; i5 += 1						#state 
+77    	 0014	 00002405			b1 = x0 * y0								#*ptrCoeffs * *state;
+78    	 0015	 00007FFF			nop											#ret_val = ret_val + (*ptrCoeffs * *state)
+79    	 0016	 0000440C			b0 = b0 + b1								#ret_val														
+80    																			#if (++state >= state_end)
+81    	 0017	 B909000D			AnyReg(b1, i5)								#b1 -> ++state 	
+82    	 0018	 B8090009			AnyReg(a1, i4)								#a0 -> *state_end
+83    	 0019	 00004F2D			b1 - a1
+84    	 001A	 8688001C			if(b < 0) jmp>over2
+85    																			#state = state_start;
+86    	 001B	 B1090039				i5 = i1
+87    	 001C				%over2:		
+88    	 001C	 02137FFF	%loop: i3 -= 1	
+89    	 001D	 B9540000		xmem[i0] = i5									#*p_state = state;
+90    	 001E	 4C487FFF		a0 = b0											#a0 = ret_val
+91    						
+92    	 001F	 81880000		ret		
+93    							
+94    							
+95    							# i0 = inBuffer
+96    							# i1 = outBuffer
+97    						
+98    	 0020				_Processing:
+99    	 0020	 810000A5		do(_BLOCK_SIZE), >loop
+100   								# Left chanel ------------------------------------------------------- 				
+101   	 0021	 80940000			x0 = ymem[i0]							# inputL
+102   	 0022	 84040000			y0 = xmem[_variablesGainL + 0]			# Variable gain for L channel
+103   	 0023	 00002400			a0 = x0 * y0							# inputL * gainL[0]
+104   								
+105   	 0024	 84050010			i4 = i0 + (_RIGHT_CH * _BLOCK_SIZE)		# in RIGHT_CH
+106   	 0025	 80940004			x0 = ymem[i4]							# input R
+107   	 0026	 84040000			y0 = xmem[_variablesGainL + 1]			# Variable gain for L channel
+108   	 0027	 00002404			b0 = x0 * y0							# inputL * gainL[1]
+109   	 0028	 00004EC4			b0 = b0 << 4							# back to scope
+110   								
+111   	 0029	 B94A0000			i5 = (_out + _LEFT_CH)
+112   	 002A	 00004420			a0 = a0 + b0 
+113   	 002B	 88540005			xmem[i5] = a0 	 						# outL = gainedL + gainedR 
+114   								# -------------------------------------------------------------------
+115   								
+116   								# Right chanel ------------------------------------------------------- 				
+117   	 002C	 80940000			x0 = ymem[i0]							# inputL
+118   	 002D	 84040000			y0 = xmem[_variablesGainR + 0]			# Variable gain for R channel
+119   	 002E	 00002400			a0 = x0 * y0							# inputL * gainR[0]
+120   								
+121   	 002F	 84050010			i4 = i0 + (_RIGHT_CH * _BLOCK_SIZE)		# in RIGHT_CH
+122   	 0030	 80940004			x0 = ymem[i4]							# input R
+123   	 0031	 84040000			y0 = xmem[_variablesGainR + 1]			# Variable gain for L channel
+124   	 0032	 00002404			b0 = x0 * y0							# inputL * gainR[1]
+125   	 0033	 00004EC4			b0 = b0 << 4							# back to scope
+126   								
+127   	 0034	 B94A0000			i5 = (_out + _RIGHT_CH)
+128   	 0035	 00004420			a0 = a0 + b0 
+129   	 0036	 88540005			xmem[i5] = a0							# outR = gainedL + gainedR 
+130   								# -------------------------------------------------------------------
+131   								
+132   								# LS chanel ------------------------------------------------------- 				
+133   	 0037	 80940000			x0 = ymem[i0]							# inputL
+134   	 0038	 84040000			y0 = xmem[_variablesGainLS + 0]			# Variable gain for LS channel
+135   	 0039	 00002400			a0 = x0 * y0							# inputL * gainLS[0]
+136   								
+137   	 003A	 84050010			i4 = i0 + (_RIGHT_CH * _BLOCK_SIZE)		# in RIGHT_CH
+138   	 003B	 80940004			x0 = ymem[i4]							# input R
+139   	 003C	 84040000			y0 = xmem[_variablesGainLS + 1]			# Variable gain for LS channel
+140   	 003D	 00002404			b0 = x0 * y0							# inputR * gainLS[1]
+141   	 003E	 00004EC4			b0 = b0 << 4							# back to scope
+142   								
+143   	 003F	 B94A0000			i5 = (_out + _LS_CH)
+144   	 0040	 00004420			a0 = a0 + b0 
+145   	 0041	 88540005			xmem[i5] = a0  							# outLS = gainedL + gainedR 
+146   								# -------------------------------------------------------------------
+147   								
+148   								# RS chanel ------------------------------------------------------- 				
+149   	 0042	 80940000			x0 = ymem[i0]							# inputL
+150   	 0043	 84040000			y0 = xmem[_variablesGainRS + 0]			# Variable gain for RS channel
+151   	 0044	 00002400			a0 = x0 * y0							# inputL * gainRS[0]
+152   								
+153   	 0045	 84050010			i4 = i0 + (_RIGHT_CH * _BLOCK_SIZE)		# in RIGHT_CH
+154   	 0046	 80940004			x0 = ymem[i4]							# input R
+155   	 0047	 84040000			y0 = xmem[_variablesGainRS + 1]			# Variable gain for LS channel
+156   	 0048	 00002404			b0 = x0 * y0							# inputR * gainRS[1]
+157   	 0049	 00004EC4			b0 = b0 << 4							# back to scope
+158   								
+159   	 004A	 B94A0000			i5 = (_out + _RS_CH)
+160   	 004B	 00004420			a0 = a0 + b0 
+161   	 004C	 88540005			xmem[i5] = a0  							# outLS = gainedL + gainedR 
+162   								# -------------------------------------------------------------------
+163   								
+164   								# C chanel ------------------------------------------------------- 				
+165   	 004D	 80940000			x0 = ymem[i0]							# inputL
+166   	 004E	 84040000			y0 = xmem[_variablesGainC + 0]			# Variable gain for C channel
+167   	 004F	 00002400			a0 = x0 * y0							# inputL * gainC[0]
+168   								
+169   	 0050	 84050010			i4 = i0 + (_RIGHT_CH * _BLOCK_SIZE)		# in RIGHT_CH
+170   	 0051	 80940004			x0 = ymem[i4]							# input R
+171   	 0052	 84040000			y0 = xmem[_variablesGainC + 1]			# Variable gain for C channel
+172   	 0053	 00002404			b0 = x0 * y0							# inputR * gainC[1]
+173   	 0054	 00004EC4			b0 = b0 << 4							# back to scope
+174   								
+175   	 0055	 B94A0000			i5 = (_out + _C_CH)
+176   	 0056	 00004420			a0 = a0 + b0 
+177   	 0057	 88540005			xmem[i5] = a0 							# outC = gainedL + gainedR 
+178   								# -------------------------------------------------------------------
+179   								
+180   								# Output with filtering ---------------------------------------------
+181   								
+182   								# Left channel
+183   	 0058	 80040000			x0 = xmem[_out + 0]
+184   	 0059	 84150000			i4 = i1 + (_LEFT_CH * _BLOCK_SIZE)
+185   	 005A	 40487FFF			a0 = x0
+186   	 005B	 B0D40017			ymem[i7] = i0; i7+=1				// Pushing to stack
+187   	 005C	 B04A0000			i0 = (_pStateL)
+188   	 005D	 B1D40017			ymem[i7] = i1; i7+=1
+189   	 005E	 B14A0000			i1 = (_historyL)
+190   	 005F	 B8D40017			ymem[i7] = i4; i7+=1
+191   	 0060	 B84A0000			i4 = (_historyL + _FILTER_LEN)
+192   	 0061	 80880000			call _fir_circular					// Filtering
+193   	 0062	 02177FFF			i7-=1
+194   	 0063	 B8940027			i4 = ymem[i7];i7-=1 				// Pop from stack
+195   	 0064	 B1940027			i1 = ymem[i7];i7-=1 
+196   	 0065	 B0940007			i0 = ymem[i7]
+197   	 0066	 88D40004			ymem[i4] = a0						
+198   								
+199   								
+200   								# Right channel
+201   	 0067	 80040000			x0 = xmem[_out + 1]
+202   	 0068	 84150010			i4 = i1 + (_RIGHT_CH * _BLOCK_SIZE)
+203   	 0069	 40487FFF			a0 = x0
+204   	 006A	 B0D40017			ymem[i7] = i0; i7+=1				// Pushing to stack
+205   	 006B	 B04A0000			i0 = (_pStateL)
+206   	 006C	 B1D40017			ymem[i7] = i1; i7+=1
+207   	 006D	 B14A0000			i1 = (_historyL)
+208   	 006E	 B8D40017			ymem[i7] = i4; i7+=1
+209   	 006F	 B84A0000			i4 = (_historyL + _FILTER_LEN)
+210   	 0070	 80880000			call _fir_circular					// Filtering
+211   	 0071	 02177FFF			i7-=1
+212   	 0072	 B8940027			i4 = ymem[i7];i7-=1 				// Pop from stack
+213   	 0073	 B1940027			i1 = ymem[i7];i7-=1 
+214   	 0074	 B0940007			i0 = ymem[i7]
+215   	 0075	 88D40004			ymem[i4] = a0						
+216   								
+217   								
+218   								# LS channel
+219   	 0076	 80040000			x0 = xmem[_out + 2]
+220   	 0077	 84150020			i4 = i1 + (_LS_CH * _BLOCK_SIZE)
+221   	 0078	 40487FFF			a0 = x0
+222   	 0079	 B0D40017			ymem[i7] = i0; i7+=1				// Pushing to stack
+223   	 007A	 B04A0000			i0 = (_pStateL)
+224   	 007B	 B1D40017			ymem[i7] = i1; i7+=1
+225   	 007C	 B14A0000			i1 = (_historyL)
+226   	 007D	 B8D40017			ymem[i7] = i4; i7+=1
+227   	 007E	 B84A0000			i4 = (_historyL + _FILTER_LEN)
+228   	 007F	 80880000			call _fir_circular					// Filtering
+229   	 0080	 02177FFF			i7-=1
+230   	 0081	 B8940027			i4 = ymem[i7];i7-=1 				// Pop from stack
+231   	 0082	 B1940027			i1 = ymem[i7];i7-=1 
+232   	 0083	 B0940007			i0 = ymem[i7]
+233   	 0084	 88D40004			ymem[i4] = a0						
+234   								
+235   								
+236   								# RS channel
+237   	 0085	 80040000			x0 = xmem[_out + 3]
+238   	 0086	 84150030			i4 = i1 + (_RS_CH * _BLOCK_SIZE)
+239   	 0087	 40487FFF			a0 = x0
+240   	 0088	 B0D40017			ymem[i7] = i0; i7+=1				// Pushing to stack
+241   	 0089	 B04A0000			i0 = (_pStateL)
+242   	 008A	 B1D40017			ymem[i7] = i1; i7+=1
+243   	 008B	 B14A0000			i1 = (_historyL)
+244   	 008C	 B8D40017			ymem[i7] = i4; i7+=1
+245   	 008D	 B84A0000			i4 = (_historyL + _FILTER_LEN)
+246   	 008E	 80880000			call _fir_circular					// Filtering
+247   	 008F	 02177FFF			i7-=1
+248   	 0090	 B8940027			i4 = ymem[i7];i7-=1 				// Pop from stack
+249   	 0091	 B1940027			i1 = ymem[i7];i7-=1 
+250   	 0092	 B0940007			i0 = ymem[i7]
+251   	 0093	 88D40004			ymem[i4] = a0						
+252   								
+253   								
+254   								# C channel
+255   	 0094	 80040000			x0 = xmem[_out + 4]
+256   	 0095	 84150040			i4 = i1 + (_C_CH * _BLOCK_SIZE)
+257   	 0096	 40487FFF			a0 = x0
+258   	 0097	 B0D40017			ymem[i7] = i0; i7+=1				// Pushing to stack
+259   	 0098	 B04A0000			i0 = (_pStateL)
+260   	 0099	 B1D40017			ymem[i7] = i1; i7+=1
+261   	 009A	 B14A0000			i1 = (_historyL)
+262   	 009B	 B8D40017			ymem[i7] = i4; i7+=1
+263   	 009C	 B84A0000			i4 = (_historyL + _FILTER_LEN)
+264   	 009D	 80880000			call _fir_circular					// Filtering
+265   	 009E	 02177FFF			i7-=1
+266   	 009F	 B8940027			i4 = ymem[i7];i7-=1 				// Pop from stack
+267   	 00A0	 B1940027			i1 = ymem[i7];i7-=1 
+268   	 00A1	 B0940007			i0 = ymem[i7]
+269   	 00A2	 88D40004			ymem[i4] = a0						
+270   									
+271   										
+272   	 00A3	 02087FFF			i0+=1
+273   	 00A4	 02097FFF			i1+=1
+274   	 00A5	 00007FFF	%loop:  nop
+275   	 00A6	 81880000		ret
+276   								
+277   							.endif	
+278   						
+279   							
+				 SYMBOL TABLE 
+
+    Name                                                                                    Type                  Value 
+
+_BLOCK_SIZE                                                                     					 Number				          16 (10H)
+_COMMON_INC_PATH_                                                               					 Define                 "C:/CirrusDSP/crystal32/common/inc/"
+_C_CH                                                                           					 Number				          4 (4H)
+_DEFAULT_OUTPUT_NUM_CHANNELS                                                    			  Unused Number				      5 (5H)
+_DSP_                                                                           					 Define                 "a"
+_FILTER_LEN                                                                     					 Number				          31 (1FH)
+_INPUT_NUM_CHANNELS                                                             			  Unused Number				      2 (2H)
+_LEFT_CH                                                                        					 Number				         0 (0H)
+_LOCAL_INC_PATH_                                                                					 Define                 "inc/"
+_LOCAL_SRC_PATH_                                                                					 Define                 "src/"
+_LPFmode                                                                        					 External   
+_LS_CH                                                                          					 Number				          2 (2H)
+_MUI_VERSION_                                                                   					 Define                 "020000"
+_Mode                                                                           					 External   
+_OUTPUT_NUM_CHANNELS_2                                                          			  Unused Number				      2 (2H)
+_OVLY_                                                                          					 Define                 "standalone"
+_OVLY_REVISION_                                                                 					 Define                 "020000"
+_PROCESSING_ASM                                                                 			  Unused Relocatable        __INIT:0000H
+_Processing                                                                     			  Public Relocatable       processing_GEN_0000:0020H
+_RIGHT_CH                                                                       					 Number				          1 (1H)
+_ROUTER_INC_PATH_                                                               					 Define                 "rom_inc/"
+_RS_CH                                                                          					 Number				          3 (3H)
+_SLOT_                                                                          					 Define                 "0"
+_TARGET_FAMILY_                                                                 					 Define                 "crystal32"
+_TOOLS_VERSION_                                                                 					 Define                 "0x0701"
+_VERSION_                                                                       					 Define                 "00"
+__CASM_VER__                                                                    			  Unused Variable		        0 (701H)
+_filterCoeff                                                                    					 External   
+_fir_circular                                                                   			  Public Relocatable       processing_GEN_0000:0000H
+_gained                                                                         					 External   
+_historyC                                                                       					 External   
+_historyL                                                                       					 External   
+_historyLS                                                                      					 External   
+_historyR                                                                       					 External   
+_historyRS                                                                      					 External   
+_out                                                                            					 External   
+_pStateC                                                                        					 External   
+_pStateL                                                                        					 External   
+_pStateLS                                                                       					 External   
+_pStateR                                                                        					 External   
+_pStateRS                                                                       					 External   
+_variablesGainC                                                                 					 External   
+_variablesGainL                                                                 					 External   
+_variablesGainLS                                                                					 External   
+_variablesGainR                                                                 					 External   
+_variablesGainRS                                                                					 External   
+
+	       SEGMENTS:
+
+Size			  Name										 Class
+0000H	 __INIT                                  			 CODE                                    
+00A7H	 processing_GEN_0000                     			 CODE_OVLY                               

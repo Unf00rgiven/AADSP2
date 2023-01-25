@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AADSP2 22 23</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="aadsp2-20223">AADSP2 2022/3</h1>
+<h2 id="realizacija-algoritma-kombinovanja-kanala-na-cirrus-logic-dsp-platformi">Realizacija algoritma kombinovanja kanala na Cirrus Logic DSP platformi</h2>
+<h4 id="cilj-projekta">Cilj projekta</h4>
+<p>Realizovati kombinovanje kanala na osnovu date šeme i tabele. Za implementaciju koristiti razvojno okruženje dato na vežbama (Windows, CLIDE, Visual Studio).</p>
+<h4 id="postavka-i-opis-zadatka">Postavka i opis zadatka</h4>
+<ol>
+<li>Na osnovu šeme kombinovanja kanala prikazane na slici i tabele kontrola za dato kombinovanje kanala realizovati referentni C kod u aritmetici pokretnog zareza.</li>
+<li>Obrada se vrši po blokovima. Jedan blok predstavlja 16 odbiraka signala. Na ulaz dolazi 2 kanala, a izlaz predstavlja do 8 kanala.</li>
+<li>Omogućiti prosleđivanje naziva ulaznih i izlaznih datoteka kao i vrednosti kontrola preko parametara komandne linije.</li>
+<li>Na osnovu referentnog C koda realizovati C kod prilagođen aritmetici Crystal DSP procesora, poštujući metodologiju izrade modula (od modela 1 do modela 3).</li>
+<li>Testirati izlaze modela 0, 1, 2 i 3 koristeći date test vektore (za svaki od efekata dati su testni vektori u tabeli ispod - koristiti 2 zadata vektora i bar 1 proizvoljni vektor). Koristiti PCMCompare.exe alat za poređenje datoteka. Voditi računa da se pokriju sve karakteristične vrednosti korisničkih kontrola. Automatizovati proces testiranja upotrebom python test okruženja datog na vežbama. Smatra se da je test vektor prošao proveru ukoliko su izlazi iz referentnog koda bit-identični sa izlazima implementacije koda prilagođenog za prevođenje.</li>
+<li>Izvršiti asemblerske optimizacije u Modelu 3 i profilisanje funkcije obrade (procenu utroška MIPS-a) pre i posle optimizacija. Utvrditi da je postignuta odgovarajuća optimizacija.</li>
+<li>Integrisati rešenje u finalni model tj. u radno okruženje Cirrus Logic OS-a. Za integraciju preuzeti example_module, example_overlay i example_application projekte iz D1, VE-1.</li>
+<li>Na kraju utvrditi da su izlazi iz finalnog modela bit-identični sa izlazima iz Modela 3.</li>
+<li>Napisati prateću dokumentaciju u koju će biti po svakom modelu dokumentovano ukratko kakve su izmene napravljene i detaljno izložene metode na koji je svaki model testiran. Prikazati obavezno rezultate izlaza iz svakog modela, poređenja i utrošak MIPS-a i memorije.</li>
+</ol>
+<p>Test vektori po zadatom efektu:</p>
+
+<table>
+<thead>
+<tr>
+<th>Effect</th>
+<th>Stream 1</th>
+<th>Stream 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Filter</td>
+<td>WhiteNoise</td>
+<td>Freq_sweep</td>
+</tr>
+<tr>
+<td>Tremolo</td>
+<td>WhiteNoise</td>
+<td>Amp_sweep</td>
+</tr>
+<tr>
+<td>Mixer/Gains</td>
+<td>2ch_lvl_amt_48k</td>
+<td>Tone_L1k_R3k</td>
+</tr>
+<tr>
+<td>Compressor/Expander</td>
+<td>WhiteNoise</td>
+<td>speech_2ch,</td>
+</tr>
+<tr>
+<td>Distortion</td>
+<td>Tone_L1k_R3k</td>
+<td>funky_sample</td>
+</tr>
+<tr>
+<td>Delay</td>
+<td>speech_2ch</td>
+<td>titanic_horn</td>
+</tr>
+<tr>
+<td>Inverter</td>
+<td>Tone_L1k_R3k</td>
+<td>speech_2ch/funky_sample</td>
+</tr>
+</tbody>
+</table><p><strong>Napomena:</strong> Za realizaciju efekata koristiti date referentne kodove iz “refCode” foldera projektnog zip fajla.</p>
+<h4 id="rezultati-rada">Rezultati rada</h4>
+<p>Nakon implementacije i testiranja realizovane programske podrške potrebno je isporučiti kod programa u elektronskoj formi na Canvas platformi u okviru Assignmenta 18.3. Rok za predaju projekta je 18. dan predmeta tj. <strong>30.11.2022. godine, 23:59:59</strong>.</p>
+<p>Predati projekat je kompletan ukoliko sadrži:</p>
+<ol>
+<li>Visual Studio projekte za Model 0, 1 i 2 (predati isključivo izvorne fajlove i .sln, .suo, .vcxproj, koji zauzimaju zajedno do nekoliko desetina ili stotina KB-a, a  <strong>NE kačiti rezultate prevođenja Debug, Release foldere, Testne vektore i sl.</strong>,) - imenovati modele prema sličnoj konvenciji korištenoj na vežbama (“imeAlgoritmaIliEfekta_modelBrojN”).</li>
+<li>Standalone ULD projekat sa kodom Modela 3</li>
+<li>DSP application, Overlay i Code Module projekte koji sadrže integraciju Modela 3 u programsko okruženje</li>
+<li>Skriptu za automatizaciju testiranja i poslednji ažurni log (izlaz iz skripte sa testiranim modelima).</li>
+<li>Dokumentaciju o radu koja sadrži 1-5 stranica Word dokumenta.</li>
+</ol>
+</div>
+</body>
+
+</html>

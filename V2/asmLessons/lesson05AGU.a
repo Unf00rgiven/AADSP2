@@ -1,0 +1,163 @@
+################################################################################
+##*/**
+##** @file lesson03AGU.a
+##**
+##** Module: lessons
+##** Description: Adress Generation Unit
+##** $Source: $
+##** $Revision: $
+##** $Date: $
+##** $Author: $
+##**
+##**/
+################################################################################
+_lesson03AGU_a_
+
+	.public X_S_AddressGenerationUnit
+
+lesson03AGU_y_data  .ydata_ovly at (0x800)
+
+X_BY_Modulo32Buffer     .bss (0x20)  #<--| modulo 32 buffer
+X_BY_BitReversedBuffer  .bss (0x20)
+
+
+
+lesson03AGU_code    .code_ovly
+
+################################################################################
+
+################################################################################
+##*/**
+##** @Author  Milan Acanski
+##** @Date 24. November 2008.
+##**
+##** Function:
+##** X_S_AddressGenerationUnit
+##**
+##** @param - none
+##**
+##** @return - nothing
+##**
+##** Trashes: a0, b0, x0, y0, i0, i1, nm0
+##** Comment: Show addressing examples
+##**
+##** E-mail: milan.acanski@rt-sp.com
+##**/
+##*void X_S_AddressGenerationUnit()
+##*{
+##*
+##*}
+################################################################################
+X_S_AddressGenerationUnit:
+    #---------------------------------------------------------------------------
+    # Modulo addressing
+
+    # Fill X_BY_Modulo32Buffer with
+    i0 = (X_BY_Modulo32Buffer)          #<--| i0 points to the beginning of buffer
+    a0 = 0
+    uhalfword(b0) = (1)
+    do(0x20),>Loop
+%Loop: ymem[i0] = a0; i0+=1; a0 = a0 + b0
+
+    # Example 1. Modulo with increment step 1
+    i0 = (X_BY_Modulo32Buffer)          #<--| i0 points to the beginning of buffer
+    nm0 = (0x4000)                      #<--| Set modulo to 32
+    do(0x30),>Loop
+%Loop:  a0 = ymem[i0]; i0+=1            #<--| 33 th iteration will read value from
+                                        #^__| beginning of buffer - it will wrap arround
+
+
+    # Example 1. Modulo with increment step 3
+    i0 = (X_BY_Modulo32Buffer)          #<--| i0 points to the beginning of buffer
+    nm0 = (0x4003)                      #<--| Set modulo to 32 with increment step 3
+    do(0x30),>Loop
+%Loop:  a0 = ymem[i0]; i0+=n            #<--| After each iteration index register i0
+                                        #^  | will be incremented for step size 3.
+                                        #|  | After 10 iteration i0 will be set to
+                                        #|  | 0x81e and in next iteration i0 will be
+                                        #|  | incremented by 3, wrapped arround and set
+                                        #|__| to 0x801.
+    #---------------------------------------------------------------------------
+
+
+    #---------------------------------------------------------------------------
+    # Reverse binary addressing
+    i0 = (X_BY_Modulo32Buffer)          #<--| Size is 32
+    nm0 = (0xf010)                      #<--| Set N part to 0xf and m part to 16
+    i1 = (X_BY_BitReversedBuffer)
+    do(0x20),>Loop
+        a0 = ymem[i0]; i0+=n            #<--| We are reading from X_BY_Modulo32Buffer in BitReverse
+%Loop:  ymem[i1] = a0; i1+=1            #<--| mode and writing it in X_BY_BitReversedBuffer.
+    #---------------------------------------------------------------------------
+
+
+    #---------------------------------------------------------------------------
+    # Immediate addressing
+
+    # Long word instruction
+    a0 = ymem[0x811]                    #<--| a0 is 0x00.00000011.00000000
+    a0 = ymem[X_BY_BitReversedBuffer]   #<--| a0 is 0x00.00000000.00000000 (example with symbol as address)
+
+    # Short word instruction
+    b0 = xmem[3]; a0 = a0 << 1          #<--| b0 = 0x2000; a0 will be shifted let by one bit
+    #---------------------------------------------------------------------------
+
+
+    #---------------------------------------------------------------------------
+    # Immediate addressing
+    i0 = (X_BY_BitReversedBuffer)       #<--| i0 points to the first element of
+                                        #^__| X_BY_BitReversedBuffer
+    nop
+    a0 = ymem[i0]; i0+=1                #<--| Read first element and increment pointer
+                                        #<--| to points to the second element
+    #---------------------------------------------------------------------------
+
+
+    #---------------------------------------------------------------------------
+    # Index Register Updates
+
+    # Example 1.
+    i0 = (X_BY_BitReversedBuffer)       #<--| i0 points to the first element of
+                                        #^__| X_BY_BitReversedBuffer
+    nm0 = (3)
+    nop
+    a0 = ymem[i0]; i0+=1                #<--| Read first element and increment pointer
+                                        #^__| to points to the second element
+
+    x0 = ymem[i0]; i0+=2                #<--| Read second element and increment pointer
+                                        #<--| to points to the fourth element
+
+    y0 = ymem[i0]; i0-=n                #<--| Read fourth element and decrement pointer
+                                        #<--| to points to the beginning of buffer
+
+    a0 = x0 * y0;  i0+=n                #<--| Perform multiplication and update i0
+
+    # Example 2.
+    i1 = i0 + (0x200)                   #<--| i1 will be i0 incremented by 0x200
+    #---------------------------------------------------------------------------
+
+
+    #---------------------------------------------------------------------------
+    # Index Register Loading
+
+    # Example 1. With nop
+    i0 = (X_BY_BitReversedBuffer)       #<--| i0 points to the first element of
+                                        #^__| X_BY_BitReversedBuffer
+
+    nop                                 #<--| this is necessary
+
+    a0 = ymem[i0]; i0+=1                #<--| Read first element and increment pointer
+                                        #^__| to points to the second element
+
+    # Example 1. Without nop
+    i0 = (0) +  (X_BY_BitReversedBuffer)#<--| i0 points to the first element of
+                                        #^__| X_BY_BitReversedBuffer
+
+
+    a0 = ymem[i0]; i0+=1                #<--| Read first element and increment pointer
+                                        #^__| to points to the second element
+    #---------------------------------------------------------------------------
+
+AddressGenerationUnit_End:
+    ret
+################################################################################

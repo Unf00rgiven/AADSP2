@@ -1,0 +1,17 @@
+MultiTone:	rate48k size 24
+ Recorded file is 2535904 samples shorter than the reference file!
+    Test error! Recorded file is 2535904 samples shorter than the reference file!
+      No differences encountered!
+      No differences encountered!
+
+FreqSweep:	rate 48k size 24
+ Recorded file is 2744640 samples shorter than the reference file!
+    Test error! Recorded file is 2744640 samples shorter than the reference file!
+      No differences encountered!
+      No differences encountered!
+
+TitanicHorn:	rate 48k size 16
+ Recorded file is 1636192 samples shorter than the reference file!
+    Test error! Recorded file is 1636192 samples shorter than the reference file!
+      No differences encountered!
+      No differences encountered!

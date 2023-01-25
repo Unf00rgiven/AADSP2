@@ -1,0 +1,17 @@
+"D:\RA155_2019\Tools\PCMCompare.exe" -b16 "D:\RA155_2019\test_outputs\Freq_sweep_0_0_-24_0_0_-24_1\out_Freq_sweep_0_0_-24_0_0_-24_1_model0.wav" "D:\RA155_2019\test_outputs\Freq_sweep_0_0_-24_0_0_-24_1\out_Freq_sweep_0_0_-24_0_0_-24_1_model1.wav"
+      No differences encountered!
+
+      No differences encountered!
+
+"D:\RA155_2019\Tools\PCMCompare.exe" -b16 "D:\RA155_2019\test_outputs\Freq_sweep_0_0_-24_0_0_-24_1\out_Freq_sweep_0_0_-24_0_0_-24_1_model1.wav" "D:\RA155_2019\test_outputs\Freq_sweep_0_0_-24_0_0_-24_1\out_Freq_sweep_0_0_-24_0_0_-24_1_model2.wav"
+    Max difference is 1 (1 bits, -144.49dB)
+    7200000 samples compared 
+   -----------------------------------------------------------
+    Dif(bits) |    Samples    |   PERCENT  |   First dif
+   -----------------------------------------------------------
+         1    |     728812    |   10.12%   |  0x00000890   
+   -----------------------------------------------------------
+      Error   |     728812    |   10.12%              
+
+    Max difference is 1 (1 bits, -144.49dB)
+

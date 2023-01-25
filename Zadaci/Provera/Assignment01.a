@@ -1,0 +1,71 @@
+################################################################################
+##*/**
+##** @file AADSP2-Assignment01.a
+##**
+##** Module: AADSP2-Assignment01
+##** Description:
+##** $Source: $
+##** $Revision: $
+##** $Date: $
+##** $Author: $
+##**
+##**/
+################################################################################
+_AADSP2_Assignment01_a_
+
+################################################################################
+	.public X_S_Task01
+################################################################################
+
+AADSP2_Assignment01_xdata .xdata_ovly .align(16)
+
+X_BX_InputBuffer		.dw	0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.10, 0.11, 0.12, 0.13, 0.14, 0.15, 0.16
+
+
+AADSP2_Assignment01_ydata .ydata_ovly
+
+X_VY_sum				.dw (0)
+
+AADSP2_Assignment01_code	.code_ovly
+
+
+################################################################################
+##*/**
+##** Function: X_S_Task01
+##**
+##** @param
+##**
+##** @return
+##**
+##** Trashes:	a0, a1, a2, a3, b0, b1, b2, b3, x0, x1, x2, x3, y0, y1, y2, y3, i0, i1, i2, i3, i4, i5, i6, i7, nm0, nm1, nm2, nm3, nm4, nm5, nm6, nm7
+##** Comment:
+##**/
+################################################################################
+X_S_Task01
+	#TODO:
+	b0 = (0)					# suma
+	i0 = (X_BX_InputBuffer) 	
+	do(8), >loop				 
+		a0 = xmem[i0]			# parni element
+		a0 = a0 >> 1			# deljenje sa 2 		
+		a0 = a0 >> 1			# pa sa jos 2, sto je 4
+		i0+=1
+		b0 = b0 + a0
+		a0 = xmem[i0]			#neparni element
+		a0 = a0 >> 1			# deljenje sa 2 (NISAM PODELIO SAM -2 jer nisam znao)
+		i0+=1
+%loop:	b0 = b0 - a0			# ispravljeno deljenje sa 2, delimo sa 2 i samo oduzmemo umesto da delimo sa -2
+		
+	i0 = (X_VY_sum)				# upis sume
+	nop
+	ymem[i0] = b0
+	
+
+	#----------------------------------
+
+#%X_S_Task01_End:
+#-------------------------------------------------------------------------------
+  ret
+
+
+  

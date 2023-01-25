@@ -1,0 +1,93 @@
+x_data .xdata_ovly align 128
+
+X_BX_Buffer1 .bsc(128), (0)	# buf u x memoriji
+
+y_data .ydata_ovly align 128 # poravnat na adresu koja je deljiva sa 128
+
+X_BY_Buffer2 .bsc(128), (0)	# buff u y memoriji
+
+main .code_ovly at 0x0000
+	
+	# for(int i = 0; i < 128; i++)
+	#{
+	#	X_BX_Buffer1[i]= i;
+	#}
+	
+	halfword(a0l) = (0)
+	halfword(a1l) = (1) 
+	i0 = (X_BX_Buffer1)
+	
+	do(128), >loop
+		xmem[i0] = a0l; i0 += 1	# upisujemo na adresu i0 brojac a01
+%loop:	a0 = a0 + a1			# povecavamo vrednost i
+
+	i0 = (X_BX_Buffer1)			# resetovanje vrednosti
+	i1 = (X_BY_Buffer2)
+	halfword(a0l) = (0)			# i = 0
+	halfword(a1l) = (0) 		# ++1
+	nm0 = (0x6003)				# nm1 -> i1 0x6 = 128, 0x003 povecava za 3
+	
+	do(128), >loop
+		x0 = xmem[i0]; i0 += n	# uzima svaki 3*i element po modulu 128
+%loop:	ymem[i1] = x0; i1 += 1	# y[i] = x[3*i%128] 	
+	
+	call X_S_mean				# poziv funkcije
+	
+	# VE - 30
+	i0 = (X_BY_Buffer2)
+	i1 = (128)
+	call X_S_median
+	
+	a0 = b0
+	ret
+
+func .code_ovly
+
+X_S_mean:
+	i0 = (X_BX_Buffer1)			# resetovanje vrednosti
+	i1 = (X_BY_Buffer2)
+	mr = (0x1)					# SRS deli sa 2 rezultat iz akumulatora
+	
+	do(128), >loop
+		a0 = xmem[i0]			# a[i]
+		b0 = ymem[i1]; i1 += 1	# b[i]
+		a0 = a0 + b0			# a[i] = a[i] + b[i]
+%loop:	xmem[i0] = a0; i0 += 1			
+
+	ret
+	
+X_S_median:
+    # i0 = i adresa niza i
+    # i1 = 128 velicina niza
+    # i2 = k
+    # i3 = j
+    # pseudo u skripti
+	    do(128), >end
+%inside_loop:				
+	    	i2 = i0 					# k <- i
+	    	i3 = i0 + (1)				# j = i + 1
+	    	i0 += 1						# i++
+	    	b1 = i1						# 128
+%return_to_loop:					
+			b3 = i3						# j
+			b1 - b3						# 128 - j
+			if(b <= 0) jmp >break_loop
+				b0 = ymem[i3]			# a[j]
+				b2 = ymem[i2]			# a[k]
+				b0 - b2					# a[j] - a[k]
+				if(b >= 0) jmp >next
+					i2 = i3				# k = j
+					jmp >next				
+%next:
+				i3+=1	 				# j++
+				nop
+				jmp <return_to_loop
+%break_loop:
+		x0 = ymem[i0]					# a[i]
+		x1 = ymem[i2]					# a[k]
+		ymem[i0] = x1					# swap
+		ymem[i2] = x0
+%end:	jmp <inside_loop
+
+    
+	ret

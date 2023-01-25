@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings built="true" last_build_time="1665668854322">
+	<dependencies>
+		<source_file last_build_time="1665668853345" path="src/example_module_os_interface.a">
+			<dependency>../../../../../../CirrusDSP_7_1_7/crystal32/common/inc/macros.h</dependency>
+			<dependency>../gen/inc/example_module_module.h</dependency>
+		</source_file>
+		<source_file last_build_time="1665668853867" path="src/example_module_main.a">
+			<dependency>../../../../../../CirrusDSP_7_1_7/include/dsplib/os_asm.h</dependency>
+			<dependency>../gen/inc/example_module_mcv.h</dependency>
+			<dependency>../../../../../../CirrusDSP_7_1_7/include/dsplib/meter_asm.h</dependency>
+			<dependency>../../../../../../CirrusDSP_7_1_7/include/dsplib/response_asm.h</dependency>
+		</source_file>
+	</dependencies>
+</settings>

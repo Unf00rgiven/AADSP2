@@ -1,0 +1,279 @@
+_PROCESSING_ASM
+
+	.if defined(_PROCESSING_ASM)
+	
+# constants
+_INPUT_NUM_CHANNELS .equ 2
+_OUTPUT_NUM_CHANNELS_2 .equ 2
+_DEFAULT_OUTPUT_NUM_CHANNELS .equ 5
+_BLOCK_SIZE .equ 16
+_FILTER_LEN .equ 31
+
+# channels
+_LEFT_CH .equ 0
+_RIGHT_CH .equ 1
+_LS_CH .equ 2
+_RS_CH .equ 3
+_C_CH .equ 4
+
+	.public _Processing
+	.public _fir_circular
+	.extern _variablesGainL
+	.extern _variablesGainR
+	.extern _variablesGainLS
+	.extern _variablesGainRS
+	.extern _variablesGainC
+	.extern _historyL
+	.extern _historyR
+	.extern _historyLS
+	.extern _historyRS
+	.extern _historyC
+	.extern _pStateL
+	.extern _pStateR
+	.extern _pStateLS
+	.extern _pStateRS
+	.extern _pStateC
+	.extern _Mode
+	.extern _LPFmode
+	.extern _gained
+	.extern _out
+	.extern _filterCoeff
+
+	
+	.code_ovly
+	
+	#a0 - input
+	#i0 - **p_state
+	#i1 - *state_start
+	#i4 - *state_end
+_fir_circular:
+													#*state = *p_state;
+	i5 = xmem[i0]									#*state
+													#ptrCoeffs = (coeffs + FILTER_LEN - 1);
+	i2 = (_filterCoeff)
+	uhalfword(a1) = (_FILTER_LEN)
+	AnyReg(b0, i2)									#b0 = _coeffs
+	uhalfword(b1) = (0x0001)
+	b0 = b0 + a1									#_coeffs + _FILTER_LEN
+	nop
+													#ptrCoeffs = (_coeffs + _FILTER_LEN) - 1
+	b0 = b0 - b1										
+	nop
+	AnyReg(i3, b0)									#i3 = *ptrCoeffs
+													#*state = input;
+	xmem[i5] = a0; i5 += 1
+													#if (++state >= state_end)	
+	AnyReg(b0, i5)									#b0 -> ++state 
+	AnyReg(a0, i4)									#a0 -> *state_end
+	b0 - a0
+
+	if(b < 0) jmp>over1								#state = state_start;
+		i5 = i1
+%over1:
+	b0 = 0
+	do(_FILTER_LEN), >loop
+		x0 = xmem[i3]								#ptrCoeffs				
+		y0 = xmem[i5]; i5 += 1						#state 
+		b1 = x0 * y0								#*ptrCoeffs * *state;
+		nop											#ret_val = ret_val + (*ptrCoeffs * *state)
+		b0 = b0 + b1								#ret_val														
+													#if (++state >= state_end)
+		AnyReg(b1, i5)								#b1 -> ++state 	
+		AnyReg(a1, i4)								#a0 -> *state_end
+		b1 - a1
+		if(b < 0) jmp>over2
+													#state = state_start;
+			i5 = i1
+%over2:		
+%loop: i3 -= 1	
+	xmem[i0] = i5									#*p_state = state;
+	a0 = b0											#a0 = ret_val
+
+	ret		
+	
+	
+	# i0 = inBuffer
+	# i1 = outBuffer
+
+_Processing:
+	do(_BLOCK_SIZE), >loop
+		# Left chanel ------------------------------------------------------- 				
+		x0 = ymem[i0]							# inputL
+		y0 = xmem[_variablesGainL + 0]			# Variable gain for L channel
+		a0 = x0 * y0							# inputL * gainL[0]
+		
+		i4 = i0 + (_RIGHT_CH * _BLOCK_SIZE)		# in RIGHT_CH
+		x0 = ymem[i4]							# input R
+		y0 = xmem[_variablesGainL + 1]			# Variable gain for L channel
+		b0 = x0 * y0							# inputL * gainL[1]
+		b0 = b0 << 4							# back to scope
+		
+		i5 = (_out + _LEFT_CH)
+		a0 = a0 + b0 
+		xmem[i5] = a0 	 						# outL = gainedL + gainedR 
+		# -------------------------------------------------------------------
+		
+		# Right chanel ------------------------------------------------------- 				
+		x0 = ymem[i0]							# inputL
+		y0 = xmem[_variablesGainR + 0]			# Variable gain for R channel
+		a0 = x0 * y0							# inputL * gainR[0]
+		
+		i4 = i0 + (_RIGHT_CH * _BLOCK_SIZE)		# in RIGHT_CH
+		x0 = ymem[i4]							# input R
+		y0 = xmem[_variablesGainR + 1]			# Variable gain for L channel
+		b0 = x0 * y0							# inputL * gainR[1]
+		b0 = b0 << 4							# back to scope
+		
+		i5 = (_out + _RIGHT_CH)
+		a0 = a0 + b0 
+		xmem[i5] = a0							# outR = gainedL + gainedR 
+		# -------------------------------------------------------------------
+		
+		# LS chanel ------------------------------------------------------- 				
+		x0 = ymem[i0]							# inputL
+		y0 = xmem[_variablesGainLS + 0]			# Variable gain for LS channel
+		a0 = x0 * y0							# inputL * gainLS[0]
+		
+		i4 = i0 + (_RIGHT_CH * _BLOCK_SIZE)		# in RIGHT_CH
+		x0 = ymem[i4]							# input R
+		y0 = xmem[_variablesGainLS + 1]			# Variable gain for LS channel
+		b0 = x0 * y0							# inputR * gainLS[1]
+		b0 = b0 << 4							# back to scope
+		
+		i5 = (_out + _LS_CH)
+		a0 = a0 + b0 
+		xmem[i5] = a0  							# outLS = gainedL + gainedR 
+		# -------------------------------------------------------------------
+		
+		# RS chanel ------------------------------------------------------- 				
+		x0 = ymem[i0]							# inputL
+		y0 = xmem[_variablesGainRS + 0]			# Variable gain for RS channel
+		a0 = x0 * y0							# inputL * gainRS[0]
+		
+		i4 = i0 + (_RIGHT_CH * _BLOCK_SIZE)		# in RIGHT_CH
+		x0 = ymem[i4]							# input R
+		y0 = xmem[_variablesGainRS + 1]			# Variable gain for LS channel
+		b0 = x0 * y0							# inputR * gainRS[1]
+		b0 = b0 << 4							# back to scope
+		
+		i5 = (_out + _RS_CH)
+		a0 = a0 + b0 
+		xmem[i5] = a0  							# outLS = gainedL + gainedR 
+		# -------------------------------------------------------------------
+		
+		# C chanel ------------------------------------------------------- 				
+		x0 = ymem[i0]							# inputL
+		y0 = xmem[_variablesGainC + 0]			# Variable gain for C channel
+		a0 = x0 * y0							# inputL * gainC[0]
+		
+		i4 = i0 + (_RIGHT_CH * _BLOCK_SIZE)		# in RIGHT_CH
+		x0 = ymem[i4]							# input R
+		y0 = xmem[_variablesGainC + 1]			# Variable gain for C channel
+		b0 = x0 * y0							# inputR * gainC[1]
+		b0 = b0 << 4							# back to scope
+		
+		i5 = (_out + _C_CH)
+		a0 = a0 + b0 
+		xmem[i5] = a0 							# outC = gainedL + gainedR 
+		# -------------------------------------------------------------------
+		
+		# Output with filtering ---------------------------------------------
+		
+		# Left channel
+		x0 = xmem[_out + 0]
+		i4 = i1 + (_LEFT_CH * _BLOCK_SIZE)
+		a0 = x0
+		ymem[i7] = i0; i7+=1				// Pushing to stack
+		i0 = (_pStateL)
+		ymem[i7] = i1; i7+=1
+		i1 = (_historyL)
+		ymem[i7] = i4; i7+=1
+		i4 = (_historyL + _FILTER_LEN)
+		call _fir_circular					// Filtering
+		i7-=1
+		i4 = ymem[i7];i7-=1 				// Pop from stack
+		i1 = ymem[i7];i7-=1 
+		i0 = ymem[i7]
+		ymem[i4] = a0						
+		
+		
+		# Right channel
+		x0 = xmem[_out + 1]
+		i4 = i1 + (_RIGHT_CH * _BLOCK_SIZE)
+		a0 = x0
+		ymem[i7] = i0; i7+=1				// Pushing to stack
+		i0 = (_pStateL)
+		ymem[i7] = i1; i7+=1
+		i1 = (_historyL)
+		ymem[i7] = i4; i7+=1
+		i4 = (_historyL + _FILTER_LEN)
+		call _fir_circular					// Filtering
+		i7-=1
+		i4 = ymem[i7];i7-=1 				// Pop from stack
+		i1 = ymem[i7];i7-=1 
+		i0 = ymem[i7]
+		ymem[i4] = a0						
+		
+		
+		# LS channel
+		x0 = xmem[_out + 2]
+		i4 = i1 + (_LS_CH * _BLOCK_SIZE)
+		a0 = x0
+		ymem[i7] = i0; i7+=1				// Pushing to stack
+		i0 = (_pStateL)
+		ymem[i7] = i1; i7+=1
+		i1 = (_historyL)
+		ymem[i7] = i4; i7+=1
+		i4 = (_historyL + _FILTER_LEN)
+		call _fir_circular					// Filtering
+		i7-=1
+		i4 = ymem[i7];i7-=1 				// Pop from stack
+		i1 = ymem[i7];i7-=1 
+		i0 = ymem[i7]
+		ymem[i4] = a0						
+		
+		
+		# RS channel
+		x0 = xmem[_out + 3]
+		i4 = i1 + (_RS_CH * _BLOCK_SIZE)
+		a0 = x0
+		ymem[i7] = i0; i7+=1				// Pushing to stack
+		i0 = (_pStateL)
+		ymem[i7] = i1; i7+=1
+		i1 = (_historyL)
+		ymem[i7] = i4; i7+=1
+		i4 = (_historyL + _FILTER_LEN)
+		call _fir_circular					// Filtering
+		i7-=1
+		i4 = ymem[i7];i7-=1 				// Pop from stack
+		i1 = ymem[i7];i7-=1 
+		i0 = ymem[i7]
+		ymem[i4] = a0						
+		
+		
+		# C channel
+		x0 = xmem[_out + 4]
+		i4 = i1 + (_C_CH * _BLOCK_SIZE)
+		a0 = x0
+		ymem[i7] = i0; i7+=1				// Pushing to stack
+		i0 = (_pStateL)
+		ymem[i7] = i1; i7+=1
+		i1 = (_historyL)
+		ymem[i7] = i4; i7+=1
+		i4 = (_historyL + _FILTER_LEN)
+		call _fir_circular					// Filtering
+		i7-=1
+		i4 = ymem[i7];i7-=1 				// Pop from stack
+		i1 = ymem[i7];i7-=1 
+		i0 = ymem[i7]
+		ymem[i4] = a0						
+			
+				
+		i0+=1
+		i1+=1
+%loop:  nop
+	ret
+		
+	.endif	
+
+	

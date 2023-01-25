@@ -1,0 +1,422 @@
+-----------------Global segment information:
+
+
+Address class CODE	Address:[0000...FFFF], length 10000
+	Address:[0000...0FFF], length 1000, <FREE>
+	Address:[1000...1007], length 0008, <RESERVED for example_module_main_GEN_0000, class CODE_OVLY>
+	Address:[1008...FFFF], length EFF8, <FREE>
+
+Address class CODE_1	Address:[1000...FFFF], length F000, subclass of CODE
+	Address:[1000...1007], length 0008, <RESERVED for example_module_main_GEN_0000, class CODE_OVLY>
+	Address:[1008...FFFF], length EFF8, <FREE>
+
+Address class L	Address:[0000...FFFF], length 10000
+	Address:[0000...0FFF], length 1000, <FREE>
+	Address:[1000...1001], length 0002, <RESERVED for EXAMPLE_OVLY_MODULE_TABLE, class L_OVLY>
+	Address:[1002...FFFF], length EFFE, <FREE>
+
+Address class L_1	Address:[1000...AFFF], length A000, subclass of L_REGULAR
+	Address:[1000...1001], length 0002, <RESERVED for EXAMPLE_OVLY_MODULE_TABLE, class L_OVLY>
+	Address:[1002...AFFF], length 9FFE, <FREE>
+
+Address class L_REGULAR	Address:[1000...FFFF], length F000, subclass of L
+	Address:[1000...1001], length 0002, <RESERVED for EXAMPLE_OVLY_MODULE_TABLE, class L_OVLY>
+	Address:[1002...FFFF], length EFFE, <FREE>
+
+Address class X	Address:[0000...FFFF], length 10000
+	Address:[0000...0FFF], length 1000, <FREE>
+	Address:[1000...1001], length 0002, <RESERVED for EXAMPLE_OVLY_MODULE_TABLE, class L_OVLY>
+	Address:[1002...1002], length 0001, <RESERVED for example_module_X_Segment, class X_OVLY>
+	Address:[1003...FFFF], length EFFD, <FREE>
+
+Address class X_1	Address:[1000...AFFF], length A000, subclass of X_REGULAR
+	Address:[1000...1001], length 0002, <RESERVED for EXAMPLE_OVLY_MODULE_TABLE, class L_OVLY>
+	Address:[1002...1002], length 0001, <RESERVED for example_module_X_Segment, class X_OVLY>
+	Address:[1003...AFFF], length 9FFD, <FREE>
+
+Address class X_REGULAR	Address:[1000...FFFF], length F000, subclass of X
+	Address:[1000...1001], length 0002, <RESERVED for EXAMPLE_OVLY_MODULE_TABLE, class L_OVLY>
+	Address:[1002...1002], length 0001, <RESERVED for example_module_X_Segment, class X_OVLY>
+	Address:[1003...FFFF], length EFFD, <FREE>
+
+Address class Y	Address:[0000...FFFF], length 10000
+	Address:[0000...003F], length 0040, <FREE>
+	Address:[0040...0043], length 0004, <RESERVED for OVLY_ID_SEGMENT, class Y_OVLY_ID>
+	Address:[0044...0058], length 0015, <FREE>
+	Address:[0059...0059], length 0001, <RESERVED for EXAMPLE_OVLY_ODT_PTR, class ODT_PTR_OVLY>
+	Address:[005A...0FFF], length 0FA6, <FREE>
+	Address:[1000...1001], length 0002, <RESERVED for EXAMPLE_OVLY_MODULE_TABLE, class L_OVLY>
+	Address:[1002...100A], length 0009, <RESERVED for example_module_MCT, class Y_OVLY>
+	Address:[100B...1012], length 0008, <RESERVED for example_module_mif, class Y_OVLY>
+	Address:[1013...1013], length 0001, <RESERVED for example_module_Y_Segment, class Y_OVLY>
+	Address:[1014...FFFF], length EFEC, <FREE>
+
+Address class Y_1	Address:[1000...AFFF], length A000, subclass of Y_REGULAR
+	Address:[1000...1001], length 0002, <RESERVED for EXAMPLE_OVLY_MODULE_TABLE, class L_OVLY>
+	Address:[1002...100A], length 0009, <RESERVED for example_module_MCT, class Y_OVLY>
+	Address:[100B...1012], length 0008, <RESERVED for example_module_mif, class Y_OVLY>
+	Address:[1013...1013], length 0001, <RESERVED for example_module_Y_Segment, class Y_OVLY>
+	Address:[1014...AFFF], length 9FEC, <FREE>
+
+Address class Y_APPLICATION_ODT	Address:[0059...0059], length 0001, subclass of Y_ODT_PTR
+	Address:[0059...0059], length 0001, <RESERVED for EXAMPLE_OVLY_ODT_PTR, class ODT_PTR_OVLY>
+
+Address class Y_ODT_PTR	Address:[0059...005D], length 0005, subclass of Y
+	Address:[0059...0059], length 0001, <RESERVED for EXAMPLE_OVLY_ODT_PTR, class ODT_PTR_OVLY>
+	Address:[005A...005D], length 0004, <FREE>
+
+Address class Y_OVLY_ID	Address:[0040...0053], length 0014, subclass of Y
+	Address:[0040...0043], length 0004, <RESERVED for OVLY_ID_SEGMENT, class Y_OVLY_ID>
+	Address:[0044...0053], length 0010, <FREE>
+
+Address class Y_REGULAR	Address:[1000...FFFF], length F000, subclass of Y
+	Address:[1000...1001], length 0002, <RESERVED for EXAMPLE_OVLY_MODULE_TABLE, class L_OVLY>
+	Address:[1002...100A], length 0009, <RESERVED for example_module_MCT, class Y_OVLY>
+	Address:[100B...1012], length 0008, <RESERVED for example_module_mif, class Y_OVLY>
+	Address:[1013...1013], length 0001, <RESERVED for example_module_Y_Segment, class Y_OVLY>
+	Address:[1014...FFFF], length EFEC, <FREE>
+
+-----------------Module:  example_ovly_odt(Segment name)
+               EXAMPLE_OVLY_ODT_PTR, address 0059 ,length 0001, class ODT_PTR_OVLY
+          EXAMPLE_OVLY_MODULE_TABLE, address 1000 ,length 0002, class     L_OVLY
+                    OVLY_ID_SEGMENT, address 0040 ,length 0004, class  Y_OVLY_ID
+
+-----------------Module:  example_module_os_interface(Segment name)
+                 example_module_mif, address 100B ,length 0008, class     Y_OVLY
+                 example_module_MCT, address 1002 ,length 0009, class     Y_OVLY
+
+-----------------Module:  example_module_main(Segment name)
+           example_module_Y_Segment, address 1013 ,length 0001, class     Y_OVLY
+           example_module_X_Segment, address 1002 ,length 0001, class     X_OVLY
+       example_module_main_GEN_0000, address 1000 ,length 0008, class  CODE_OVLY
+
+---------------SYMBOL(global symbols)							FILE						SEGMENT							CLASS		ADDRESS
+
+          EXAMPLE_OVLY_MODULE_TABLE	C:/Users/pekez/Downloads/vezba1/example_ovly/output/application/gen/src/example_ovly_odt	     EXAMPLE_OVLY_MODULE_TABLE		           L_OVLY		1000
+               EXAMPLE_OVLY_ODT_PTR	C:/Users/pekez/Downloads/vezba1/example_ovly/output/application/gen/src/example_ovly_odt	          EXAMPLE_OVLY_ODT_PTR		     ODT_PTR_OVLY		0059
+                    OVLY_ID_SEGMENT	C:/Users/pekez/Downloads/vezba1/example_ovly/output/application/gen/src/example_ovly_odt	               OVLY_ID_SEGMENT		        Y_OVLY_ID		0040
+            X_BY_example_module_MIF	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_os_interface	            example_module_mif		           Y_OVLY		100B
+      X_S_example_module_Background	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1003
+           X_S_example_module_Brick	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1000
+           X_S_example_module_Frame	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1001
+   X_S_example_module_PostKickstart	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1007
+      X_S_example_module_PostMalloc	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1005
+    X_S_example_module_PreKickstart	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1006
+       X_S_example_module_PreMalloc	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1004
+           X_S_example_module_Timer	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1002
+                     __CLASS_E_CODE	                      CLINK RESERVED	                -----------			   -----------			FFFF
+                   __CLASS_E_CODE_0	                      CLINK RESERVED	                -----------			   -----------			0FFF
+                   __CLASS_E_CODE_1	                      CLINK RESERVED	                -----------			   -----------			FFFF
+                __CLASS_E_CODE_OVLY	                      CLINK RESERVED	                -----------			   -----------			FFFF
+               __CLASS_E_IO_BUFFERS	                      CLINK RESERVED	                -----------			   -----------			0FFF
+                        __CLASS_E_L	                      CLINK RESERVED	                -----------			   -----------			FFFF
+                      __CLASS_E_L_0	                      CLINK RESERVED	                -----------			   -----------			0EFF
+                      __CLASS_E_L_1	                      CLINK RESERVED	                -----------			   -----------			AFFF
+                 __CLASS_E_L_1_HEAP	                      CLINK RESERVED	                -----------			   -----------			FFFF
+                   __CLASS_E_L_HEAP	                      CLINK RESERVED	                -----------			   -----------			FFFF
+                   __CLASS_E_L_NEAR	                      CLINK RESERVED	                -----------			   -----------			003F
+                __CLASS_E_L_NEAR_OS	                      CLINK RESERVED	                -----------			   -----------			001F
+                   __CLASS_E_L_OVLY	                      CLINK RESERVED	                -----------			   -----------			AFFF
+                __CLASS_E_L_REGULAR	                      CLINK RESERVED	                -----------			   -----------			FFFF
+             __CLASS_E_ODT_PTR_OVLY	                      CLINK RESERVED	                -----------			   -----------			0059
+                 __CLASS_E_OS_STACK	                      CLINK RESERVED	                -----------			   -----------			0FFF
+                        __CLASS_E_X	                      CLINK RESERVED	                -----------			   -----------			FFFF
+                      __CLASS_E_X_0	                      CLINK RESERVED	                -----------			   -----------			0EFF
+                      __CLASS_E_X_1	                      CLINK RESERVED	                -----------			   -----------			AFFF
+                 __CLASS_E_X_1_HEAP	                      CLINK RESERVED	                -----------			   -----------			FFFF
+                   __CLASS_E_X_HEAP	                      CLINK RESERVED	                -----------			   -----------			FFFF
+                   __CLASS_E_X_NEAR	                      CLINK RESERVED	                -----------			   -----------			003F
+                __CLASS_E_X_NEAR_OS	                      CLINK RESERVED	                -----------			   -----------			001F
+                   __CLASS_E_X_OVLY	                      CLINK RESERVED	                -----------			   -----------			AFFF
+                __CLASS_E_X_REGULAR	                      CLINK RESERVED	                -----------			   -----------			FFFF
+                        __CLASS_E_Y	                      CLINK RESERVED	                -----------			   -----------			FFFF
+                      __CLASS_E_Y_0	                      CLINK RESERVED	                -----------			   -----------			0EFF
+                      __CLASS_E_Y_1	                      CLINK RESERVED	                -----------			   -----------			AFFF
+                 __CLASS_E_Y_1_HEAP	                      CLINK RESERVED	                -----------			   -----------			FFFF
+                  __CLASS_E_Y_2_ODT	                      CLINK RESERVED	                -----------			   -----------			005A
+                  __CLASS_E_Y_3_ODT	                      CLINK RESERVED	                -----------			   -----------			005B
+                  __CLASS_E_Y_4_ODT	                      CLINK RESERVED	                -----------			   -----------			005C
+                  __CLASS_E_Y_5_ODT	                      CLINK RESERVED	                -----------			   -----------			005D
+        __CLASS_E_Y_APPLICATION_ODT	                      CLINK RESERVED	                -----------			   -----------			0059
+                   __CLASS_E_Y_HEAP	                      CLINK RESERVED	                -----------			   -----------			FFFF
+                   __CLASS_E_Y_NEAR	                      CLINK RESERVED	                -----------			   -----------			003F
+                __CLASS_E_Y_NEAR_OS	                      CLINK RESERVED	                -----------			   -----------			001F
+                __CLASS_E_Y_ODT_PTR	                      CLINK RESERVED	                -----------			   -----------			005D
+          __CLASS_E_Y_OS_CC_GLOBALS	                      CLINK RESERVED	                -----------			   -----------			0058
+                   __CLASS_E_Y_OVLY	                      CLINK RESERVED	                -----------			   -----------			AFFF
+                __CLASS_E_Y_OVLY_ID	                      CLINK RESERVED	                -----------			   -----------			0053
+                __CLASS_E_Y_REGULAR	                      CLINK RESERVED	                -----------			   -----------			FFFF
+                     __CLASS_F_CODE	                      CLINK RESERVED	                -----------			   -----------			1000
+                   __CLASS_F_CODE_1	                      CLINK RESERVED	                -----------			   -----------			1000
+                __CLASS_F_CODE_OVLY	                      CLINK RESERVED	                -----------			   -----------			1000
+                        __CLASS_F_L	                      CLINK RESERVED	                -----------			   -----------			1000
+                      __CLASS_F_L_1	                      CLINK RESERVED	                -----------			   -----------			1000
+                   __CLASS_F_L_OVLY	                      CLINK RESERVED	                -----------			   -----------			1000
+                __CLASS_F_L_REGULAR	                      CLINK RESERVED	                -----------			   -----------			1000
+             __CLASS_F_ODT_PTR_OVLY	                      CLINK RESERVED	                -----------			   -----------			0059
+                        __CLASS_F_X	                      CLINK RESERVED	                -----------			   -----------			1000
+                      __CLASS_F_X_1	                      CLINK RESERVED	                -----------			   -----------			1000
+                   __CLASS_F_X_OVLY	                      CLINK RESERVED	                -----------			   -----------			1000
+                __CLASS_F_X_REGULAR	                      CLINK RESERVED	                -----------			   -----------			1000
+                        __CLASS_F_Y	                      CLINK RESERVED	                -----------			   -----------			0040
+                      __CLASS_F_Y_1	                      CLINK RESERVED	                -----------			   -----------			1000
+        __CLASS_F_Y_APPLICATION_ODT	                      CLINK RESERVED	                -----------			   -----------			0059
+                __CLASS_F_Y_ODT_PTR	                      CLINK RESERVED	                -----------			   -----------			0059
+                   __CLASS_F_Y_OVLY	                      CLINK RESERVED	                -----------			   -----------			1000
+                __CLASS_F_Y_OVLY_ID	                      CLINK RESERVED	                -----------			   -----------			0040
+                __CLASS_F_Y_REGULAR	                      CLINK RESERVED	                -----------			   -----------			1000
+                     __CLASS_L_CODE	                      CLINK RESERVED	                -----------			   -----------			1007
+                   __CLASS_L_CODE_1	                      CLINK RESERVED	                -----------			   -----------			1007
+                __CLASS_L_CODE_OVLY	                      CLINK RESERVED	                -----------			   -----------			1007
+                        __CLASS_L_L	                      CLINK RESERVED	                -----------			   -----------			1001
+                      __CLASS_L_L_1	                      CLINK RESERVED	                -----------			   -----------			1001
+                   __CLASS_L_L_OVLY	                      CLINK RESERVED	                -----------			   -----------			1001
+                __CLASS_L_L_REGULAR	                      CLINK RESERVED	                -----------			   -----------			1001
+             __CLASS_L_ODT_PTR_OVLY	                      CLINK RESERVED	                -----------			   -----------			0059
+                        __CLASS_L_X	                      CLINK RESERVED	                -----------			   -----------			1002
+                      __CLASS_L_X_1	                      CLINK RESERVED	                -----------			   -----------			1002
+                   __CLASS_L_X_OVLY	                      CLINK RESERVED	                -----------			   -----------			1002
+                __CLASS_L_X_REGULAR	                      CLINK RESERVED	                -----------			   -----------			1002
+                        __CLASS_L_Y	                      CLINK RESERVED	                -----------			   -----------			1013
+                      __CLASS_L_Y_1	                      CLINK RESERVED	                -----------			   -----------			1013
+        __CLASS_L_Y_APPLICATION_ODT	                      CLINK RESERVED	                -----------			   -----------			0059
+                __CLASS_L_Y_ODT_PTR	                      CLINK RESERVED	                -----------			   -----------			0059
+                   __CLASS_L_Y_OVLY	                      CLINK RESERVED	                -----------			   -----------			1013
+                __CLASS_L_Y_OVLY_ID	                      CLINK RESERVED	                -----------			   -----------			0043
+                __CLASS_L_Y_REGULAR	                      CLINK RESERVED	                -----------			   -----------			1013
+                     __CLASS_S_CODE	                      CLINK RESERVED	                -----------			   -----------			0000
+                   __CLASS_S_CODE_0	                      CLINK RESERVED	                -----------			   -----------			0000
+                   __CLASS_S_CODE_1	                      CLINK RESERVED	                -----------			   -----------			1000
+                __CLASS_S_CODE_OVLY	                      CLINK RESERVED	                -----------			   -----------			1000
+               __CLASS_S_IO_BUFFERS	                      CLINK RESERVED	                -----------			   -----------			0F00
+                        __CLASS_S_L	                      CLINK RESERVED	                -----------			   -----------			0000
+                      __CLASS_S_L_0	                      CLINK RESERVED	                -----------			   -----------			005E
+                      __CLASS_S_L_1	                      CLINK RESERVED	                -----------			   -----------			1000
+                 __CLASS_S_L_1_HEAP	                      CLINK RESERVED	                -----------			   -----------			1000
+                   __CLASS_S_L_HEAP	                      CLINK RESERVED	                -----------			   -----------			B000
+                   __CLASS_S_L_NEAR	                      CLINK RESERVED	                -----------			   -----------			0020
+                __CLASS_S_L_NEAR_OS	                      CLINK RESERVED	                -----------			   -----------			0000
+                   __CLASS_S_L_OVLY	                      CLINK RESERVED	                -----------			   -----------			1000
+                __CLASS_S_L_REGULAR	                      CLINK RESERVED	                -----------			   -----------			1000
+             __CLASS_S_ODT_PTR_OVLY	                      CLINK RESERVED	                -----------			   -----------			0059
+                 __CLASS_S_OS_STACK	                      CLINK RESERVED	                -----------			   -----------			0F00
+                        __CLASS_S_X	                      CLINK RESERVED	                -----------			   -----------			0000
+                      __CLASS_S_X_0	                      CLINK RESERVED	                -----------			   -----------			0040
+                      __CLASS_S_X_1	                      CLINK RESERVED	                -----------			   -----------			1000
+                 __CLASS_S_X_1_HEAP	                      CLINK RESERVED	                -----------			   -----------			1000
+                   __CLASS_S_X_HEAP	                      CLINK RESERVED	                -----------			   -----------			B000
+                   __CLASS_S_X_NEAR	                      CLINK RESERVED	                -----------			   -----------			0020
+                __CLASS_S_X_NEAR_OS	                      CLINK RESERVED	                -----------			   -----------			0000
+                   __CLASS_S_X_OVLY	                      CLINK RESERVED	                -----------			   -----------			1000
+                __CLASS_S_X_REGULAR	                      CLINK RESERVED	                -----------			   -----------			1000
+                        __CLASS_S_Y	                      CLINK RESERVED	                -----------			   -----------			0000
+                      __CLASS_S_Y_0	                      CLINK RESERVED	                -----------			   -----------			005E
+                      __CLASS_S_Y_1	                      CLINK RESERVED	                -----------			   -----------			1000
+                 __CLASS_S_Y_1_HEAP	                      CLINK RESERVED	                -----------			   -----------			1000
+                  __CLASS_S_Y_2_ODT	                      CLINK RESERVED	                -----------			   -----------			005A
+                  __CLASS_S_Y_3_ODT	                      CLINK RESERVED	                -----------			   -----------			005B
+                  __CLASS_S_Y_4_ODT	                      CLINK RESERVED	                -----------			   -----------			005C
+                  __CLASS_S_Y_5_ODT	                      CLINK RESERVED	                -----------			   -----------			005D
+        __CLASS_S_Y_APPLICATION_ODT	                      CLINK RESERVED	                -----------			   -----------			0059
+                   __CLASS_S_Y_HEAP	                      CLINK RESERVED	                -----------			   -----------			B000
+                   __CLASS_S_Y_NEAR	                      CLINK RESERVED	                -----------			   -----------			0020
+                __CLASS_S_Y_NEAR_OS	                      CLINK RESERVED	                -----------			   -----------			0000
+                __CLASS_S_Y_ODT_PTR	                      CLINK RESERVED	                -----------			   -----------			0059
+          __CLASS_S_Y_OS_CC_GLOBALS	                      CLINK RESERVED	                -----------			   -----------			0054
+                   __CLASS_S_Y_OVLY	                      CLINK RESERVED	                -----------			   -----------			1000
+                __CLASS_S_Y_OVLY_ID	                      CLINK RESERVED	                -----------			   -----------			0040
+                __CLASS_S_Y_REGULAR	                      CLINK RESERVED	                -----------			   -----------			1000
+                             __INIT	C:/Users/pekez/Downloads/vezba1/example_ovly/output/application/gen/src/example_ovly_odt	                        __INIT		             CODE		0000
+            example_module_HOST_MCV	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	      example_module_Y_Segment		           Y_OVLY		1013
+                 example_module_MCT	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_os_interface	            example_module_MCT		           Y_OVLY		1002
+            example_module_MODULEID	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_os_interface	                -----------			   -----------			0074
+           example_module_X_Segment	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	      example_module_X_Segment		           X_OVLY		1002
+           example_module_Y_Segment	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	      example_module_Y_Segment		           Y_OVLY		1013
+       example_module_main_GEN_0000	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1000
+                 example_module_mif	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_os_interface	            example_module_mif		           Y_OVLY		100B
+
+---------------SYMBOL(relocation symbols)						FILE						SEGMENT							CLASS		ADDRESS  
+
+          EXAMPLE_OVLY_MODULE_TABLE	C:/Users/pekez/Downloads/vezba1/example_ovly/output/application/gen/src/example_ovly_odt	     EXAMPLE_OVLY_MODULE_TABLE		           L_OVLY		1000
+               EXAMPLE_OVLY_ODT_PTR	C:/Users/pekez/Downloads/vezba1/example_ovly/output/application/gen/src/example_ovly_odt	          EXAMPLE_OVLY_ODT_PTR		     ODT_PTR_OVLY		0059
+                    OVLY_ID_SEGMENT	C:/Users/pekez/Downloads/vezba1/example_ovly/output/application/gen/src/example_ovly_odt	               OVLY_ID_SEGMENT		        Y_OVLY_ID		0040
+                       X_BL_MODULES	C:/Users/pekez/Downloads/vezba1/example_ovly/output/application/gen/src/example_ovly_odt	     EXAMPLE_OVLY_MODULE_TABLE		           L_OVLY		1000
+___SegStart_L_EXAMPLE_OVLY_MODULE_TABLE	C:/Users/pekez/Downloads/vezba1/example_ovly/output/application/gen/src/example_ovly_odt	     EXAMPLE_OVLY_MODULE_TABLE		           L_OVLY		1000
+___SegStart_ODT_PTR_OVLY_EXAMPLE_OVLY_ODT_PTR	C:/Users/pekez/Downloads/vezba1/example_ovly/output/application/gen/src/example_ovly_odt	          EXAMPLE_OVLY_ODT_PTR		     ODT_PTR_OVLY		0059
+___SegStart_Y_OVLY_ID_OVLY_ID_SEGMENT	C:/Users/pekez/Downloads/vezba1/example_ovly/output/application/gen/src/example_ovly_odt	               OVLY_ID_SEGMENT		        Y_OVLY_ID		0040
+            X_BY_example_module_MIF	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_os_interface	            example_module_mif		           Y_OVLY		100B
+   ___SegStart_Y_example_module_MCT	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_os_interface	            example_module_MCT		           Y_OVLY		1002
+   ___SegStart_Y_example_module_mif	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_os_interface	            example_module_mif		           Y_OVLY		100B
+                 example_module_MCT	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_os_interface	            example_module_MCT		           Y_OVLY		1002
+                 example_module_mif	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_os_interface	            example_module_mif		           Y_OVLY		100B
+                                mct	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_os_interface	            example_module_MCT		           Y_OVLY		1002
+      X_S_example_module_Background	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1003
+ X_S_example_module_Background_Done	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1003
+           X_S_example_module_Brick	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1000
+      X_S_example_module_Brick_Done	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1000
+           X_S_example_module_Frame	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1001
+      X_S_example_module_Frame_done	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1001
+   X_S_example_module_PostKickstart	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1007
+X_S_example_module_PostKickstart_done	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1007
+      X_S_example_module_PostMalloc	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1005
+ X_S_example_module_PostMalloc_Done	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1005
+    X_S_example_module_PreKickstart	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1006
+X_S_example_module_PreKickstart_done	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1006
+       X_S_example_module_PreMalloc	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1004
+  X_S_example_module_PreMalloc_Done	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1004
+           X_S_example_module_Timer	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1002
+      X_S_example_module_Timer_done	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	  example_module_main_GEN_0000		        CODE_OVLY		1002
+___SegStart_X_example_module_X_Segment	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	      example_module_X_Segment		           X_OVLY		1002
+___SegStart_Y_example_module_Y_Segment	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	      example_module_Y_Segment		           Y_OVLY		1013
+        _framework_interface_asm_h_	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	                        __INIT		             CODE		0000
+                          _meter_h_	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	                        __INIT		             CODE		0000
+                       _response_h_	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	                        __INIT		             CODE		0000
+            example_module_HOST_MCV	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	      example_module_Y_Segment		           Y_OVLY		1013
+     example_module_HOST_MCV.enable	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	      example_module_Y_Segment		           Y_OVLY		1013
+                 example_module_MCV	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	      example_module_X_Segment		           X_OVLY		1002
+          example_module_MCV.enable	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	      example_module_X_Segment		           X_OVLY		1002
+             example_module_MCV_end	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	      example_module_X_Segment		           X_OVLY		1003
+           example_module_X_Segment	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	      example_module_X_Segment		           X_OVLY		1002
+           example_module_Y_Segment	C:/Users/pekez/Downloads/vezba1/example_module/output/example_module_1_0_0.olib|src\example_module_main	      example_module_Y_Segment		           Y_OVLY		1013
+
+----------- module example_ovly_odt -----------
+
+LOCAL SYMBOL								TYPE		VALUE
+
+                       AAC_B_OVLYID		ABSOLUTE		0000
+                         AAC_OVLYID		ABSOLUTE		0000
+                    AC3_HD_A_OVLYID		ABSOLUTE		0000
+                    AC3_HD_B_OVLYID		ABSOLUTE		0000
+                         AC3_OVLYID		ABSOLUTE		0000
+                         ADV_OVLYID		ABSOLUTE		0000
+                          AM_OVLYID		ABSOLUTE		0000
+               APP_AUDISTRY2_OVLYID		ABSOLUTE		0000
+                         APP_OVLYID		ABSOLUTE		0000
+                   AUDISTRY1_OVLYID		ABSOLUTE		0000
+                   AUDISTRY2_OVLYID		ABSOLUTE		0000
+                    AUDISTRY_OVLYID		ABSOLUTE		0000
+                          CC_OVLYID		ABSOLUTE		0000
+                CIRCLE_SURR2_OVLYID		ABSOLUTE		0000
+                       COMS2_OVLYID		ABSOLUTE		0000
+                        COMS_OVLYID		ABSOLUTE		0000
+                    CROSSBAR_OVLYID		ABSOLUTE		0000
+                   CUSTOM_OS_OVLYID		ABSOLUTE		0000
+                CUSTOM_SLOT1_OVLYID		ABSOLUTE		0000
+                CUSTOM_SLOT2_OVLYID		ABSOLUTE		0000
+                CUSTOM_SLOT3_OVLYID		ABSOLUTE		0000
+                CUSTOM_SLOT4_OVLYID		ABSOLUTE		0000
+                CUSTOM_SLOT5_OVLYID		ABSOLUTE		0000
+                         CVT_OVLYID		ABSOLUTE		0000
+                         DH2_OVLYID		ABSOLUTE		0000
+                          DH_OVLYID		ABSOLUTE		0000
+                         DMA_OVLYID		ABSOLUTE		0000
+                       DNBY2_OVLYID		ABSOLUTE		0000
+                       DNBY4_OVLYID		ABSOLUTE		0000
+                         DSD_OVLYID		ABSOLUTE		0000
+                      DTSHRA_OVLYID		ABSOLUTE		0000
+                      DTSLBR_OVLYID		ABSOLUTE		0000
+                       DTSMA_OVLYID		ABSOLUTE		0000
+                    DTS_NEO6_OVLYID		ABSOLUTE		0000
+                         DTS_OVLYID		ABSOLUTE		0000
+                        DVS2_OVLYID		ABSOLUTE		0000
+                         DVS_OVLYID		ABSOLUTE		0000
+                          DV_OVLYID		ABSOLUTE		0000
+                    EC3_HD_B_OVLYID		ABSOLUTE		0000
+                         EC3_OVLYID		ABSOLUTE		0000
+          EXAMPLE_OVLY_MODULE_TABLE		RELOCATABLE		1000
+               EXAMPLE_OVLY_ODT_PTR		RELOCATABLE		0059
+                   FIVETOTWO_OVLYID		ABSOLUTE		0000
+                    FLASHMGR_OVLYID		ABSOLUTE		0000
+                    FLASH_RT_OVLYID		ABSOLUTE		0000
+                        HDCD_OVLYID		ABSOLUTE		0000
+                         IRC_OVLYID		ABSOLUTE		0000
+                      LOGIC7_OVLYID		ABSOLUTE		0000
+                        MEQ2_OVLYID		ABSOLUTE		0000
+                         MEQ_OVLYID		ABSOLUTE		0000
+                         MPG_OVLYID		ABSOLUTE		0000
+                 NEURAL_SURR_OVLYID		ABSOLUTE		0000
+                       ONKYO_OVLYID		ABSOLUTE		0000
+                     OS_SD_A_OVLYID		ABSOLUTE		0000
+                     OS_SD_B_OVLYID		ABSOLUTE		0000
+                    OVLY_BUILD_DATE		ABSOLUTE		10132022
+                    OVLY_ID_SEGMENT		RELOCATABLE		0040
+                  OVLY_SERIALNUMBER		ABSOLUTE		0000
+                 OVLY_TOOLS_VERSION		ABSOLUTE		BD020701
+                       OVLY_VERSION		ABSOLUTE		0000
+                         PCM_OVLYID		ABSOLUTE		0000
+                        PL2X_OVLYID		ABSOLUTE		0000
+                        PL2Z_OVLYID		ABSOLUTE		0000
+                         PL2_OVLYID		ABSOLUTE		0000
+                         SBE_OVLYID		ABSOLUTE		0000
+                          SF_OVLYID		ABSOLUTE		0000
+                        SGEN_OVLYID		ABSOLUTE		0000
+        SHARP_DVS2_AUDISTRY1_OVLYID		ABSOLUTE		0000
+                         SPP_OVLYID		ABSOLUTE		0000
+                         SSS_OVLYID		ABSOLUTE		0000
+                  SURR_UPMIX_OVLYID		ABSOLUTE		0000
+                     THX_APP_OVLYID		ABSOLUTE		0000
+                         THX_OVLYID		ABSOLUTE		0000
+                     THX_SPP_OVLYID		ABSOLUTE		0000
+                     TRUBASS_OVLYID		ABSOLUTE		0000
+                 TRUEHD_HD_A_OVLYID		ABSOLUTE		0000
+                 TRUEHD_HD_B_OVLYID		ABSOLUTE		0000
+                        TSHD_OVLYID		ABSOLUTE		0000
+                        TSXT_OVLYID		ABSOLUTE		0000
+                        VMAX_OVLYID		ABSOLUTE		0000
+                      WMAPRO_OVLYID		ABSOLUTE		0000
+                         WMA_OVLYID		ABSOLUTE		0000
+                       X_BL_MODULES		RELOCATABLE		1000
+___SegStart_L_EXAMPLE_OVLY_MODULE_TABLE		RELOCATABLE		1000
+___SegStart_ODT_PTR_OVLY_EXAMPLE_OVLY_ODT_PTR		RELOCATABLE		0059
+___SegStart_Y_OVLY_ID_OVLY_ID_SEGMENT		RELOCATABLE		0040
+
+----------- module example_module_os_interface -----------
+
+LOCAL SYMBOL								TYPE		VALUE
+
+                           MCT_SIZE		ABSOLUTE		0009
+                           MIF_SIZE		ABSOLUTE		0008
+            X_BY_example_module_MIF		RELOCATABLE		100B
+   ___SegStart_Y_example_module_MCT		RELOCATABLE		1002
+   ___SegStart_Y_example_module_mif		RELOCATABLE		100B
+                 example_module_MCT		RELOCATABLE		1002
+            example_module_MODULEID		ABSOLUTE		0074
+                 example_module_mif		RELOCATABLE		100B
+                                mct		RELOCATABLE		1002
+
+----------- module example_module_main -----------
+
+LOCAL SYMBOL								TYPE		VALUE
+
+                         BRICK_SIZE		ABSOLUTE		0010
+MAX_HARDWARE_DSP_CHANNELS_FOR_ANY_CIRRUS_PLATFORM		ABSOLUTE		0010
+     STRUCTURE_INITIALIZATION_STRNG		ABSOLUTE		0000
+      X_S_example_module_Background		RELOCATABLE		1003
+ X_S_example_module_Background_Done		RELOCATABLE		1003
+           X_S_example_module_Brick		RELOCATABLE		1000
+      X_S_example_module_Brick_Done		RELOCATABLE		1000
+           X_S_example_module_Frame		RELOCATABLE		1001
+      X_S_example_module_Frame_done		RELOCATABLE		1001
+   X_S_example_module_PostKickstart		RELOCATABLE		1007
+X_S_example_module_PostKickstart_done		RELOCATABLE		1007
+      X_S_example_module_PostMalloc		RELOCATABLE		1005
+ X_S_example_module_PostMalloc_Done		RELOCATABLE		1005
+    X_S_example_module_PreKickstart		RELOCATABLE		1006
+X_S_example_module_PreKickstart_done		RELOCATABLE		1006
+       X_S_example_module_PreMalloc		RELOCATABLE		1004
+  X_S_example_module_PreMalloc_Done		RELOCATABLE		1004
+           X_S_example_module_Timer		RELOCATABLE		1002
+      X_S_example_module_Timer_done		RELOCATABLE		1002
+___SegStart_X_example_module_X_Segment		RELOCATABLE		1002
+___SegStart_Y_example_module_Y_Segment		RELOCATABLE		1013
+        _framework_interface_asm_h_		RELOCATABLE		0000
+                          _meter_h_		RELOCATABLE		0000
+                       _response_h_		RELOCATABLE		0000
+            example_module_HOST_MCV		RELOCATABLE		1013
+     example_module_HOST_MCV.enable		RELOCATABLE		1013
+                 example_module_MCV		RELOCATABLE		1002
+          example_module_MCV.enable		RELOCATABLE		1002
+             example_module_MCV_end		RELOCATABLE		1003
+           example_module_X_Segment		RELOCATABLE		1002
+           example_module_Y_Segment		RELOCATABLE		1013
+                          isDefined		ABSOLUTE		0001

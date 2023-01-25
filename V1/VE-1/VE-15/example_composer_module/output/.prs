@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings built="true" last_build_time="1665673543260">
+	<dependencies>
+		<source_file last_build_time="1665673542839" path="gen/src/module_interface.c">
+			<dependency>../../../../../../../CirrusDSP_7_1_7/include/dsplib/platform_support.h</dependency>
+			<dependency>../../../../../../../CirrusDSP_7_1_7/include/stdbool.h</dependency>
+			<dependency>../../../../../../../CirrusDSP_7_1_7/include/stdfix.h</dependency>
+			<dependency>../../../../../../../CirrusDSP_7_1_7/include/scaling_coeff.h</dependency>
+			<dependency>../../../../../../../CirrusDSP_7_1_7/include/stddef.h</dependency>
+			<dependency>../inc/M70_PI___START___2_mcv.h</dependency>
+			<dependency>../../../../../../../CirrusDSP_7_1_7/include/dsplib/cl_os.h</dependency>
+			<dependency>../../../../../../../CirrusDSP_7_1_7/include/dsplib/meter.h</dependency>
+			<dependency>../../../../../../../CirrusDSP_7_1_7/include/dsplib/response.h</dependency>
+			<dependency>../inc/example_composer_module_common.h</dependency>
+			<dependency>../../../../../../../CirrusDSP_7_1_7/include/dsplib/cl_subkernel_types.h</dependency>
+			<dependency>../inc/M70_PI_filter_highpass_transposed_direct_II_11_mcv.h</dependency>
+			<dependency>../inc/M70_PI_simple_gain_db_6_mcv.h</dependency>
+			<dependency>../inc/__mc_copy___0_mcv.h</dependency>
+			<dependency>../inc/M70_PI_simple_delay_ms_8_mcv.h</dependency>
+			<dependency>../inc/M70_PI_simple_sum_12_mcv.h</dependency>
+			<dependency>../inc/M70_PI___END___4_mcv.h</dependency>
+		</source_file>
+		<source_file last_build_time="1665673542165" path="gen/src/symbols_overwrite.a"/>
+	</dependencies>
+</settings>

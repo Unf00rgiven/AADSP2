@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AADSP2 22 23</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="aadsp2-202223">AADSP2 2022/23</h1>
+<h2 id="laboratorijska-vežba-ve-3">Laboratorijska vežba VE-3</h2>
+<h4 id="ve-30-medijana">VE-30 Medijana</h4>
+<p>Napraviti novi Standalone (ULD) projekat, dodati novi main.a i napisati funkciju X_S_main koja će pozivati funkciju X_S_median. Funkcija X_S_median kao ulazni parametar očekuje adresu niza u registru i0 i dužinu niza u registru i1. Podrazumevano je da niz sadrži paran broj elemenata. Računanje vrednosti medijane se vrši na u dva koraka:</p>
+<ol>
+<li>uređivanje niza tako da elementi budu poređani po veličini,</li>
+<li>uzimanje aritmetičke sredine dva središnja elementa X(N/2-1) i X(N/2).</li>
+</ol>
+<p>Pronaći u zbirci <strong>2.3.3. Zadatak 3: Medijana</strong> za pseudo kod algoritma za uređivanje niza za selekcijom koji je potrebno implementirati u koraku 1. Nakon sortiranja izračunati aritmetičku sredinu dva središnja elementa i rezultat smestiti u registar a0. Funkcija X_S_main koja poziva funkciju za računanje medijane očekuje povratnu vrednost u ovom registru.</p>
+<p><strong>Napomena</strong>: Za elemente niza koristiti decimalne brojeve u nepokretnom zarezu.</p>
+<p><strong>Savet za izradu</strong>: Radi lakše implementacije algoritma za sortiranje mogu pomoću 2 hinta: prvo pseudo kod iskucati u C-u ali da se sortiranje vrši pomoću pokazivača umesto indeksa i, j i k. Potom implementirati u ASM samo unutrašnju petlju i verifikovati njen rad pre implemenetacije spoljašnje.</p>
+</div>
+</body>
+
+</html>

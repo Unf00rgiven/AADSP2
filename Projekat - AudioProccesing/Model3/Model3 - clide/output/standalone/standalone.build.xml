@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<project basedir="C:/CirrusDSP/clide/workspace/Model3CodeC" name="Model3CodeC">
+	<target description="Linking files..." name="clink">
+		<exec executable="C:/CirrusDSP/bin/clink" failonerror="true">
+			<arg value="-oC:/CirrusDSP/clide/workspace/Model3CodeC/output/standalone/Model3CodeC.img"/>
+			<arg value="-fC:/CirrusDSP/crystal32/memory_maps/v00.mem.xml"/>
+			<arg value="C:/CirrusDSP/clide/workspace/Model3CodeC/output/standalone/src/main.O"/>
+			<arg value="C:/CirrusDSP/clide/workspace/Model3CodeC/output/standalone/src/processing.O"/>
+			<arg value="--output_type=RAM"/>
+			<arg value="--overlay_type=standalone"/>
+			<arg value="-lC:/CirrusDSP/lib/"/>
+			<arg value="-lC:/CirrusDSP/lib/dsplib"/>
+			<arg value="-lC:/CirrusDSP/lib/dsplib/crystal32/"/>
+		</exec>
+	</target>
+	<target depends="clink" description="Creating .uld file..." name="lnkuld">
+		<exec executable="C:/CirrusDSP/bin/lnkuld" failonerror="true">
+			<arg value="-ja"/>
+			<arg value="C:/CirrusDSP/clide/workspace/Model3CodeC/output/standalone/Model3CodeC.img"/>
+			<arg value="C:/CirrusDSP/clide/workspace/Model3CodeC/output/standalone/Model3CodeC.uld"/>
+		</exec>
+	</target>
+</project>

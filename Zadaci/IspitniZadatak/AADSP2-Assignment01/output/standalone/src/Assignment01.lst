@@ -1,0 +1,245 @@
+1     						################################################################################
+2     						##*/**
+3     						##** @file AADSP2-Assignment01.a
+4     						##**
+5     						##** Module: AADSP2-Assignment01
+6     						##** Description:
+7     						##** $Source: $
+8     						##** $Revision: $
+9     						##** $Date: $
+10    						##** $Author: $
+11    						##**
+12    						##**/
+13    						################################################################################
+14    	 0000				_AADSP2_Assignment01_a_
+15    						
+16    						################################################################################
+17    	 0000				 .public X_S_Task01
+18    	 0000				 .public X_S_Task02
+19    						################################################################################
+20    						
+21    						AADSP2_Assignment01_xdata .xdata_ovly
+21     >> start of macro: .xdata_ovly
+1+    									seg_single AADSP2_Assignment01_xdata, "X_OVLY", X
+1+     >> start of macro: seg_single
+1+    						  .if ( "AADSP2_Assignment01_xdata" != "" ) & defined( ___SegStart_X_AADSP2_Assignment01_xdata )
+2+    						AADSP2_Assignment01_xdata    segment
+3+    						  .else
+4+    						AADSP2_Assignment01_xdata    segment "X_OVLY"
+5+    							.if "AADSP2_Assignment01_xdata" != ""
+6+    	 0000				___SegStart_X_AADSP2_Assignment01_xdata
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .xdata_ovly
+22    						
+23    	 0000				X_BX_InputBuffer1		.dw	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 
+	 0000	 00000001	 
+	 0001	 00000002	 
+	 0002	 00000003	 
+	 0003	 00000004	 
+	 0004	 00000005	 
+	 0005	 00000006	 
+	 0006	 00000007	 
+	 0007	 00000008	 
+	 0008	 00000009	 
+	 0009	 0000000A	 
+	 000A	 0000000B	 
+	 000B	 0000000C	 
+	 000C	 0000000D	 
+	 000D	 0000000E	 
+	 000E	 0000000F	 
+	 000F	 00000010	 
+24    	 0010				X_BX_InputBuffer2		.dw 5, 10, 15, 4, 8, 16, 3, 52, 11, 6, 25, 41, 12, 18, 22, 75
+	 0010	 00000005	 
+	 0011	 0000000A	 
+	 0012	 0000000F	 
+	 0013	 00000004	 
+	 0014	 00000008	 
+	 0015	 00000010	 
+	 0016	 00000003	 
+	 0017	 00000034	 
+	 0018	 0000000B	 
+	 0019	 00000006	 
+	 001A	 00000019	 
+	 001B	 00000029	 
+	 001C	 0000000C	 
+	 001D	 00000012	 
+	 001E	 00000016	 
+	 001F	 0000004B	 
+25    						
+26    						
+27    						AADSP2_Assignment01_ydata .ydata_ovly
+27     >> start of macro: .ydata_ovly
+1+    									seg_single AADSP2_Assignment01_ydata, "Y_OVLY", Y
+1+     >> start of macro: seg_single
+1+    						  .if ( "AADSP2_Assignment01_ydata" != "" ) & defined( ___SegStart_Y_AADSP2_Assignment01_ydata )
+2+    						AADSP2_Assignment01_ydata    segment
+3+    						  .else
+4+    						AADSP2_Assignment01_ydata    segment "Y_OVLY"
+5+    							.if "AADSP2_Assignment01_ydata" != ""
+6+    	 0000				___SegStart_Y_AADSP2_Assignment01_ydata
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .ydata_ovly
+28    						
+29    							#TODO: Place output buffer and output variables here
+30    						
+31    	 0000				X_BY_OutputBuffer1		.bss (0x20)  #<--| modulo 32 buffer
+32    	 0020				X_VY_Min1				.dw 0
+	 0020	 00000000	 
+33    	 0021				X_VY_Min2				.dw 0
+	 0021	 00000000	 
+34    							#----------------------------------
+35    						
+36    						AADSP2_Assignment01_code	.code_ovly
+36     >> start of macro: .code_ovly
+1+    									seg_single AADSP2_Assignment01_code, "CODE_OVLY", CODE
+1+     >> start of macro: seg_single
+1+    						  .if ( "AADSP2_Assignment01_code" != "" ) & defined( ___SegStart_CODE_AADSP2_Assignment01_code )
+2+    						AADSP2_Assignment01_code    segment
+3+    						  .else
+4+    						AADSP2_Assignment01_code    segment "CODE_OVLY"
+5+    							.if "AADSP2_Assignment01_code" != ""
+6+    	 0000				___SegStart_CODE_AADSP2_Assignment01_code
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .code_ovly
+37    						
+38    						################################################################################
+39    						##*/**
+40    						##** Function: X_S_Task01
+41    						##**
+42    						##** @param
+43    						##**
+44    						##** @return
+45    						##**
+46    						##** Trashes:	a0, a1, a2, a3, b0, b1, b2, b3, x0, x1, x2, x3, y0, y1, y2, y3, i0, i1, i2, i3, i4, i5, i6, i7, nm0, nm1, nm2, nm3, nm4, nm5, nm6, nm7
+47    						##** Comment:
+48    						##**/
+49    						################################################################################
+50    	 0000				X_S_Task01
+51    						 
+52    							#TODO: Place Function Body Here
+53    	 0000	 885A0000		ufixed16(a0) = (0x0)
+54    	 0001	 8C5A0000		ufixed16(b0) = (0x0)
+55    						
+56    	 0002	 B04A0000		i0 = (X_BX_InputBuffer1)
+57    	 0003	 B14A0010		i1 = (X_BX_InputBuffer2)
+58    							
+59    	 0004	 B84A0000		i4 = (X_BY_OutputBuffer1)
+60    						    
+61    	 0005	 B44A4001	    nm0 = (0x4001)
+62    						    
+63    	 0006	 8100000A	    do(0x10),>Loop
+64    	 0007	 80140030	    x0 = xmem[i0]; i0+=n
+65    	 0008	 81140031		x1 = xmem[i1]; i1+=n
+66    						
+67    	 0009	 00002084		b0 = x0 * x1
+68    						
+69    	 000A	 8CD40034	%Loop: ymem[i4] = b0; i4 += n
+70    						
+71    							#----------------------------------
+72    						
+73    	 000B				X_S_Task01_End:
+74    						#-------------------------------------------------------------------------------
+75    	 000B	 81880000	  ret
+76    						
+77    						################################################################################
+78    						##*/**
+79    						##** Function: X_S_Task02
+80    						##**
+81    						##** @param
+82    						##**
+83    						##** @return
+84    						##**
+85    						##** Trashes:	a0, a1, a2, a3, b0, b1, b2, b3, x0, x1, x2, x3, y0, y1, y2, y3, i0, i1, i2, i3, i4, i5, i6, i7, nm0, nm1, nm2, nm3, nm4, nm5, nm6, nm7
+86    						##** Comment:
+87    						##**/
+88    						################################################################################
+89    	 000C				X_S_Task02
+90    						
+91    							#TODO: Place Function Body Here.
+92    	 000C	 885A0000		ufixed16(a0) = (0x0)
+93    	 000D	 8C5A0000		ufixed16(b0) = (0x0)
+94    	 000E	 895A0000		ufixed16(a1) = (0x0)
+95    	 000F	 8D5A0000		ufixed16(b1) = (0x0)
+96    							
+97    	 0010	 B04A0000		i0 = (X_BX_InputBuffer1)
+98    	 0011	 B14A0010		i1 = (X_BX_InputBuffer2)
+99    							
+100   	 0012	 8C140030		b0 = xmem[i0]; i0 += n
+101   	 0013	 4C487FFF		a0 = b0
+102   							
+103   	 0014	 81000019		do(0x10),>Loop
+104   	 0015	 8D140030			b1 = xmem[i0]; i0 += n
+105   	 0016	 4D487FFF			a0 = b1
+106   	 0017	 00004841			if (b1 < b0) a1 = a0
+107   	 0018	 494C7FFF			b0 = a1
+108   	 0019	 8CC40020	%Loop: ymem[X_VY_Min1] = b0
+109   						
+110   						
+111   	 001A	 8C140031		b0 = xmem[i1]; i1 += n
+112   	 001B	 4C487FFF		a0 = b0
+113   							
+114   	 001C	 81000021		do(0x10),>Loop
+115   	 001D	 8D140031			b1 = xmem[i1]; i1 += n
+116   	 001E	 4D487FFF			a0 = b1
+117   	 001F	 00004841			if (b1 < b0) a1 = a0
+118   	 0020	 494C7FFF			b0 = a1
+119   	 0021	 8CC40021	%Loop: ymem[X_VY_Min2] = b0
+120   						
+121   						
+122   							#----------------------------------
+123   						
+124   	 0022				X_S_Task02_End:
+125   						#-------------------------------------------------------------------------------
+126   	 0022	 81880000	  ret
+127   						
+128   						(null)
+				 SYMBOL TABLE 
+
+    Name                                                                                    Type                  Value 
+
+AADSP2_Assignment01_code                                                        			  Unused Relocatable        AADSP2_Assignment01_code:0000H
+AADSP2_Assignment01_xdata                                                       			  Unused Relocatable        AADSP2_Assignment01_xdata:0000H
+AADSP2_Assignment01_ydata                                                       			  Unused Relocatable        AADSP2_Assignment01_ydata:0000H
+X_BX_InputBuffer1                                                               			         Relocatable         AADSP2_Assignment01_xdata:0000H
+X_BX_InputBuffer2                                                               			         Relocatable         AADSP2_Assignment01_xdata:0010H
+X_BY_OutputBuffer1                                                              			         Relocatable         AADSP2_Assignment01_ydata:0000H
+X_S_Task01                                                                      			  Public Relocatable       AADSP2_Assignment01_code:0000H
+X_S_Task01_End                                                                  			  Unused Relocatable        AADSP2_Assignment01_code:000BH
+X_S_Task02                                                                      			  Public Relocatable       AADSP2_Assignment01_code:000CH
+X_S_Task02_End                                                                  			  Unused Relocatable        AADSP2_Assignment01_code:0022H
+X_VY_Min1                                                                       			         Relocatable         AADSP2_Assignment01_ydata:0020H
+X_VY_Min2                                                                       			         Relocatable         AADSP2_Assignment01_ydata:0021H
+_AADSP2_Assignment01_a_                                                         			  Unused Relocatable        __INIT:0000H
+_COMMON_INC_PATH_                                                               					 Define                 "C:/CirrusDSP/crystal32/common/inc/"
+_DSP_                                                                           					 Define                 "a"
+_LOCAL_INC_PATH_                                                                					 Define                 "inc/"
+_LOCAL_SRC_PATH_                                                                					 Define                 "src/"
+_MUI_VERSION_                                                                   					 Define                 "020000"
+_OVLY_                                                                          					 Define                 "standalone"
+_OVLY_REVISION_                                                                 					 Define                 "020000"
+_ROUTER_INC_PATH_                                                               					 Define                 "rom_inc/"
+_SLOT_                                                                          					 Define                 "0"
+_TARGET_FAMILY_                                                                 					 Define                 "crystal32"
+_TOOLS_VERSION_                                                                 					 Define                 "0x0701"
+_VERSION_                                                                       					 Define                 "00"
+__CASM_VER__                                                                    			  Unused Variable		        0 (701H)
+___SegStart_CODE_AADSP2_Assignment01_code                                       			  Unused Relocatable        AADSP2_Assignment01_code:0000H
+___SegStart_X_AADSP2_Assignment01_xdata                                         			  Unused Relocatable        AADSP2_Assignment01_xdata:0000H
+___SegStart_Y_AADSP2_Assignment01_ydata                                         			  Unused Relocatable        AADSP2_Assignment01_ydata:0000H
+
+	       SEGMENTS:
+
+Size			  Name										 Class
+0000H	 __INIT                                  			 CODE                                    
+0020H	 AADSP2_Assignment01_xdata               			 X_OVLY                                  
+0022H	 AADSP2_Assignment01_ydata               			 Y_OVLY                                  
+0023H	 AADSP2_Assignment01_code                			 CODE_OVLY                               

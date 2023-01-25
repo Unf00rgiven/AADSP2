@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AADSP2 22 23</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="aadsp2-202223">AADSP2 2022/23</h1>
+<h2 id="laboratorijska-vežba-ve-4">Laboratorijska vežba VE-4</h2>
+<h4 id="ve-40-obrada-desnog-kanala">VE-40 Obrada desnog kanala</h4>
+<p>Importovati u CLIDE projekte example_module, example_ovly i example_app iz foldera VE-40. U example_module se nalazi rešenje koje je urađeno tokom auditorne AU-4. Prevesti sva tri projekta tim redom, postaviti putanje do U/I fajlova i proveriti rad tog jednostavnog DSP algoritma. Menjati RT kontrolu za “enable” i utvrditi na izlazu da se promene dešavaju očekivano (koristiti Audacity za analizu izlaza). Nakon toga, potrebno je na ovo rešenje dodati identičnu obradu i desnog kanala. Ponovo verifikovati rad modula.</p>
+<p><strong>Napomena:</strong> Za obradu desnog kanala napraviti posebnu promenljivu RchDefaultGain i postaviti je tako da se signal utišava za 6dB. Konverziju između dB i linearne (fract) vrednosti istražiti na sopstvenu ruku.</p>
+<h4 id="ve-41-mcv-kontrola-za-mute">VE-41 MCV kontrola za “mute”</h4>
+<p>U prethodno učitani example_module dodati korisničku RT kontrolu za “mute” (kao button) koja će kada je ON u potpunosti anulirati L i R kanale izlaznog signala. Dodati implementaciju “mute” funkcionalnosti i proveriti rad modula menjajući “mute” i “enable” kontrole naizmenično.</p>
+<h4 id="ve-42-mcv-kontrole-za-gain">VE-42 MCV kontrole za “gain”</h4>
+<p>U prethodni example_module dodati korisničke kontrole kojima je pojačanje/slabljenje signala sada moguće menjati u realnom vremenu (umesto da budu konstantne vrednosti kao do sada). Po kanalu omogućiti jedan koeficijent pojačanja, dodati ih kroz MCV tabelu kao dve kontrole tipa “knob”. Za dijagram ove obrade pogledati u zbirci <strong>7.4.1 Zadatak 1: Korišćenje radnog okvira na sistemima baziranim na procesoru CS48x"</strong>. Nakon implementacije, pokrenuti projekat i menjati gain kontrole, naizmenično sa enable i mute kontrolama. Analizirati i verifikovati izlaz u Audicaty alatu.</p>
+<p><strong>Bonus zadatak:</strong> Dodati treći kanal na izlaz koji će predstavljati zbir L i R kanala <em>nakon</em> primenjenih gain koeficijanata. Menjati gain kontrole tako da se na tom trećem izlaznom kanalu dobije distorzija!</p>
+</div>
+</body>
+
+</html>

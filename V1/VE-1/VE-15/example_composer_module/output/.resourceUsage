@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<resource_accountant>
+    <numberOfPrimitives>7</numberOfPrimitives>
+    <module_overhead_mips_expression>(module.brick_rate * (9+(13+(23*%d))))/1000000.0</module_overhead_mips_expression>
+    <entry_list>
+        <entry>
+            <instanceName></instanceName>
+            <instanceTypeName>Module overhead</instanceTypeName>
+            <numberOfInstances>1</numberOfInstances>
+            <mips>(module.brick_rate * (9+(13+(23*7))))/1000000.0</mips>
+            <xMemory>2</xMemory>
+            <yMemory>107</yMemory>
+            <pMemory>133</pMemory>
+            <lMemory>0</lMemory>
+            <xHeapMemory>0</xHeapMemory>
+            <yHeapMemory>0</yHeapMemory>
+            <lHeapMemory>0</lHeapMemory>
+            <type>MODULE_OVERHEAD</type>
+        </entry>
+        <entry>
+            <instanceName>X___mc_copy___0_PRIVATE_DATA_1</instanceName>
+            <instanceTypeName>Other</instanceTypeName>
+            <numberOfInstances>0</numberOfInstances>
+            <mips></mips>
+            <xMemory>3</xMemory>
+            <yMemory>0</yMemory>
+            <pMemory>0</pMemory>
+            <lMemory>0</lMemory>
+            <xHeapMemory>0</xHeapMemory>
+            <yHeapMemory>0</yHeapMemory>
+            <lHeapMemory>0</lHeapMemory>
+            <type>OTHER</type>
+        </entry>
+        <entry>
+            <instanceName>X + Y</instanceName>
+            <instanceTypeName>simple_sum (12)</instanceTypeName>
+            <numberOfInstances>1</numberOfInstances>
+            <mips>(module.brick_rate*(26+module.brick_size*3))/1000000.0</mips>
+            <xMemory>4</xMemory>
+            <yMemory>3</yMemory>
+            <pMemory>33</pMemory>
+            <lMemory>0</lMemory>
+            <xHeapMemory>0</xHeapMemory>
+            <yHeapMemory>0</yHeapMemory>
+            <lHeapMemory>0</lHeapMemory>
+            <type>PRIMITIVE_INSTANCE</type>
+        </entry>
+        <entry>
+            <instanceName>Gain (dB)</instanceName>
+            <instanceTypeName>simple_gain_db (6)</instanceTypeName>
+            <numberOfInstances>1</numberOfInstances>
+            <mips></mips>
+            <xMemory>5</xMemory>
+            <yMemory>3</yMemory>
+            <pMemory>41</pMemory>
+            <lMemory>0</lMemory>
+            <xHeapMemory>0</xHeapMemory>
+            <yHeapMemory>0</yHeapMemory>
+            <lHeapMemory>0</lHeapMemory>
+            <type>PRIMITIVE_INSTANCE</type>
+        </entry>
+        <entry>
+            <instanceName>Simple Delay (ms)</instanceName>
+            <instanceTypeName>simple_delay_ms (8)</instanceTypeName>
+            <numberOfInstances>1</numberOfInstances>
+            <mips>(module.brick_size*594)/1000000.0</mips>
+            <xMemory>10</xMemory>
+            <yMemory>3</yMemory>
+            <pMemory>184</pMemory>
+            <lMemory>0</lMemory>
+            <xHeapMemory>0</xHeapMemory>
+            <yHeapMemory>0</yHeapMemory>
+            <lHeapMemory>0</lHeapMemory>
+            <type>PRIMITIVE_INSTANCE</type>
+        </entry>
+        <entry>
+            <instanceName>Highpass</instanceName>
+            <instanceTypeName>filter_highpass_transposed_direct_II (11)</instanceTypeName>
+            <numberOfInstances>1</numberOfInstances>
+            <mips>(module.brick_rate * (      10+34+32+precision==0?((max_order+1)/2)*(65 +(module.brick_size/2-1)*8):((max_order+1)/2)*(79 +(module.brick_size/2-1)*22)  ))/1000000.0</mips>
+            <xMemory>14</xMemory>
+            <yMemory>3</yMemory>
+            <pMemory>145</pMemory>
+            <lMemory>9</lMemory>
+            <xHeapMemory>0</xHeapMemory>
+            <yHeapMemory>0</yHeapMemory>
+            <lHeapMemory>0</lHeapMemory>
+            <type>PRIMITIVE_INSTANCE</type>
+        </entry>
+        <entry>
+            <instanceName>PCM IN</instanceName>
+            <instanceTypeName>__START__ (2)</instanceTypeName>
+            <numberOfInstances>1</numberOfInstances>
+            <mips>(module.brick_rate*(8+12+(num_connected.pcm_in*(11+(2*module.brick_size)))))/1000000.0</mips>
+            <xMemory>2</xMemory>
+            <yMemory>3</yMemory>
+            <pMemory>6</pMemory>
+            <lMemory>0</lMemory>
+            <xHeapMemory>0</xHeapMemory>
+            <yHeapMemory>0</yHeapMemory>
+            <lHeapMemory>0</lHeapMemory>
+            <type>PRIMITIVE_INSTANCE</type>
+        </entry>
+        <entry>
+            <instanceName>PCM OUT</instanceName>
+            <instanceTypeName>__END__ (4)</instanceTypeName>
+            <numberOfInstances>1</numberOfInstances>
+            <mips>(module.brick_rate*(18+(num_connected.pcm_out*(21+(2*module.brick_size)))))/1000000.0</mips>
+            <xMemory>15</xMemory>
+            <yMemory>3</yMemory>
+            <pMemory>26</pMemory>
+            <lMemory>0</lMemory>
+            <xHeapMemory>0</xHeapMemory>
+            <yHeapMemory>0</yHeapMemory>
+            <lHeapMemory>0</lHeapMemory>
+            <type>PRIMITIVE_INSTANCE</type>
+        </entry>
+        <entry>
+            <instanceName></instanceName>
+            <instanceTypeName>Buffers</instanceTypeName>
+            <numberOfInstances>1</numberOfInstances>
+            <mips>0.0</mips>
+            <xMemory>0</xMemory>
+            <yMemory>68</yMemory>
+            <pMemory>0</pMemory>
+            <lMemory>0</lMemory>
+            <xHeapMemory>0</xHeapMemory>
+            <yHeapMemory>0</yHeapMemory>
+            <lHeapMemory>0</lHeapMemory>
+            <type>BUFFER_TYPE</type>
+        </entry>
+        <entry>
+            <instanceName></instanceName>
+            <instanceTypeName>Library</instanceTypeName>
+            <numberOfInstances>0</numberOfInstances>
+            <mips>0.0</mips>
+            <xMemory>11</xMemory>
+            <yMemory>4</yMemory>
+            <pMemory>155</pMemory>
+            <lMemory>15</lMemory>
+            <xHeapMemory>0</xHeapMemory>
+            <yHeapMemory>0</yHeapMemory>
+            <lHeapMemory>0</lHeapMemory>
+            <type>SHARED_PRIMITIVE_LIBRARY_USAGE</type>
+        </entry>
+    </entry_list>
+    <diskPaths/>
+    <commonLibList>
+        <instanceName></instanceName>
+        <instanceTypeName>subkernel</instanceTypeName>
+        <numberOfInstances>0</numberOfInstances>
+        <mips>0.0</mips>
+        <xMemory>11</xMemory>
+        <yMemory>4</yMemory>
+        <pMemory>155</pMemory>
+        <lMemory>15</lMemory>
+        <xHeapMemory>0</xHeapMemory>
+        <yHeapMemory>0</yHeapMemory>
+        <lHeapMemory>0</lHeapMemory>
+        <type>SHARED_PRIMITIVE_LIBRARY_USAGE</type>
+    </commonLibList>
+    <libraryMap/>
+    <mipsMap>
+        <entry>
+            <key>simple_delay_ms</key>
+            <value>(module.brick_size*594)/1000000.0</value>
+        </entry>
+        <entry>
+            <key>__END__</key>
+            <value>(module.brick_rate*(18+(num_connected.pcm_out*(21+(2*module.brick_size)))))/1000000.0</value>
+        </entry>
+        <entry>
+            <key>filter_highpass_transposed_direct_II</key>
+            <value>(module.brick_rate * (      10+34+32+precision==0?((max_order+1)/2)*(65 +(module.brick_size/2-1)*8):((max_order+1)/2)*(79 +(module.brick_size/2-1)*22)  ))/1000000.0</value>
+        </entry>
+        <entry>
+            <key>simple_sum</key>
+            <value>(module.brick_rate*(26+module.brick_size*3))/1000000.0</value>
+        </entry>
+        <entry>
+            <key>simple_gain_db</key>
+            <value></value>
+        </entry>
+        <entry>
+            <key>__START__</key>
+            <value>(module.brick_rate*(8+12+(num_connected.pcm_in*(11+(2*module.brick_size)))))/1000000.0</value>
+        </entry>
+    </mipsMap>
+</resource_accountant>

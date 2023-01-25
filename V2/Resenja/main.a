@@ -1,0 +1,85 @@
+# VE-21 
+
+main .code_ovly at 0x0000
+
+	#1
+	halfword(a0h) = (0x7F)
+	#2 
+	halfword(x0) = (0xFFEE)
+	halfword(y0) = (0x8000) 
+	#3
+	AnyReg(a0l, x0)
+	#4
+	a0 = (0)
+	fixed16(a0h) = (0x6000)
+	#5
+	fixed16(b0h) = (0xDEAD)
+	lo16(b0h) = (0xBEEF)
+	#6
+	i0 = (0x20)
+	#7
+	a0 = a0 + b0
+	#8
+	a1 = x0 * y0
+	#9
+	b0 = b0 >> 1
+	#10
+	a0 = a0 << 1
+	a0 = a0 << 1
+	#11
+	y0 = a0h
+	#12
+	x0 = a0l
+	
+	#13 if
+	a0 - b0
+	if(a > 0) jmp >true
+%true:
+	b0 = (0)
+	
+	#13 if/else
+	if(a < 0) jmp >true
+	a0 = (2) 
+	jmp >end	
+%true:
+	a0 = (1)
+%end:
+	
+	#13 for
+	a0 = (0)
+	a1 = (16)
+	a2 = (1)
+
+%loop:
+	a1 = a1 + a2
+	a0 - a1
+	if(a >= 0) jmp >end
+	a0 = a0 + a2
+	jmp <loop
+%end:
+
+	#13 second for
+	a0 = (0)
+	b0 = (16)
+	b1 = (1)
+
+%loop:
+	b1 = b1 + a1 
+	a1 = a1 + b1
+	a0 - b0
+	if(a >= 0) jmp >end
+	a0 = a0 + b1
+	jmp <loop
+%end:
+
+	#13 third for
+	a0 = (0)
+	b0 = (32)
+	b1 = (1)
+%loop:
+	a1 = a1 + b1
+	a0 - b0
+	if(a >= 0) jmp >end
+	a0 = a0 + b1
+	jmp <loop
+%end:

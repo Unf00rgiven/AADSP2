@@ -1,0 +1,1384 @@
+1     	 0000					.public _M70_CC_MALLOCED
+2     	 0000					.public _M70_CC_MALLOC_PTR
+3     	 0000					.public _M70_CC_MCV
+4     	 0000					.public _M70_CC_MIF
+5     	 0000					.public _M70_CC_PCT
+6     	 0000					.extern _X_P_BY_Simple_delay_ms_PCT
+7     	 0000					.extern ___C_STACK_BG
+8     	 0000					.extern ___C_STACK_FG
+9     	 0000					.extern ___END__pct
+10    	 0000					.extern ___START__pct
+11    	 0000					.extern ___X_BL_TEMPBUFF
+12    	 0000					.extern ___X_BL_TEMPBUFF0
+13    	 0000					.extern ___X_BL_TEMPBUFF1
+14    	 0000					.extern ___X_BL_TEMPBUFF10
+15    	 0000					.extern ___X_BL_TEMPBUFF11
+16    	 0000					.extern ___X_BL_TEMPBUFF12
+17    	 0000					.extern ___X_BL_TEMPBUFF13
+18    	 0000					.extern ___X_BL_TEMPBUFF14
+19    	 0000					.extern ___X_BL_TEMPBUFF15
+20    	 0000					.extern ___X_BL_TEMPBUFF2
+21    	 0000					.extern ___X_BL_TEMPBUFF3
+22    	 0000					.extern ___X_BL_TEMPBUFF4
+23    	 0000					.extern ___X_BL_TEMPBUFF5
+24    	 0000					.extern ___X_BL_TEMPBUFF6
+25    	 0000					.extern ___X_BL_TEMPBUFF7
+26    	 0000					.extern ___X_BL_TEMPBUFF8
+27    	 0000					.extern ___X_BL_TEMPBUFF9
+28    	 0000					.extern ___X_BX_TEMPBUFF
+29    	 0000					.extern ___X_BX_TEMPBUFF0
+30    	 0000					.extern ___X_BX_TEMPBUFF1
+31    	 0000					.extern ___X_BX_TEMPBUFF10
+32    	 0000					.extern ___X_BX_TEMPBUFF11
+33    	 0000					.extern ___X_BX_TEMPBUFF12
+34    	 0000					.extern ___X_BX_TEMPBUFF13
+35    	 0000					.extern ___X_BX_TEMPBUFF14
+36    	 0000					.extern ___X_BX_TEMPBUFF15
+37    	 0000					.extern ___X_BX_TEMPBUFF2
+38    	 0000					.extern ___X_BX_TEMPBUFF3
+39    	 0000					.extern ___X_BX_TEMPBUFF4
+40    	 0000					.extern ___X_BX_TEMPBUFF5
+41    	 0000					.extern ___X_BX_TEMPBUFF6
+42    	 0000					.extern ___X_BX_TEMPBUFF7
+43    	 0000					.extern ___X_BX_TEMPBUFF8
+44    	 0000					.extern ___X_BX_TEMPBUFF9
+45    	 0000					.extern ___X_BY_IOBUFFER_PTRS
+46    	 0000					.extern ___X_BY_TEMPBUFF
+47    	 0000					.extern ___X_BY_TEMPBUFF0
+48    	 0000					.extern ___X_BY_TEMPBUFF1
+49    	 0000					.extern ___X_BY_TEMPBUFF10
+50    	 0000					.extern ___X_BY_TEMPBUFF11
+51    	 0000					.extern ___X_BY_TEMPBUFF12
+52    	 0000					.extern ___X_BY_TEMPBUFF13
+53    	 0000					.extern ___X_BY_TEMPBUFF14
+54    	 0000					.extern ___X_BY_TEMPBUFF15
+55    	 0000					.extern ___X_BY_TEMPBUFF2
+56    	 0000					.extern ___X_BY_TEMPBUFF3
+57    	 0000					.extern ___X_BY_TEMPBUFF4
+58    	 0000					.extern ___X_BY_TEMPBUFF5
+59    	 0000					.extern ___X_BY_TEMPBUFF6
+60    	 0000					.extern ___X_BY_TEMPBUFF7
+61    	 0000					.extern ___X_BY_TEMPBUFF8
+62    	 0000					.extern ___X_BY_TEMPBUFF9
+63    	 0000					.extern ___X_VX_NEXTFRM_REINIT_REQ
+64    	 0000					.extern ___X_VX_PPM_INPUTMODE
+65    	 0000					.extern ___X_VX_PPM_INPUT_CHANNELS
+66    	 0000					.extern ___X_VX_PPM_OUTPUTMODE
+67    	 0000					.extern ___X_VX_PPM_OUTPUT_CHANNELS
+68    	 0000					.extern ___X_VX_PPM_SAMPLERATE
+69    	 0000					.extern ___X_VX_PPM_VALID_CHANNELS
+70    	 0000					.extern ___X_VX_REINIT
+71    	 0000					.extern ___X_VX_UNDERFLOW
+72    	 0000					.extern ___mc_copy__pct
+73    	 0000					.extern _cl_buffer_ground_PTR
+74    	 0000					.extern _cl_buffer_silence_PTR
+75    	 0000					.extern _cl_constant_one_x
+76    	 0000					.extern _cl_constant_one_y
+77    	 0000					.extern _cl_constant_zero_x
+78    	 0000					.extern _cl_constant_zero_y
+79    	 0000					.extern _filter_highpass_transposed_direct_II_pct
+80    	 0000					.extern _simple_gain_db_pct
+81    	 0000					.extern _simple_sum_pct
+82    	 0000					.extern _M70_CC_background
+83    	 0000					.extern _M70_CC_brick
+84    	 0000					.extern _M70_CC_frame
+85    	 0000					.extern _M70_CC_postKickstart
+86    	 0000					.extern _M70_CC_postMallocInit
+87    	 0000					.extern _M70_CC_preMallocInit
+88    	 0000					.extern _cl_biquad_prim_register_coeffs
+89    	 0000					.extern _cl_prim_gain_down_24db
+90    	 0000					.extern _cl_prim_gain_up_24db
+91    						X___mc_copy___0_PRIVATE_DATA_1	.xdata_ovly
+91     >> start of macro: .xdata_ovly
+1+    									seg_single X___mc_copy___0_PRIVATE_DATA_1, "X_OVLY", X
+1+     >> start of macro: seg_single
+1+    						  .if ( "X___mc_copy___0_PRIVATE_DATA_1" != "" ) & defined( ___SegStart_X_X___mc_copy___0_PRIVATE_DATA_1 )
+2+    						X___mc_copy___0_PRIVATE_DATA_1    segment
+3+    						  .else
+4+    						X___mc_copy___0_PRIVATE_DATA_1    segment "X_OVLY"
+5+    							.if "X___mc_copy___0_PRIVATE_DATA_1" != ""
+6+    	 0000				___SegStart_X_X___mc_copy___0_PRIVATE_DATA_1
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .xdata_ovly
+92    						S___mc_copy___0_PRIVATE_DATA_1_0	.struct
+93    						_channel_count	.dw (0x0)
+94    						_audio_brick_in	.dw (0x0)
+95    						_audio_brick_out	.dw (0x0)
+96    							.endstruct
+97    						
+98    						X_M70_PI_simple_sum_12_PRIVATE_DATA_1	.xdata_ovly
+98     >> start of macro: .xdata_ovly
+1+    									seg_single X_M70_PI_simple_sum_12_PRIVATE_DATA_1, "X_OVLY", X
+1+     >> start of macro: seg_single
+1+    						  .if ( "X_M70_PI_simple_sum_12_PRIVATE_DATA_1" != "" ) & defined( ___SegStart_X_X_M70_PI_simple_sum_12_PRIVATE_DATA_1 )
+2+    						X_M70_PI_simple_sum_12_PRIVATE_DATA_1    segment
+3+    						  .else
+4+    						X_M70_PI_simple_sum_12_PRIVATE_DATA_1    segment "X_OVLY"
+5+    							.if "X_M70_PI_simple_sum_12_PRIVATE_DATA_1" != ""
+6+    	 0000				___SegStart_X_X_M70_PI_simple_sum_12_PRIVATE_DATA_1
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .xdata_ovly
+99    						S_M70_PI_simple_sum_12_PRIVATE_DATA_1_0	.struct
+100   						_bypass	.dw (0x0)
+101   						_audio_brick_out	.dw (0x0)
+102   						_audio_brick_in	.dw (0x0)
+103   							.dw (0x0)
+104   							.endstruct
+105   						
+106   						X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1	.xdata_ovly
+106    >> start of macro: .xdata_ovly
+1+    									seg_single X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1, "X_OVLY", X
+1+     >> start of macro: seg_single
+1+    						  .if ( "X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1" != "" ) & defined( ___SegStart_X_X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1 )
+2+    						X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1    segment
+3+    						  .else
+4+    						X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1    segment "X_OVLY"
+5+    							.if "X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1" != ""
+6+    	 0000				___SegStart_X_X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .xdata_ovly
+107   						S_M70_PI_simple_gain_db_6_PRIVATE_DATA_1_0	.struct
+108   						_bypass	.dw (0x0)
+109   						_input_ptr	.dw (0x0)
+110   						_output_ptr	.dw (0x0)
+111   							.endstruct
+112   						
+113   						X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1	.xdata_ovly
+113    >> start of macro: .xdata_ovly
+1+    									seg_single X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1, "X_OVLY", X
+1+     >> start of macro: seg_single
+1+    						  .if ( "X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1" != "" ) & defined( ___SegStart_X_X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1 )
+2+    						X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1    segment
+3+    						  .else
+4+    						X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1    segment "X_OVLY"
+5+    							.if "X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1" != ""
+6+    	 0000				___SegStart_X_X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .xdata_ovly
+114   						S_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1_0	.struct
+115   						_delay_buffer_ptr	.dw (0x0)
+116   						_bypass	.dw (0x0)
+117   						_audio_brick_in	.dw (0x0)
+118   						_audio_brick_out	.dw (0x0)
+119   						_sample_resolution	.dw (0x0)
+120   						_position_in_buffer	.dw (0x0)
+121   						_max_delay_size	.dw (0x0)
+122   						_memory_zone	.dw (0x0)
+123   							.endstruct
+124   						
+125   						X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1	.xdata_ovly
+125    >> start of macro: .xdata_ovly
+1+    									seg_single X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1, "X_OVLY", X
+1+     >> start of macro: seg_single
+1+    						  .if ( "X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1" != "" ) & defined( ___SegStart_X_X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1 )
+2+    						X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1    segment
+3+    						  .else
+4+    						X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1    segment "X_OVLY"
+5+    							.if "X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1" != ""
+6+    	 0000				___SegStart_X_X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .xdata_ovly
+126   						S_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1_0	.struct
+127   						_pointer	.dw (0x0)
+128   						_bypass	.dw (0x0)
+129   						_audio_brick_in	.dw (0x0)
+130   						_audio_brick_out	.dw (0x0)
+131   						_biquad_loop_count	.dw (0x0)
+132   						_myccr	.dw (0x0)
+133   						_clear_time	.dw (0x0)
+134   						_clip_ptr	.dw (0x0)
+135   							.endstruct
+136   						
+137   						X_M70_PI___START___2_PRIVATE_DATA_1	.xdata_ovly
+137    >> start of macro: .xdata_ovly
+1+    									seg_single X_M70_PI___START___2_PRIVATE_DATA_1, "X_OVLY", X
+1+     >> start of macro: seg_single
+1+    						  .if ( "X_M70_PI___START___2_PRIVATE_DATA_1" != "" ) & defined( ___SegStart_X_X_M70_PI___START___2_PRIVATE_DATA_1 )
+2+    						X_M70_PI___START___2_PRIVATE_DATA_1    segment
+3+    						  .else
+4+    						X_M70_PI___START___2_PRIVATE_DATA_1    segment "X_OVLY"
+5+    							.if "X_M70_PI___START___2_PRIVATE_DATA_1" != ""
+6+    	 0000				___SegStart_X_X_M70_PI___START___2_PRIVATE_DATA_1
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .xdata_ovly
+138   						S_M70_PI___START___2_PRIVATE_DATA_1_0	.struct
+139   						_headroom_proc	.dw (0x0)
+140   						_channel_mask	.dw (0x0)
+141   							.endstruct
+142   						
+143   						X_M70_PI___END___4_PRIVATE_DATA_1	.xdata_ovly
+143    >> start of macro: .xdata_ovly
+1+    									seg_single X_M70_PI___END___4_PRIVATE_DATA_1, "X_OVLY", X
+1+     >> start of macro: seg_single
+1+    						  .if ( "X_M70_PI___END___4_PRIVATE_DATA_1" != "" ) & defined( ___SegStart_X_X_M70_PI___END___4_PRIVATE_DATA_1 )
+2+    						X_M70_PI___END___4_PRIVATE_DATA_1    segment
+3+    						  .else
+4+    						X_M70_PI___END___4_PRIVATE_DATA_1    segment "X_OVLY"
+5+    							.if "X_M70_PI___END___4_PRIVATE_DATA_1" != ""
+6+    	 0000				___SegStart_X_X_M70_PI___END___4_PRIVATE_DATA_1
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .xdata_ovly
+144   						S_M70_PI___END___4_PRIVATE_DATA_1_0	.struct
+145   						_headroom_proc	.dw (0x0)
+146   						_channel_mask	.dw (0x0)
+147   						_mute_disconnected_channels	.dw (0x0)
+148   						_input_channel	.dw (0x0)
+149   							.dw (0x0)
+150   							.dw (0x0)
+151   							.dw (0x0)
+152   							.dw (0x0)
+153   							.dw (0x0)
+154   							.dw (0x0)
+155   							.dw (0x0)
+156   							.dw (0x0)
+157   							.dw (0x0)
+158   							.dw (0x0)
+159   							.dw (0x0)
+160   							.endstruct
+161   						
+162   						Y_M70_CC_MIF	.ydata_ovly
+162    >> start of macro: .ydata_ovly
+1+    									seg_single Y_M70_CC_MIF, "Y_OVLY", Y
+1+     >> start of macro: seg_single
+1+    						  .if ( "Y_M70_CC_MIF" != "" ) & defined( ___SegStart_Y_Y_M70_CC_MIF )
+2+    						Y_M70_CC_MIF    segment
+3+    						  .else
+4+    						Y_M70_CC_MIF    segment "Y_OVLY"
+5+    							.if "Y_M70_CC_MIF" != ""
+6+    	 0000				___SegStart_Y_Y_M70_CC_MIF
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .ydata_ovly
+163   						S_M70_CC_MIF_0	.struct
+164   						_mcv_ptr	.dw (0x0)
+165   						_mct_ptr	.dw (0x0)
+166   						_reserved1	.dw (0x0)
+167   						_reserved2	.dw (0x0)
+168   						_reserved3	.dw (0x0)
+169   						_reserved4	.dw (0x0)
+170   						_reserved5	.dw (0x0)
+171   						_reserved6	.dw (0x0)
+172   							.endstruct
+173   						
+174   						X_M70_PI_simple_sum_12_PUBLIC_DATA	.xdata_ovly
+174    >> start of macro: .xdata_ovly
+1+    									seg_single X_M70_PI_simple_sum_12_PUBLIC_DATA, "X_OVLY", X
+1+     >> start of macro: seg_single
+1+    						  .if ( "X_M70_PI_simple_sum_12_PUBLIC_DATA" != "" ) & defined( ___SegStart_X_X_M70_PI_simple_sum_12_PUBLIC_DATA )
+2+    						X_M70_PI_simple_sum_12_PUBLIC_DATA    segment
+3+    						  .else
+4+    						X_M70_PI_simple_sum_12_PUBLIC_DATA    segment "X_OVLY"
+5+    							.if "X_M70_PI_simple_sum_12_PUBLIC_DATA" != ""
+6+    	 0000				___SegStart_X_X_M70_PI_simple_sum_12_PUBLIC_DATA
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .xdata_ovly
+175   						S_M70_PI_simple_sum_12_PUBLIC_DATA_0	.struct
+176   						_shift_value	.dw (0x0)
+177   							.endstruct
+178   						
+179   						X_M70_PI_filter_highpass_transposed_direct_II_11_PUBLIC_DATA	.xdata_ovly
+179    >> start of macro: .xdata_ovly
+1+    									seg_single X_M70_PI_filter_highpass_transposed_direct_II_11_PUBLIC_DATA, "X_OVLY", X
+1+     >> start of macro: seg_single
+1+    						  .if ( "X_M70_PI_filter_highpass_transposed_direct_II_11_PUBLIC_DATA" != "" ) & defined( ___SegStart_X_X_M70_PI_filter_highpass_transposed_direct_II_11_PUBLIC_DATA )
+2+    						X_M70_PI_filter_highpass_transposed_direct_II_11_PUBLIC_DATA    segment
+3+    						  .else
+4+    						X_M70_PI_filter_highpass_transposed_direct_II_11_PUBLIC_DATA    segment "X_OVLY"
+5+    							.if "X_M70_PI_filter_highpass_transposed_direct_II_11_PUBLIC_DATA" != ""
+6+    	 0000				___SegStart_X_X_M70_PI_filter_highpass_transposed_direct_II_11_PUBLIC_DATA
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .xdata_ovly
+180   						S_M70_PI_filter_highpass_transposed_direct_II_11_PUBLIC_DATA_0	.struct
+181   						_hold_count	.dw (0x0)
+182   						_ramp	.dw (0x0)
+183   						_k	.dw (0x0)
+184   						_structure_instance	.dw (0x0)
+185   							.dw (0x0)
+186   							.dw (0x0)
+187   							.dw (0x0)
+188   							.dw (0x0)
+189   							.dw (0x0)
+190   						_clip	.dw (0x0)
+191   							.endstruct
+192   						
+193   						X_M70_PI_simple_delay_ms_8_PUBLIC_DATA	.xdata_ovly
+193    >> start of macro: .xdata_ovly
+1+    									seg_single X_M70_PI_simple_delay_ms_8_PUBLIC_DATA, "X_OVLY", X
+1+     >> start of macro: seg_single
+1+    						  .if ( "X_M70_PI_simple_delay_ms_8_PUBLIC_DATA" != "" ) & defined( ___SegStart_X_X_M70_PI_simple_delay_ms_8_PUBLIC_DATA )
+2+    						X_M70_PI_simple_delay_ms_8_PUBLIC_DATA    segment
+3+    						  .else
+4+    						X_M70_PI_simple_delay_ms_8_PUBLIC_DATA    segment "X_OVLY"
+5+    							.if "X_M70_PI_simple_delay_ms_8_PUBLIC_DATA" != ""
+6+    	 0000				___SegStart_X_X_M70_PI_simple_delay_ms_8_PUBLIC_DATA
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .xdata_ovly
+194   						S_M70_PI_simple_delay_ms_8_PUBLIC_DATA_0	.struct
+195   						_enable	.dw (0x0)
+196   						_delay_value	.dw (0x0)
+197   							.endstruct
+198   						
+199   						X_M70_PI_simple_gain_db_6_PUBLIC_DATA	.xdata_ovly
+199    >> start of macro: .xdata_ovly
+1+    									seg_single X_M70_PI_simple_gain_db_6_PUBLIC_DATA, "X_OVLY", X
+1+     >> start of macro: seg_single
+1+    						  .if ( "X_M70_PI_simple_gain_db_6_PUBLIC_DATA" != "" ) & defined( ___SegStart_X_X_M70_PI_simple_gain_db_6_PUBLIC_DATA )
+2+    						X_M70_PI_simple_gain_db_6_PUBLIC_DATA    segment
+3+    						  .else
+4+    						X_M70_PI_simple_gain_db_6_PUBLIC_DATA    segment "X_OVLY"
+5+    							.if "X_M70_PI_simple_gain_db_6_PUBLIC_DATA" != ""
+6+    	 0000				___SegStart_X_X_M70_PI_simple_gain_db_6_PUBLIC_DATA
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .xdata_ovly
+200   						S_M70_PI_simple_gain_db_6_PUBLIC_DATA_0	.struct
+201   						_Gain	.dw (0x0)
+202   						_signal_invert	.dw (0x0)
+203   							.endstruct
+204   						
+205   						X_M70_PI___END___4_PUBLIC_DATA	.xdata_ovly
+205    >> start of macro: .xdata_ovly
+1+    									seg_single X_M70_PI___END___4_PUBLIC_DATA, "X_OVLY", X
+1+     >> start of macro: seg_single
+1+    						  .if ( "X_M70_PI___END___4_PUBLIC_DATA" != "" ) & defined( ___SegStart_X_X_M70_PI___END___4_PUBLIC_DATA )
+2+    						X_M70_PI___END___4_PUBLIC_DATA    segment
+3+    						  .else
+4+    						X_M70_PI___END___4_PUBLIC_DATA    segment "X_OVLY"
+5+    							.if "X_M70_PI___END___4_PUBLIC_DATA" != ""
+6+    	 0000				___SegStart_X_X_M70_PI___END___4_PUBLIC_DATA
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .xdata_ovly
+206   						S_M70_PI___END___4_PUBLIC_DATA_0	.struct
+207   						_hold_count	.dw (0x0)
+208   						_clip	.dw (0x0)
+209   							.dw (0x0)
+210   							.dw (0x0)
+211   							.dw (0x0)
+212   							.dw (0x0)
+213   							.dw (0x0)
+214   							.dw (0x0)
+215   							.dw (0x0)
+216   							.dw (0x0)
+217   							.dw (0x0)
+218   							.dw (0x0)
+219   							.dw (0x0)
+220   							.endstruct
+221   						
+222   						Y_M70_CC_MCV	.ydata_ovly
+222    >> start of macro: .ydata_ovly
+1+    									seg_single Y_M70_CC_MCV, "Y_OVLY", Y
+1+     >> start of macro: seg_single
+1+    						  .if ( "Y_M70_CC_MCV" != "" ) & defined( ___SegStart_Y_Y_M70_CC_MCV )
+2+    						Y_M70_CC_MCV    segment
+3+    						  .else
+4+    						Y_M70_CC_MCV    segment "Y_OVLY"
+5+    							.if "Y_M70_CC_MCV" != ""
+6+    	 0000				___SegStart_Y_Y_M70_CC_MCV
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .ydata_ovly
+223   						S_M70_CC_MCV_0	.struct
+224   						_sample_rate	.dw (0x0)
+225   						_M70_PI___END___4_PUBLIC_DATA S_M70_PI___END___4_PUBLIC_DATA_0
+226   						_M70_PI_simple_gain_db_6_PUBLIC_DATA S_M70_PI_simple_gain_db_6_PUBLIC_DATA_0
+227   						_M70_PI_simple_delay_ms_8_PUBLIC_DATA S_M70_PI_simple_delay_ms_8_PUBLIC_DATA_0
+228   						_M70_PI_filter_highpass_transposed_direct_II_11_PUBLIC_DATA S_M70_PI_filter_highpass_transposed_direct_II_11_PUBLIC_DATA_0
+229   						_M70_PI_simple_sum_12_PUBLIC_DATA S_M70_PI_simple_sum_12_PUBLIC_DATA_0
+230   							.endstruct
+231   						
+232   						Y_M70_CC_MCT	.ydata_ovly
+232    >> start of macro: .ydata_ovly
+1+    									seg_single Y_M70_CC_MCT, "Y_OVLY", Y
+1+     >> start of macro: seg_single
+1+    						  .if ( "Y_M70_CC_MCT" != "" ) & defined( ___SegStart_Y_Y_M70_CC_MCT )
+2+    						Y_M70_CC_MCT    segment
+3+    						  .else
+4+    						Y_M70_CC_MCT    segment "Y_OVLY"
+5+    							.if "Y_M70_CC_MCT" != ""
+6+    	 0000				___SegStart_Y_Y_M70_CC_MCT
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .ydata_ovly
+233   						S_M70_CC_MCT_0	.struct
+234   						_prekick_func_ptr	.dw (0x0)
+235   						_postkick_func_ptr	.dw (0x0)
+236   						_timer_func_ptr	.dw (0x0)
+237   						_frame_func_ptr	.dw (0x0)
+238   						_block_func_ptr	.dw (0x0)
+239   						_reserved1	.dw (0x0)
+240   						_background_func_ptr	.dw (0x0)
+241   						_postmalloc_func_ptr	.dw (0x0)
+242   						_premalloc_func_ptr	.dw (0x0)
+243   							.endstruct
+244   						
+245   						Y_M70_CC_BUFFER_0	.ydata_ovly align 16
+245    >> start of macro: .ydata_ovly align
+1+    									seg_align Y_M70_CC_BUFFER_0, "Y_OVLY", Y, 16
+1+     >> start of macro: seg_align
+1+    						Y_M70_CC_BUFFER_0    SEGMENT "Y_OVLY" ALIGN( 16 )
+2+    						  .if "Y_M70_CC_BUFFER_0" != ""
+3+    	 0000				___SegStart_Y_Y_M70_CC_BUFFER_0
+4+    						  .endif
+5+    							#RememberSegmentType
+6+     >> end of macro: seg_align
+2+     >> end of macro: .ydata_ovly align
+246   	 0000				_M70_CC_BUFFER_0
+247   	 0000					.bss (0x10)
+248   						Y_M70_CC_BUFFER_0_PTR	.ydata_ovly
+248    >> start of macro: .ydata_ovly
+1+    									seg_single Y_M70_CC_BUFFER_0_PTR, "Y_OVLY", Y
+1+     >> start of macro: seg_single
+1+    						  .if ( "Y_M70_CC_BUFFER_0_PTR" != "" ) & defined( ___SegStart_Y_Y_M70_CC_BUFFER_0_PTR )
+2+    						Y_M70_CC_BUFFER_0_PTR    segment
+3+    						  .else
+4+    						Y_M70_CC_BUFFER_0_PTR    segment "Y_OVLY"
+5+    							.if "Y_M70_CC_BUFFER_0_PTR" != ""
+6+    	 0000				___SegStart_Y_Y_M70_CC_BUFFER_0_PTR
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .ydata_ovly
+249   	 0000				_M70_CC_BUFFER_0_PTR
+250   	 0000					.dw _M70_CC_BUFFER_0
+	 0000	 00000000	 
+251   						Y_M70_CC_BUFFER_1	.ydata_ovly align 16
+251    >> start of macro: .ydata_ovly align
+1+    									seg_align Y_M70_CC_BUFFER_1, "Y_OVLY", Y, 16
+1+     >> start of macro: seg_align
+1+    						Y_M70_CC_BUFFER_1    SEGMENT "Y_OVLY" ALIGN( 16 )
+2+    						  .if "Y_M70_CC_BUFFER_1" != ""
+3+    	 0000				___SegStart_Y_Y_M70_CC_BUFFER_1
+4+    						  .endif
+5+    							#RememberSegmentType
+6+     >> end of macro: seg_align
+2+     >> end of macro: .ydata_ovly align
+252   	 0000				_M70_CC_BUFFER_1
+253   	 0000					.bss (0x10)
+254   						Y_M70_CC_BUFFER_1_PTR	.ydata_ovly
+254    >> start of macro: .ydata_ovly
+1+    									seg_single Y_M70_CC_BUFFER_1_PTR, "Y_OVLY", Y
+1+     >> start of macro: seg_single
+1+    						  .if ( "Y_M70_CC_BUFFER_1_PTR" != "" ) & defined( ___SegStart_Y_Y_M70_CC_BUFFER_1_PTR )
+2+    						Y_M70_CC_BUFFER_1_PTR    segment
+3+    						  .else
+4+    						Y_M70_CC_BUFFER_1_PTR    segment "Y_OVLY"
+5+    							.if "Y_M70_CC_BUFFER_1_PTR" != ""
+6+    	 0000				___SegStart_Y_Y_M70_CC_BUFFER_1_PTR
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .ydata_ovly
+255   	 0000				_M70_CC_BUFFER_1_PTR
+256   	 0000					.dw _M70_CC_BUFFER_1
+	 0000	 00000000	 
+257   						Y_M70_CC_BUFFER_2	.ydata_ovly align 16
+257    >> start of macro: .ydata_ovly align
+1+    									seg_align Y_M70_CC_BUFFER_2, "Y_OVLY", Y, 16
+1+     >> start of macro: seg_align
+1+    						Y_M70_CC_BUFFER_2    SEGMENT "Y_OVLY" ALIGN( 16 )
+2+    						  .if "Y_M70_CC_BUFFER_2" != ""
+3+    	 0000				___SegStart_Y_Y_M70_CC_BUFFER_2
+4+    						  .endif
+5+    							#RememberSegmentType
+6+     >> end of macro: seg_align
+2+     >> end of macro: .ydata_ovly align
+258   	 0000				_M70_CC_BUFFER_2
+259   	 0000					.bss (0x10)
+260   						Y_M70_CC_BUFFER_2_PTR	.ydata_ovly
+260    >> start of macro: .ydata_ovly
+1+    									seg_single Y_M70_CC_BUFFER_2_PTR, "Y_OVLY", Y
+1+     >> start of macro: seg_single
+1+    						  .if ( "Y_M70_CC_BUFFER_2_PTR" != "" ) & defined( ___SegStart_Y_Y_M70_CC_BUFFER_2_PTR )
+2+    						Y_M70_CC_BUFFER_2_PTR    segment
+3+    						  .else
+4+    						Y_M70_CC_BUFFER_2_PTR    segment "Y_OVLY"
+5+    							.if "Y_M70_CC_BUFFER_2_PTR" != ""
+6+    	 0000				___SegStart_Y_Y_M70_CC_BUFFER_2_PTR
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .ydata_ovly
+261   	 0000				_M70_CC_BUFFER_2_PTR
+262   	 0000					.dw _M70_CC_BUFFER_2
+	 0000	 00000000	 
+263   						Y_M70_CC_BUFFER_3	.ydata_ovly align 16
+263    >> start of macro: .ydata_ovly align
+1+    									seg_align Y_M70_CC_BUFFER_3, "Y_OVLY", Y, 16
+1+     >> start of macro: seg_align
+1+    						Y_M70_CC_BUFFER_3    SEGMENT "Y_OVLY" ALIGN( 16 )
+2+    						  .if "Y_M70_CC_BUFFER_3" != ""
+3+    	 0000				___SegStart_Y_Y_M70_CC_BUFFER_3
+4+    						  .endif
+5+    							#RememberSegmentType
+6+     >> end of macro: seg_align
+2+     >> end of macro: .ydata_ovly align
+264   	 0000				_M70_CC_BUFFER_3
+265   	 0000					.bss (0x10)
+266   						Y_M70_CC_BUFFER_3_PTR	.ydata_ovly
+266    >> start of macro: .ydata_ovly
+1+    									seg_single Y_M70_CC_BUFFER_3_PTR, "Y_OVLY", Y
+1+     >> start of macro: seg_single
+1+    						  .if ( "Y_M70_CC_BUFFER_3_PTR" != "" ) & defined( ___SegStart_Y_Y_M70_CC_BUFFER_3_PTR )
+2+    						Y_M70_CC_BUFFER_3_PTR    segment
+3+    						  .else
+4+    						Y_M70_CC_BUFFER_3_PTR    segment "Y_OVLY"
+5+    							.if "Y_M70_CC_BUFFER_3_PTR" != ""
+6+    	 0000				___SegStart_Y_Y_M70_CC_BUFFER_3_PTR
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .ydata_ovly
+267   	 0000				_M70_CC_BUFFER_3_PTR
+268   	 0000					.dw _M70_CC_BUFFER_3
+	 0000	 00000000	 
+269   						Y_M70_CC_MALLOCED	.ydata_ovly
+269    >> start of macro: .ydata_ovly
+1+    									seg_single Y_M70_CC_MALLOCED, "Y_OVLY", Y
+1+     >> start of macro: seg_single
+1+    						  .if ( "Y_M70_CC_MALLOCED" != "" ) & defined( ___SegStart_Y_Y_M70_CC_MALLOCED )
+2+    						Y_M70_CC_MALLOCED    segment
+3+    						  .else
+4+    						Y_M70_CC_MALLOCED    segment "Y_OVLY"
+5+    							.if "Y_M70_CC_MALLOCED" != ""
+6+    	 0000				___SegStart_Y_Y_M70_CC_MALLOCED
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .ydata_ovly
+270   	 0000				_M70_CC_MALLOCED
+271   	 0000					.dw  (0x1)
+	 0000	 00000001	 
+272   						Y_M70_CC_MALLOC_PTR	.ydata_ovly
+272    >> start of macro: .ydata_ovly
+1+    									seg_single Y_M70_CC_MALLOC_PTR, "Y_OVLY", Y
+1+     >> start of macro: seg_single
+1+    						  .if ( "Y_M70_CC_MALLOC_PTR" != "" ) & defined( ___SegStart_Y_Y_M70_CC_MALLOC_PTR )
+2+    						Y_M70_CC_MALLOC_PTR    segment
+3+    						  .else
+4+    						Y_M70_CC_MALLOC_PTR    segment "Y_OVLY"
+5+    							.if "Y_M70_CC_MALLOC_PTR" != ""
+6+    	 0000				___SegStart_Y_Y_M70_CC_MALLOC_PTR
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .ydata_ovly
+273   	 0000				_M70_CC_MALLOC_PTR
+274   	 0000					.dw _M70_PI_simple_delay_ms_8_PRIVATE_DATA_1
+	 0000	 00000000	 
+275   	 0001					.dw  (0x1)
+	 0001	 00000001	 
+276   	 0002					.dw  (0x1f0)
+	 0002	 000001F0	 
+277   	 0003					.dw  (0x0)
+	 0003	 00000000	 
+278   	 0004					.dw  (0x0)
+	 0004	 00000000	 
+279   	 0005					.dw  (0x0)
+	 0005	 00000000	 
+280   	 0006					.dw  (0x0)
+	 0006	 00000000	 
+281   	 0007					.dw  (0x0)
+	 0007	 00000000	 
+282   						Y_M70_CC_MCT	.ydata_ovly
+282    >> start of macro: .ydata_ovly
+1+    									seg_single Y_M70_CC_MCT, "Y_OVLY", Y
+1+     >> start of macro: seg_single
+1+    						  .if ( "Y_M70_CC_MCT" != "" ) & defined( ___SegStart_Y_Y_M70_CC_MCT )
+2+    						Y_M70_CC_MCT    segment
+3+    						  .else
+4+    						Y_M70_CC_MCT    segment "Y_OVLY"
+5+    							.if "Y_M70_CC_MCT" != ""
+6+    						___SegStart_Y_Y_M70_CC_MCT
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .ydata_ovly
+283   						_M70_CC_MCT S_M70_CC_MCT_0 (
+284   						 0x0,
+285   						 _M70_CC_postKickstart,
+286   						 0x0,
+287   						 _M70_CC_frame,
+288   						 _M70_CC_brick,
+289   						 0x0,
+290   						 _M70_CC_background,
+291   						 _M70_CC_postMallocInit,
+292   						 _M70_CC_preMallocInit
+293   						)
+293   	 0000				(null)	 0000	 00000000	 
+293   	 0001				(null)	 0001	 00000000	 
+293   	 0002				(null)	 0002	 00000000	 
+293   	 0003				(null)	 0003	 00000000	 
+293   	 0004				(null)	 0004	 00000000	 
+293   	 0005				(null)	 0005	 00000000	 
+293   	 0006				(null)	 0006	 00000000	 
+293   	 0007				(null)	 0007	 00000000	 
+293   	 0008				(null)	 0008	 00000000	 
+294   						
+295   						Y_M70_CC_MCV	.ydata_ovly
+295    >> start of macro: .ydata_ovly
+1+    									seg_single Y_M70_CC_MCV, "Y_OVLY", Y
+1+     >> start of macro: seg_single
+1+    						  .if ( "Y_M70_CC_MCV" != "" ) & defined( ___SegStart_Y_Y_M70_CC_MCV )
+2+    						Y_M70_CC_MCV    segment
+3+    						  .else
+4+    						Y_M70_CC_MCV    segment "Y_OVLY"
+5+    							.if "Y_M70_CC_MCV" != ""
+6+    						___SegStart_Y_Y_M70_CC_MCV
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .ydata_ovly
+296   						_M70_CC_MCV S_M70_CC_MCV_0 (
+297   						 0x0,
+298   						 0x0,
+299   						 0x0,
+300   						 0x0,
+301   						 0x0,
+302   						 0x0,
+303   						 0x0,
+304   						 0x0,
+305   						 0x0,
+306   						 0x0,
+307   						 0x0,
+308   						 0x0,
+309   						 0x0,
+310   						 0x0,
+311   						 0xfe800000,
+312   						 0x0,
+313   						 0x1,
+314   						 0xa0000,
+315   						 0xbb8,
+316   						 0x147ae14,
+317   						 0x0,
+318   						 0x7fffffff,
+319   						 0x7fffffff,
+320   						 0x1,
+321   						 0x7fffffff,
+322   						 0x7fffffff,
+323   						 0x1,
+324   						 0x0,
+325   						 0x0
+326   						)
+326   	 0000				(null)	 0000	 00000000	 
+326   	 0001				(null)	 0001	 00000000	 
+326   	 0002				(null)	 0002	 00000000	 
+326   	 0003				(null)	 0003	 00000000	 
+326   	 0004				(null)	 0004	 00000000	 
+326   	 0005				(null)	 0005	 00000000	 
+326   	 0006				(null)	 0006	 00000000	 
+326   	 0007				(null)	 0007	 00000000	 
+326   	 0008				(null)	 0008	 00000000	 
+326   	 0009				(null)	 0009	 00000000	 
+326   	 000A				(null)	 000A	 00000000	 
+326   	 000B				(null)	 000B	 00000000	 
+326   	 000C				(null)	 000C	 00000000	 
+326   	 000D				(null)	 000D	 00000000	 
+326   	 000E				(null)	 000E	 FE800000	 
+326   	 000F				(null)	 000F	 00000000	 
+326   	 0010				(null)	 0010	 00000001	 
+326   	 0011				(null)	 0011	 000A0000	 
+326   	 0012				(null)	 0012	 00000BB8	 
+326   	 0013				(null)	 0013	 0147AE14	 
+326   	 0014				(null)	 0014	 00000000	 
+326   	 0015				(null)	 0015	 7FFFFFFF	 
+326   	 0016				(null)	 0016	 7FFFFFFF	 
+326   	 0017				(null)	 0017	 00000001	 
+326   	 0018				(null)	 0018	 7FFFFFFF	 
+326   	 0019				(null)	 0019	 7FFFFFFF	 
+326   	 001A				(null)	 001A	 00000001	 
+326   	 001B				(null)	 001B	 00000000	 
+326   	 001C				(null)	 001C	 00000000	 
+327   						
+328   						Y_M70_CC_MIF	.ydata_ovly
+328    >> start of macro: .ydata_ovly
+1+    									seg_single Y_M70_CC_MIF, "Y_OVLY", Y
+1+     >> start of macro: seg_single
+1+    						  .if ( "Y_M70_CC_MIF" != "" ) & defined( ___SegStart_Y_Y_M70_CC_MIF )
+2+    						Y_M70_CC_MIF    segment
+3+    						  .else
+4+    						Y_M70_CC_MIF    segment "Y_OVLY"
+5+    							.if "Y_M70_CC_MIF" != ""
+6+    						___SegStart_Y_Y_M70_CC_MIF
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .ydata_ovly
+329   						_M70_CC_MIF S_M70_CC_MIF_0 (
+330   						 _M70_CC_MCV,
+331   						 _M70_CC_MCT,
+332   						 0x0,
+333   						 0x0,
+334   						 0x0,
+335   						 0x0,
+336   						 0x0,
+337   						 0x0
+338   						)
+338   	 0000				(null)	 0000	 00000000	 
+338   	 0001				(null)	 0001	 00000000	 
+338   	 0002				(null)	 0002	 00000000	 
+338   	 0003				(null)	 0003	 00000000	 
+338   	 0004				(null)	 0004	 00000000	 
+338   	 0005				(null)	 0005	 00000000	 
+338   	 0006				(null)	 0006	 00000000	 
+338   	 0007				(null)	 0007	 00000000	 
+339   						
+340   						Y_M70_CC_PCT	.ydata_ovly
+340    >> start of macro: .ydata_ovly
+1+    									seg_single Y_M70_CC_PCT, "Y_OVLY", Y
+1+     >> start of macro: seg_single
+1+    						  .if ( "Y_M70_CC_PCT" != "" ) & defined( ___SegStart_Y_Y_M70_CC_PCT )
+2+    						Y_M70_CC_PCT    segment
+3+    						  .else
+4+    						Y_M70_CC_PCT    segment "Y_OVLY"
+5+    							.if "Y_M70_CC_PCT" != ""
+6+    	 0000				___SegStart_Y_Y_M70_CC_PCT
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .ydata_ovly
+341   	 0000				_M70_CC_PCT
+342   	 0000					.dw ___START__pct
+	 0000	 00000000	 
+343   	 0001					.dw  (0x0)
+	 0001	 00000000	 
+344   	 0002					.dw _M70_PI___START___2_PRIVATE_DATA_1
+	 0002	 00000000	 
+345   	 0003					.dw  (0x0)
+	 0003	 00000000	 
+346   	 0004					.dw _filter_highpass_transposed_direct_II_pct
+	 0004	 00000000	 
+347   	 0005					.dw _M70_CC_MCV+18
+	 0005	 00000012	 
+348   	 0006					.dw _M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1
+	 0006	 00000000	 
+349   	 0007					.dw _M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_2
+	 0007	 00000000	 
+350   	 0008					.dw _simple_gain_db_pct
+	 0008	 00000000	 
+351   	 0009					.dw _M70_CC_MCV+14
+	 0009	 0000000E	 
+352   	 000A					.dw _M70_PI_simple_gain_db_6_PRIVATE_DATA_1
+	 000A	 00000000	 
+353   	 000B					.dw  (0x0)
+	 000B	 00000000	 
+354   	 000C					.dw ___mc_copy__pct
+	 000C	 00000000	 
+355   	 000D					.dw  (0x0)
+	 000D	 00000000	 
+356   	 000E					.dw ___mc_copy___0_PRIVATE_DATA_1
+	 000E	 00000000	 
+357   	 000F					.dw  (0x0)
+	 000F	 00000000	 
+358   	 0010					.dw _X_P_BY_Simple_delay_ms_PCT
+	 0010	 00000000	 
+359   	 0011					.dw _M70_CC_MCV+16
+	 0011	 00000010	 
+360   	 0012					.dw _M70_PI_simple_delay_ms_8_PRIVATE_DATA_1
+	 0012	 00000000	 
+361   	 0013					.dw  (0x0)
+	 0013	 00000000	 
+362   	 0014					.dw _simple_sum_pct
+	 0014	 00000000	 
+363   	 0015					.dw _M70_CC_MCV+28
+	 0015	 0000001C	 
+364   	 0016					.dw _M70_PI_simple_sum_12_PRIVATE_DATA_1
+	 0016	 00000000	 
+365   	 0017					.dw  (0x0)
+	 0017	 00000000	 
+366   	 0018					.dw ___END__pct
+	 0018	 00000000	 
+367   	 0019					.dw _M70_CC_MCV+1
+	 0019	 00000001	 
+368   	 001A					.dw _M70_PI___END___4_PRIVATE_DATA_1
+	 001A	 00000000	 
+369   	 001B					.dw  (0x0)
+	 001B	 00000000	 
+370   	 001C					.dw  (0x0)
+	 001C	 00000000	 
+371   	 001D					.dw  (0x0)
+	 001D	 00000000	 
+372   	 001E					.dw  (0x0)
+	 001E	 00000000	 
+373   	 001F					.dw  (0x0)
+	 001F	 00000000	 
+374   						X_M70_PI___END___4_PRIVATE_DATA_1	.xdata_ovly
+374    >> start of macro: .xdata_ovly
+1+    									seg_single X_M70_PI___END___4_PRIVATE_DATA_1, "X_OVLY", X
+1+     >> start of macro: seg_single
+1+    						  .if ( "X_M70_PI___END___4_PRIVATE_DATA_1" != "" ) & defined( ___SegStart_X_X_M70_PI___END___4_PRIVATE_DATA_1 )
+2+    						X_M70_PI___END___4_PRIVATE_DATA_1    segment
+3+    						  .else
+4+    						X_M70_PI___END___4_PRIVATE_DATA_1    segment "X_OVLY"
+5+    							.if "X_M70_PI___END___4_PRIVATE_DATA_1" != ""
+6+    						___SegStart_X_X_M70_PI___END___4_PRIVATE_DATA_1
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .xdata_ovly
+375   						_M70_PI___END___4_PRIVATE_DATA_1 S_M70_PI___END___4_PRIVATE_DATA_1_0 (
+376   						 _cl_prim_gain_up_24db,
+377   						 0xf,
+378   						 0x1,
+379   						 _M70_CC_BUFFER_0_PTR,
+380   						 _M70_CC_BUFFER_3_PTR,
+381   						 _M70_CC_BUFFER_1_PTR,
+382   						 _M70_CC_BUFFER_2_PTR,
+383   						 _cl_buffer_silence_PTR,
+384   						 _cl_buffer_silence_PTR,
+385   						 _cl_buffer_silence_PTR,
+386   						 _cl_buffer_silence_PTR,
+387   						 _cl_buffer_silence_PTR,
+388   						 _cl_buffer_silence_PTR,
+389   						 _cl_buffer_silence_PTR,
+390   						 _cl_buffer_silence_PTR
+391   						)
+391   	 0000				(null)	 0000	 00000000	 
+391   	 0001				(null)	 0001	 0000000F	 
+391   	 0002				(null)	 0002	 00000001	 
+391   	 0003				(null)	 0003	 00000000	 
+391   	 0004				(null)	 0004	 00000000	 
+391   	 0005				(null)	 0005	 00000000	 
+391   	 0006				(null)	 0006	 00000000	 
+391   	 0007				(null)	 0007	 00000000	 
+391   	 0008				(null)	 0008	 00000000	 
+391   	 0009				(null)	 0009	 00000000	 
+391   	 000A				(null)	 000A	 00000000	 
+391   	 000B				(null)	 000B	 00000000	 
+391   	 000C				(null)	 000C	 00000000	 
+391   	 000D				(null)	 000D	 00000000	 
+391   	 000E				(null)	 000E	 00000000	 
+392   						
+393   						X_M70_PI___START___2_PRIVATE_DATA_1	.xdata_ovly
+393    >> start of macro: .xdata_ovly
+1+    									seg_single X_M70_PI___START___2_PRIVATE_DATA_1, "X_OVLY", X
+1+     >> start of macro: seg_single
+1+    						  .if ( "X_M70_PI___START___2_PRIVATE_DATA_1" != "" ) & defined( ___SegStart_X_X_M70_PI___START___2_PRIVATE_DATA_1 )
+2+    						X_M70_PI___START___2_PRIVATE_DATA_1    segment
+3+    						  .else
+4+    						X_M70_PI___START___2_PRIVATE_DATA_1    segment "X_OVLY"
+5+    							.if "X_M70_PI___START___2_PRIVATE_DATA_1" != ""
+6+    						___SegStart_X_X_M70_PI___START___2_PRIVATE_DATA_1
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .xdata_ovly
+394   						_M70_PI___START___2_PRIVATE_DATA_1 S_M70_PI___START___2_PRIVATE_DATA_1_0 (
+395   						 _cl_prim_gain_down_24db,
+396   						 0x3
+397   						)
+397   	 0000				(null)	 0000	 00000000	 
+397   	 0001				(null)	 0001	 00000003	 
+398   						
+399   						X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1	.xdata_ovly
+399    >> start of macro: .xdata_ovly
+1+    									seg_single X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1, "X_OVLY", X
+1+     >> start of macro: seg_single
+1+    						  .if ( "X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1" != "" ) & defined( ___SegStart_X_X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1 )
+2+    						X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1    segment
+3+    						  .else
+4+    						X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1    segment "X_OVLY"
+5+    							.if "X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1" != ""
+6+    						___SegStart_X_X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .xdata_ovly
+400   						_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1 S_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1_0 (
+401   						 _cl_biquad_prim_register_coeffs,
+402   						 _cl_constant_zero_x,
+403   						 ___X_BY_IOBUFFER_PTRS,
+404   						 _M70_CC_BUFFER_0_PTR,
+405   						 0x2,
+406   						 0x0,
+407   						 0x0,
+408   						 _M70_CC_MCV+27
+409   						)
+409   	 0000				(null)	 0000	 00000000	 
+409   	 0001				(null)	 0001	 00000000	 
+409   	 0002				(null)	 0002	 00000000	 
+409   	 0003				(null)	 0003	 00000000	 
+409   	 0004				(null)	 0004	 00000002	 
+409   	 0005				(null)	 0005	 00000000	 
+409   	 0006				(null)	 0006	 00000000	 
+409   	 0007				(null)	 0007	 0000001B	 
+410   						
+411   						L_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_2	.data_ovly
+411    >> start of macro: .data_ovly
+1+    									seg_single L_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_2, "L_OVLY", L
+1+     >> start of macro: seg_single
+1+    						  .if ( "L_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_2" != "" ) & defined( ___SegStart_L_L_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_2 )
+2+    						L_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_2    segment
+3+    						  .else
+4+    						L_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_2    segment "L_OVLY"
+5+    							.if "L_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_2" != ""
+6+    	 0000				___SegStart_L_L_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_2
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .data_ovly
+412   	 0000				_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_2
+413   	 0000					.dw  (0x0), (0x0)
+	 0000	 0000000000000000	 
+414   	 0001					.dw  (0x1), (0x1)
+	 0001	 0000000100000001	 
+415   	 0002					.dw  (0x1), (0x1)
+	 0002	 0000000100000001	 
+416   	 0003					.dw  (0x0), (0x0)
+	 0003	 0000000000000000	 
+417   	 0004					.dw  (0x0), (0x0)
+	 0004	 0000000000000000	 
+418   	 0005					.dw  (0x1), (0x1)
+	 0005	 0000000100000001	 
+419   	 0006					.dw  (0x1), (0x1)
+	 0006	 0000000100000001	 
+420   	 0007					.dw  (0x0), (0x0)
+	 0007	 0000000000000000	 
+421   	 0008					.dw  (0x0), (0x0)
+	 0008	 0000000000000000	 
+422   						X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1	.xdata_ovly
+422    >> start of macro: .xdata_ovly
+1+    									seg_single X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1, "X_OVLY", X
+1+     >> start of macro: seg_single
+1+    						  .if ( "X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1" != "" ) & defined( ___SegStart_X_X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1 )
+2+    						X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1    segment
+3+    						  .else
+4+    						X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1    segment "X_OVLY"
+5+    							.if "X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1" != ""
+6+    						___SegStart_X_X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .xdata_ovly
+423   						_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1 S_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1_0 (
+424   						 0x0,
+425   						 _cl_constant_zero_x,
+426   						 _M70_CC_BUFFER_1_PTR,
+427   						 _M70_CC_BUFFER_3_PTR,
+428   						 0x10,
+429   						 0x0,
+430   						 0x1f0,
+431   						 0x1
+432   						)
+432   	 0000				(null)	 0000	 00000000	 
+432   	 0001				(null)	 0001	 00000000	 
+432   	 0002				(null)	 0002	 00000000	 
+432   	 0003				(null)	 0003	 00000000	 
+432   	 0004				(null)	 0004	 00000010	 
+432   	 0005				(null)	 0005	 00000000	 
+432   	 0006				(null)	 0006	 000001F0	 
+432   	 0007				(null)	 0007	 00000001	 
+433   						
+434   						X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1	.xdata_ovly
+434    >> start of macro: .xdata_ovly
+1+    									seg_single X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1, "X_OVLY", X
+1+     >> start of macro: seg_single
+1+    						  .if ( "X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1" != "" ) & defined( ___SegStart_X_X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1 )
+2+    						X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1    segment
+3+    						  .else
+4+    						X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1    segment "X_OVLY"
+5+    							.if "X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1" != ""
+6+    						___SegStart_X_X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .xdata_ovly
+435   						_M70_PI_simple_gain_db_6_PRIVATE_DATA_1 S_M70_PI_simple_gain_db_6_PRIVATE_DATA_1_0 (
+436   						 _cl_constant_zero_x,
+437   						 ___X_BY_IOBUFFER_PTRS+1,
+438   						 _M70_CC_BUFFER_1_PTR
+439   						)
+439   	 0000				(null)	 0000	 00000000	 
+439   	 0001				(null)	 0001	 00000000	 
+439   	 0002				(null)	 0002	 00000000	 
+440   						
+441   						X_M70_PI_simple_sum_12_PRIVATE_DATA_1	.xdata_ovly
+441    >> start of macro: .xdata_ovly
+1+    									seg_single X_M70_PI_simple_sum_12_PRIVATE_DATA_1, "X_OVLY", X
+1+     >> start of macro: seg_single
+1+    						  .if ( "X_M70_PI_simple_sum_12_PRIVATE_DATA_1" != "" ) & defined( ___SegStart_X_X_M70_PI_simple_sum_12_PRIVATE_DATA_1 )
+2+    						X_M70_PI_simple_sum_12_PRIVATE_DATA_1    segment
+3+    						  .else
+4+    						X_M70_PI_simple_sum_12_PRIVATE_DATA_1    segment "X_OVLY"
+5+    							.if "X_M70_PI_simple_sum_12_PRIVATE_DATA_1" != ""
+6+    						___SegStart_X_X_M70_PI_simple_sum_12_PRIVATE_DATA_1
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .xdata_ovly
+442   						_M70_PI_simple_sum_12_PRIVATE_DATA_1 S_M70_PI_simple_sum_12_PRIVATE_DATA_1_0 (
+443   						 _cl_constant_zero_x,
+444   						 _M70_CC_BUFFER_1_PTR,
+445   						 ___X_BY_IOBUFFER_PTRS+1,
+446   						 _M70_CC_BUFFER_3_PTR
+447   						)
+447   	 0000				(null)	 0000	 00000000	 
+447   	 0001				(null)	 0001	 00000000	 
+447   	 0002				(null)	 0002	 00000000	 
+447   	 0003				(null)	 0003	 00000000	 
+448   						
+449   						X___mc_copy___0_PRIVATE_DATA_1	.xdata_ovly
+449    >> start of macro: .xdata_ovly
+1+    									seg_single X___mc_copy___0_PRIVATE_DATA_1, "X_OVLY", X
+1+     >> start of macro: seg_single
+1+    						  .if ( "X___mc_copy___0_PRIVATE_DATA_1" != "" ) & defined( ___SegStart_X_X___mc_copy___0_PRIVATE_DATA_1 )
+2+    						X___mc_copy___0_PRIVATE_DATA_1    segment
+3+    						  .else
+4+    						X___mc_copy___0_PRIVATE_DATA_1    segment "X_OVLY"
+5+    							.if "X___mc_copy___0_PRIVATE_DATA_1" != ""
+6+    						___SegStart_X_X___mc_copy___0_PRIVATE_DATA_1
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .xdata_ovly
+450   						___mc_copy___0_PRIVATE_DATA_1 S___mc_copy___0_PRIVATE_DATA_1_0 (
+451   						 0x1,
+452   						 ___X_BY_IOBUFFER_PTRS+1,
+453   						 _M70_CC_BUFFER_2_PTR
+454   						)
+454   	 0000				(null)	 0000	 00000001	 
+454   	 0001				(null)	 0001	 00000000	 
+454   	 0002				(null)	 0002	 00000000	 
+455   						
+456   							.code_ovly
+456    >> start of macro: .code_ovly
+1+    									seg_single , "CODE_OVLY", CODE
+1+     >> start of macro: seg_single
+1+    						  .if ( "" != "" ) & defined( ___SegStart_CODE_ )
+2+    						    segment
+3+    						  .else
+4+    						    segment "CODE_OVLY"
+5+    							.if "" != ""
+6+    						___SegStart_CODE_
+7+    							.endif
+8+    						  .endif
+9+    							#RememberSegmentType
+10+    >> end of macro: seg_single
+2+     >> end of macro: .code_ovly
+457   						(null)
+				 SYMBOL TABLE 
+
+    Name                                                                                    Type                  Value 
+
+L_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_2                 			  Unused Relocatable        L_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_2:0000H
+X_M70_PI___END___4_PRIVATE_DATA_1                                               			  Unused Relocatable        X_M70_PI___END___4_PRIVATE_DATA_1:0000H
+X_M70_PI___END___4_PUBLIC_DATA                                                  			  Unused Relocatable        X_M70_PI___END___4_PUBLIC_DATA:0000H
+X_M70_PI___START___2_PRIVATE_DATA_1                                             			  Unused Relocatable        X_M70_PI___START___2_PRIVATE_DATA_1:0000H
+X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1                 			  Unused Relocatable        X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1:0000H
+X_M70_PI_filter_highpass_transposed_direct_II_11_PUBLIC_DATA                    			  Unused Relocatable        X_M70_PI_filter_highpass_transposed_direct_II_11_PUBLIC_DATA:0000H
+X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1                                       			  Unused Relocatable        X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1:0000H
+X_M70_PI_simple_delay_ms_8_PUBLIC_DATA                                          			  Unused Relocatable        X_M70_PI_simple_delay_ms_8_PUBLIC_DATA:0000H
+X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1                                        			  Unused Relocatable        X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1:0000H
+X_M70_PI_simple_gain_db_6_PUBLIC_DATA                                           			  Unused Relocatable        X_M70_PI_simple_gain_db_6_PUBLIC_DATA:0000H
+X_M70_PI_simple_sum_12_PRIVATE_DATA_1                                           			  Unused Relocatable        X_M70_PI_simple_sum_12_PRIVATE_DATA_1:0000H
+X_M70_PI_simple_sum_12_PUBLIC_DATA                                              			  Unused Relocatable        X_M70_PI_simple_sum_12_PUBLIC_DATA:0000H
+X___mc_copy___0_PRIVATE_DATA_1                                                  			  Unused Relocatable        X___mc_copy___0_PRIVATE_DATA_1:0000H
+Y_M70_CC_BUFFER_0                                                               			  Unused Relocatable        Y_M70_CC_BUFFER_0:0000H
+Y_M70_CC_BUFFER_0_PTR                                                           			  Unused Relocatable        Y_M70_CC_BUFFER_0_PTR:0000H
+Y_M70_CC_BUFFER_1                                                               			  Unused Relocatable        Y_M70_CC_BUFFER_1:0000H
+Y_M70_CC_BUFFER_1_PTR                                                           			  Unused Relocatable        Y_M70_CC_BUFFER_1_PTR:0000H
+Y_M70_CC_BUFFER_2                                                               			  Unused Relocatable        Y_M70_CC_BUFFER_2:0000H
+Y_M70_CC_BUFFER_2_PTR                                                           			  Unused Relocatable        Y_M70_CC_BUFFER_2_PTR:0000H
+Y_M70_CC_BUFFER_3                                                               			  Unused Relocatable        Y_M70_CC_BUFFER_3:0000H
+Y_M70_CC_BUFFER_3_PTR                                                           			  Unused Relocatable        Y_M70_CC_BUFFER_3_PTR:0000H
+Y_M70_CC_MALLOCED                                                               			  Unused Relocatable        Y_M70_CC_MALLOCED:0000H
+Y_M70_CC_MALLOC_PTR                                                             			  Unused Relocatable        Y_M70_CC_MALLOC_PTR:0000H
+Y_M70_CC_MCT                                                                    			  Unused Relocatable        Y_M70_CC_MCT:0000H
+Y_M70_CC_MCV                                                                    			  Unused Relocatable        Y_M70_CC_MCV:0000H
+Y_M70_CC_MIF                                                                    			  Unused Relocatable        Y_M70_CC_MIF:0000H
+Y_M70_CC_PCT                                                                    			  Unused Relocatable        Y_M70_CC_PCT:0000H
+_COMMON_INC_PATH_                                                               					 Define                 "C:/CirrusDSP_7_1_7/crystal32/common/inc/"
+_DSP_                                                                           			  Unused Variable		        0 (0H)
+_LOCAL_INC_PATH_                                                                					 Define                 "inc/"
+_LOCAL_SRC_PATH_                                                                					 Define                 "src/"
+_M70_CC_BUFFER_0                                                                			         Relocatable         Y_M70_CC_BUFFER_0:0000H
+_M70_CC_BUFFER_0_PTR                                                            			         Relocatable         Y_M70_CC_BUFFER_0_PTR:0000H
+_M70_CC_BUFFER_1                                                                			         Relocatable         Y_M70_CC_BUFFER_1:0000H
+_M70_CC_BUFFER_1_PTR                                                            			         Relocatable         Y_M70_CC_BUFFER_1_PTR:0000H
+_M70_CC_BUFFER_2                                                                			         Relocatable         Y_M70_CC_BUFFER_2:0000H
+_M70_CC_BUFFER_2_PTR                                                            			         Relocatable         Y_M70_CC_BUFFER_2_PTR:0000H
+_M70_CC_BUFFER_3                                                                			         Relocatable         Y_M70_CC_BUFFER_3:0000H
+_M70_CC_BUFFER_3_PTR                                                            			         Relocatable         Y_M70_CC_BUFFER_3_PTR:0000H
+_M70_CC_MALLOCED                                                                			  Public Relocatable       Y_M70_CC_MALLOCED:0000H
+_M70_CC_MALLOC_PTR                                                              			  Public Relocatable       Y_M70_CC_MALLOC_PTR:0000H
+_M70_CC_MCT                                                                     			  Struct Relocatable   Y_M70_CC_MCT:0000H
+_M70_CC_MCT._background_func_ptr                                                			  Unused Relocatable        Y_M70_CC_MCT:0006H
+_M70_CC_MCT._block_func_ptr                                                     			  Unused Relocatable        Y_M70_CC_MCT:0004H
+_M70_CC_MCT._frame_func_ptr                                                     			  Unused Relocatable        Y_M70_CC_MCT:0003H
+_M70_CC_MCT._postkick_func_ptr                                                  			  Unused Relocatable        Y_M70_CC_MCT:0001H
+_M70_CC_MCT._postmalloc_func_ptr                                                			  Unused Relocatable        Y_M70_CC_MCT:0007H
+_M70_CC_MCT._prekick_func_ptr                                                   			  Unused Relocatable        Y_M70_CC_MCT:0000H
+_M70_CC_MCT._premalloc_func_ptr                                                 			  Unused Relocatable        Y_M70_CC_MCT:0008H
+_M70_CC_MCT._reserved1                                                          			  Unused Relocatable        Y_M70_CC_MCT:0005H
+_M70_CC_MCT._timer_func_ptr                                                     			  Unused Relocatable        Y_M70_CC_MCT:0002H
+_M70_CC_MCV._M70_PI___END___4_PUBLIC_DATA                                       			  Unused Relocatable        Y_M70_CC_MCV:0001H
+_M70_CC_MCV._M70_PI___END___4_PUBLIC_DATA._clip                                 			  Unused Relocatable        Y_M70_CC_MCV:0002H
+_M70_CC_MCV._M70_PI___END___4_PUBLIC_DATA._hold_count                           			  Unused Relocatable        Y_M70_CC_MCV:0001H
+_M70_CC_MCV._M70_PI_filter_highpass_transposed_direct_II_11_PUBLIC_DATA         			  Unused Relocatable        Y_M70_CC_MCV:0012H
+_M70_CC_MCV._M70_PI_filter_highpass_transposed_direct_II_11_PUBLIC_DATA._clip   			  Unused Relocatable        Y_M70_CC_MCV:001BH
+_M70_CC_MCV._M70_PI_filter_highpass_transposed_direct_II_11_PUBLIC_DATA._hold_co			  Unused Relocatable        Y_M70_CC_MCV:0012H
+_M70_CC_MCV._M70_PI_filter_highpass_transposed_direct_II_11_PUBLIC_DATA._k      			  Unused Relocatable        Y_M70_CC_MCV:0014H
+_M70_CC_MCV._M70_PI_filter_highpass_transposed_direct_II_11_PUBLIC_DATA._ramp   			  Unused Relocatable        Y_M70_CC_MCV:0013H
+_M70_CC_MCV._M70_PI_filter_highpass_transposed_direct_II_11_PUBLIC_DATA._structu			  Unused Relocatable        Y_M70_CC_MCV:0015H
+_M70_CC_MCV._M70_PI_simple_delay_ms_8_PUBLIC_DATA                               			  Unused Relocatable        Y_M70_CC_MCV:0010H
+_M70_CC_MCV._M70_PI_simple_delay_ms_8_PUBLIC_DATA._delay_value                  			  Unused Relocatable        Y_M70_CC_MCV:0011H
+_M70_CC_MCV._M70_PI_simple_delay_ms_8_PUBLIC_DATA._enable                       			  Unused Relocatable        Y_M70_CC_MCV:0010H
+_M70_CC_MCV._M70_PI_simple_gain_db_6_PUBLIC_DATA                                			  Unused Relocatable        Y_M70_CC_MCV:000EH
+_M70_CC_MCV._M70_PI_simple_gain_db_6_PUBLIC_DATA._Gain                          			  Unused Relocatable        Y_M70_CC_MCV:000EH
+_M70_CC_MCV._M70_PI_simple_gain_db_6_PUBLIC_DATA._signal_invert                 			  Unused Relocatable        Y_M70_CC_MCV:000FH
+_M70_CC_MCV._M70_PI_simple_sum_12_PUBLIC_DATA                                   			  Unused Relocatable        Y_M70_CC_MCV:001CH
+_M70_CC_MCV._M70_PI_simple_sum_12_PUBLIC_DATA._shift_value                      			  Unused Relocatable        Y_M70_CC_MCV:001CH
+_M70_CC_MCV._sample_rate                                                        			  Unused Relocatable        Y_M70_CC_MCV:0000H
+_M70_CC_MIF._mct_ptr                                                            			  Unused Relocatable        Y_M70_CC_MIF:0001H
+_M70_CC_MIF._mcv_ptr                                                            			  Unused Relocatable        Y_M70_CC_MIF:0000H
+_M70_CC_MIF._reserved1                                                          			  Unused Relocatable        Y_M70_CC_MIF:0002H
+_M70_CC_MIF._reserved2                                                          			  Unused Relocatable        Y_M70_CC_MIF:0003H
+_M70_CC_MIF._reserved3                                                          			  Unused Relocatable        Y_M70_CC_MIF:0004H
+_M70_CC_MIF._reserved4                                                          			  Unused Relocatable        Y_M70_CC_MIF:0005H
+_M70_CC_MIF._reserved5                                                          			  Unused Relocatable        Y_M70_CC_MIF:0006H
+_M70_CC_MIF._reserved6                                                          			  Unused Relocatable        Y_M70_CC_MIF:0007H
+_M70_CC_PCT                                                                     			  Public Relocatable       Y_M70_CC_PCT:0000H
+_M70_CC_background                                                              					 External   
+_M70_CC_brick                                                                   					 External   
+_M70_CC_frame                                                                   					 External   
+_M70_CC_postKickstart                                                           					 External   
+_M70_CC_postMallocInit                                                          					 External   
+_M70_CC_preMallocInit                                                           					 External   
+_M70_PI___END___4_PRIVATE_DATA_1                                                			  Struct Relocatable   X_M70_PI___END___4_PRIVATE_DATA_1:0000H
+_M70_PI___END___4_PRIVATE_DATA_1._channel_mask                                  			  Unused Relocatable        X_M70_PI___END___4_PRIVATE_DATA_1:0001H
+_M70_PI___END___4_PRIVATE_DATA_1._headroom_proc                                 			  Unused Relocatable        X_M70_PI___END___4_PRIVATE_DATA_1:0000H
+_M70_PI___END___4_PRIVATE_DATA_1._input_channel                                 			  Unused Relocatable        X_M70_PI___END___4_PRIVATE_DATA_1:0003H
+_M70_PI___END___4_PRIVATE_DATA_1._mute_disconnected_channels                    			  Unused Relocatable        X_M70_PI___END___4_PRIVATE_DATA_1:0002H
+_M70_PI___START___2_PRIVATE_DATA_1                                              			  Struct Relocatable   X_M70_PI___START___2_PRIVATE_DATA_1:0000H
+_M70_PI___START___2_PRIVATE_DATA_1._channel_mask                                			  Unused Relocatable        X_M70_PI___START___2_PRIVATE_DATA_1:0001H
+_M70_PI___START___2_PRIVATE_DATA_1._headroom_proc                               			  Unused Relocatable        X_M70_PI___START___2_PRIVATE_DATA_1:0000H
+_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1                  			  Struct Relocatable   X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1:0000H
+_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1._audio_brick_in  			  Unused Relocatable        X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1:0002H
+_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1._audio_brick_out 			  Unused Relocatable        X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1:0003H
+_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1._biquad_loop_coun			  Unused Relocatable        X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1:0004H
+_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1._bypass          			  Unused Relocatable        X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1:0001H
+_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1._clear_time      			  Unused Relocatable        X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1:0006H
+_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1._clip_ptr        			  Unused Relocatable        X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1:0007H
+_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1._myccr           			  Unused Relocatable        X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1:0005H
+_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1._pointer         			  Unused Relocatable        X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1:0000H
+_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_2                  			         Relocatable         L_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_2:0000H
+_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1                                        			  Struct Relocatable   X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1:0000H
+_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1._audio_brick_in                        			  Unused Relocatable        X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1:0002H
+_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1._audio_brick_out                       			  Unused Relocatable        X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1:0003H
+_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1._bypass                                			  Unused Relocatable        X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1:0001H
+_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1._delay_buffer_ptr                      			  Unused Relocatable        X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1:0000H
+_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1._max_delay_size                        			  Unused Relocatable        X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1:0006H
+_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1._memory_zone                           			  Unused Relocatable        X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1:0007H
+_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1._position_in_buffer                    			  Unused Relocatable        X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1:0005H
+_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1._sample_resolution                     			  Unused Relocatable        X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1:0004H
+_M70_PI_simple_gain_db_6_PRIVATE_DATA_1                                         			  Struct Relocatable   X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1:0000H
+_M70_PI_simple_gain_db_6_PRIVATE_DATA_1._bypass                                 			  Unused Relocatable        X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1:0000H
+_M70_PI_simple_gain_db_6_PRIVATE_DATA_1._input_ptr                              			  Unused Relocatable        X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1:0001H
+_M70_PI_simple_gain_db_6_PRIVATE_DATA_1._output_ptr                             			  Unused Relocatable        X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1:0002H
+_M70_PI_simple_sum_12_PRIVATE_DATA_1                                            			  Struct Relocatable   X_M70_PI_simple_sum_12_PRIVATE_DATA_1:0000H
+_M70_PI_simple_sum_12_PRIVATE_DATA_1._audio_brick_in                            			  Unused Relocatable        X_M70_PI_simple_sum_12_PRIVATE_DATA_1:0002H
+_M70_PI_simple_sum_12_PRIVATE_DATA_1._audio_brick_out                           			  Unused Relocatable        X_M70_PI_simple_sum_12_PRIVATE_DATA_1:0001H
+_M70_PI_simple_sum_12_PRIVATE_DATA_1._bypass                                    			  Unused Relocatable        X_M70_PI_simple_sum_12_PRIVATE_DATA_1:0000H
+_ROUTER_INC_PATH_                                                               					 Define                 "rom_inc/"
+_X_P_BY_Simple_delay_ms_PCT                                                     					 External   
+__CASM_VER__                                                                    			  Unused Variable		        0 (701H)
+___C_STACK_BG                                                                   					 External   
+___C_STACK_FG                                                                   					 External   
+___END__pct                                                                     					 External   
+___START__pct                                                                   					 External   
+___SegStart_L_L_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_2   			  Unused Relocatable        L_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_2:0000H
+___SegStart_X_X_M70_PI___END___4_PRIVATE_DATA_1                                 			  Unused Relocatable        X_M70_PI___END___4_PRIVATE_DATA_1:0000H
+___SegStart_X_X_M70_PI___END___4_PUBLIC_DATA                                    			  Unused Relocatable        X_M70_PI___END___4_PUBLIC_DATA:0000H
+___SegStart_X_X_M70_PI___START___2_PRIVATE_DATA_1                               			  Unused Relocatable        X_M70_PI___START___2_PRIVATE_DATA_1:0000H
+___SegStart_X_X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1   			  Unused Relocatable        X_M70_PI_filter_highpass_transposed_direct_II_11_PRIVATE_DATA_1:0000H
+___SegStart_X_X_M70_PI_filter_highpass_transposed_direct_II_11_PUBLIC_DATA      			  Unused Relocatable        X_M70_PI_filter_highpass_transposed_direct_II_11_PUBLIC_DATA:0000H
+___SegStart_X_X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1                         			  Unused Relocatable        X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_1:0000H
+___SegStart_X_X_M70_PI_simple_delay_ms_8_PUBLIC_DATA                            			  Unused Relocatable        X_M70_PI_simple_delay_ms_8_PUBLIC_DATA:0000H
+___SegStart_X_X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1                          			  Unused Relocatable        X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1:0000H
+___SegStart_X_X_M70_PI_simple_gain_db_6_PUBLIC_DATA                             			  Unused Relocatable        X_M70_PI_simple_gain_db_6_PUBLIC_DATA:0000H
+___SegStart_X_X_M70_PI_simple_sum_12_PRIVATE_DATA_1                             			  Unused Relocatable        X_M70_PI_simple_sum_12_PRIVATE_DATA_1:0000H
+___SegStart_X_X_M70_PI_simple_sum_12_PUBLIC_DATA                                			  Unused Relocatable        X_M70_PI_simple_sum_12_PUBLIC_DATA:0000H
+___SegStart_X_X___mc_copy___0_PRIVATE_DATA_1                                    			  Unused Relocatable        X___mc_copy___0_PRIVATE_DATA_1:0000H
+___SegStart_Y_Y_M70_CC_BUFFER_0                                                 			  Unused Relocatable        Y_M70_CC_BUFFER_0:0000H
+___SegStart_Y_Y_M70_CC_BUFFER_0_PTR                                             			  Unused Relocatable        Y_M70_CC_BUFFER_0_PTR:0000H
+___SegStart_Y_Y_M70_CC_BUFFER_1                                                 			  Unused Relocatable        Y_M70_CC_BUFFER_1:0000H
+___SegStart_Y_Y_M70_CC_BUFFER_1_PTR                                             			  Unused Relocatable        Y_M70_CC_BUFFER_1_PTR:0000H
+___SegStart_Y_Y_M70_CC_BUFFER_2                                                 			  Unused Relocatable        Y_M70_CC_BUFFER_2:0000H
+___SegStart_Y_Y_M70_CC_BUFFER_2_PTR                                             			  Unused Relocatable        Y_M70_CC_BUFFER_2_PTR:0000H
+___SegStart_Y_Y_M70_CC_BUFFER_3                                                 			  Unused Relocatable        Y_M70_CC_BUFFER_3:0000H
+___SegStart_Y_Y_M70_CC_BUFFER_3_PTR                                             			  Unused Relocatable        Y_M70_CC_BUFFER_3_PTR:0000H
+___SegStart_Y_Y_M70_CC_MALLOCED                                                 			  Unused Relocatable        Y_M70_CC_MALLOCED:0000H
+___SegStart_Y_Y_M70_CC_MALLOC_PTR                                               			  Unused Relocatable        Y_M70_CC_MALLOC_PTR:0000H
+___SegStart_Y_Y_M70_CC_MCT                                                      			  Unused Relocatable        Y_M70_CC_MCT:0000H
+___SegStart_Y_Y_M70_CC_MCV                                                      			  Unused Relocatable        Y_M70_CC_MCV:0000H
+___SegStart_Y_Y_M70_CC_MIF                                                      			  Unused Relocatable        Y_M70_CC_MIF:0000H
+___SegStart_Y_Y_M70_CC_PCT                                                      			  Unused Relocatable        Y_M70_CC_PCT:0000H
+___X_BL_TEMPBUFF                                                                					 External   
+___X_BL_TEMPBUFF0                                                               					 External   
+___X_BL_TEMPBUFF1                                                               					 External   
+___X_BL_TEMPBUFF10                                                              					 External   
+___X_BL_TEMPBUFF11                                                              					 External   
+___X_BL_TEMPBUFF12                                                              					 External   
+___X_BL_TEMPBUFF13                                                              					 External   
+___X_BL_TEMPBUFF14                                                              					 External   
+___X_BL_TEMPBUFF15                                                              					 External   
+___X_BL_TEMPBUFF2                                                               					 External   
+___X_BL_TEMPBUFF3                                                               					 External   
+___X_BL_TEMPBUFF4                                                               					 External   
+___X_BL_TEMPBUFF5                                                               					 External   
+___X_BL_TEMPBUFF6                                                               					 External   
+___X_BL_TEMPBUFF7                                                               					 External   
+___X_BL_TEMPBUFF8                                                               					 External   
+___X_BL_TEMPBUFF9                                                               					 External   
+___X_BX_TEMPBUFF                                                                					 External   
+___X_BX_TEMPBUFF0                                                               					 External   
+___X_BX_TEMPBUFF1                                                               					 External   
+___X_BX_TEMPBUFF10                                                              					 External   
+___X_BX_TEMPBUFF11                                                              					 External   
+___X_BX_TEMPBUFF12                                                              					 External   
+___X_BX_TEMPBUFF13                                                              					 External   
+___X_BX_TEMPBUFF14                                                              					 External   
+___X_BX_TEMPBUFF15                                                              					 External   
+___X_BX_TEMPBUFF2                                                               					 External   
+___X_BX_TEMPBUFF3                                                               					 External   
+___X_BX_TEMPBUFF4                                                               					 External   
+___X_BX_TEMPBUFF5                                                               					 External   
+___X_BX_TEMPBUFF6                                                               					 External   
+___X_BX_TEMPBUFF7                                                               					 External   
+___X_BX_TEMPBUFF8                                                               					 External   
+___X_BX_TEMPBUFF9                                                               					 External   
+___X_BY_IOBUFFER_PTRS                                                           					 External   
+___X_BY_TEMPBUFF                                                                					 External   
+___X_BY_TEMPBUFF0                                                               					 External   
+___X_BY_TEMPBUFF1                                                               					 External   
+___X_BY_TEMPBUFF10                                                              					 External   
+___X_BY_TEMPBUFF11                                                              					 External   
+___X_BY_TEMPBUFF12                                                              					 External   
+___X_BY_TEMPBUFF13                                                              					 External   
+___X_BY_TEMPBUFF14                                                              					 External   
+___X_BY_TEMPBUFF15                                                              					 External   
+___X_BY_TEMPBUFF2                                                               					 External   
+___X_BY_TEMPBUFF3                                                               					 External   
+___X_BY_TEMPBUFF4                                                               					 External   
+___X_BY_TEMPBUFF5                                                               					 External   
+___X_BY_TEMPBUFF6                                                               					 External   
+___X_BY_TEMPBUFF7                                                               					 External   
+___X_BY_TEMPBUFF8                                                               					 External   
+___X_BY_TEMPBUFF9                                                               					 External   
+___X_VX_NEXTFRM_REINIT_REQ                                                      					 External   
+___X_VX_PPM_INPUTMODE                                                           					 External   
+___X_VX_PPM_INPUT_CHANNELS                                                      					 External   
+___X_VX_PPM_OUTPUTMODE                                                          					 External   
+___X_VX_PPM_OUTPUT_CHANNELS                                                     					 External   
+___X_VX_PPM_SAMPLERATE                                                          					 External   
+___X_VX_PPM_VALID_CHANNELS                                                      					 External   
+___X_VX_REINIT                                                                  					 External   
+___X_VX_UNDERFLOW                                                               					 External   
+___mc_copy___0_PRIVATE_DATA_1                                                   			  Struct Relocatable   X___mc_copy___0_PRIVATE_DATA_1:0000H
+___mc_copy___0_PRIVATE_DATA_1._audio_brick_in                                   			  Unused Relocatable        X___mc_copy___0_PRIVATE_DATA_1:0001H
+___mc_copy___0_PRIVATE_DATA_1._audio_brick_out                                  			  Unused Relocatable        X___mc_copy___0_PRIVATE_DATA_1:0002H
+___mc_copy___0_PRIVATE_DATA_1._channel_count                                    			  Unused Relocatable        X___mc_copy___0_PRIVATE_DATA_1:0000H
+___mc_copy__pct                                                                 					 External   
+_cl_biquad_prim_register_coeffs                                                 					 External   
+_cl_buffer_ground_PTR                                                           					 External   
+_cl_buffer_silence_PTR                                                          					 External   
+_cl_constant_one_x                                                              					 External   
+_cl_constant_one_y                                                              					 External   
+_cl_constant_zero_x                                                             					 External   
+_cl_constant_zero_y                                                             					 External   
+_cl_prim_gain_down_24db                                                         					 External   
+_cl_prim_gain_up_24db                                                           					 External   
+_filter_highpass_transposed_direct_II_pct                                       					 External   
+_simple_gain_db_pct                                                             					 External   
+_simple_sum_pct                                                                 					 External   
+
+	       SEGMENTS:
+
+Size			  Name										 Class
+0000H	 __INIT                                  			 CODE                                    
+0003H	 X___mc_copy___0_PRIVATE_DATA_1          			 X_OVLY                                  
+0004H	 X_M70_PI_simple_sum_12_PRIVATE_DATA_1   			 X_OVLY                                  
+0003H	 X_M70_PI_simple_gain_db_6_PRIVATE_DATA_1			 X_OVLY                                  
+0008H	 X_M70_PI_simple_delay_ms_8_PRIVATE_DATA_			 X_OVLY                                  
+0008H	 X_M70_PI_filter_highpass_transposed_dire			 X_OVLY                                  
+0002H	 X_M70_PI___START___2_PRIVATE_DATA_1     			 X_OVLY                                  
+000FH	 X_M70_PI___END___4_PRIVATE_DATA_1       			 X_OVLY                                  
+0008H	 Y_M70_CC_MIF                            			 Y_OVLY                                  
+0000H	 X_M70_PI_simple_sum_12_PUBLIC_DATA      			 X_OVLY                                  
+0000H	 X_M70_PI_filter_highpass_transposed_dire			 X_OVLY                                  
+0000H	 X_M70_PI_simple_delay_ms_8_PUBLIC_DATA  			 X_OVLY                                  
+0000H	 X_M70_PI_simple_gain_db_6_PUBLIC_DATA   			 X_OVLY                                  
+0000H	 X_M70_PI___END___4_PUBLIC_DATA          			 X_OVLY                                  
+001DH	 Y_M70_CC_MCV                            			 Y_OVLY                                  
+0009H	 Y_M70_CC_MCT                            			 Y_OVLY                                  
+0010H	 Y_M70_CC_BUFFER_0                       			 Y_OVLY                                  
+0001H	 Y_M70_CC_BUFFER_0_PTR                   			 Y_OVLY                                  
+0010H	 Y_M70_CC_BUFFER_1                       			 Y_OVLY                                  
+0001H	 Y_M70_CC_BUFFER_1_PTR                   			 Y_OVLY                                  
+0010H	 Y_M70_CC_BUFFER_2                       			 Y_OVLY                                  
+0001H	 Y_M70_CC_BUFFER_2_PTR                   			 Y_OVLY                                  
+0010H	 Y_M70_CC_BUFFER_3                       			 Y_OVLY                                  
+0001H	 Y_M70_CC_BUFFER_3_PTR                   			 Y_OVLY                                  
+0001H	 Y_M70_CC_MALLOCED                       			 Y_OVLY                                  
+0008H	 Y_M70_CC_MALLOC_PTR                     			 Y_OVLY                                  
+0020H	 Y_M70_CC_PCT                            			 Y_OVLY                                  
+0009H	 L_M70_PI_filter_highpass_transposed_dire			 L_OVLY                                  
+0000H	 module_interface_GEN_0000               			 CODE_OVLY                               

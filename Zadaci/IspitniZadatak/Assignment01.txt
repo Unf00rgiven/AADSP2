@@ -1,0 +1,16 @@
+﻿Ispitni zadatak 1 iz predmeta AA DSP 2 - 2019/2020.
+
+U datoteci "Assignment01.a":
+
+1. Definisati sledeće promenljive u Y memorijskoj zoni:
+	a) Niz X_BY_OutputBuffer1 dužine 16 elemenata (32-bitnih) koji će se koristiti u prvom zadatku
+	b) Promenljive X_VY_Min1 i X_VY_Min2 koje će se koristiti u drugom zadatku
+
+
+2. Realizovati funkciju X_S_Task01 koja redom čita elemente niza X_BX_InputBuffer1 i X_BX_InputBuffer2 i potom računa njihov proizvod i smešta u niz X_BY_OutputBuffer1:
+
+	X_BY_OutputBuffer1[i] = X_BX_InputBuffer1[i] * X_BX_InputBuffer2[i]
+
+	Napomena: elementi ulaznih nizova su celi brojevi. Rezultat u izlaznom nizu mora odgovarati celobrojnom proizovodu dva ulazna elementa. Operacija množenja kod CS48x procesora podatke tretira kao brojeve sa nepokretnim zarezom u preciznosti s.31, a rezultat u akumulatorskom registru je u formatu s.8.63.
+	
+3. Realizovati funkciju X_S_Task02 koja traži najmanji element prvog i drugog niza. Vrednost najmanjeg elementa prvog i drugog niza potrebno je upisati u promenljive X_VY_Min1 i X_VY_Min2.

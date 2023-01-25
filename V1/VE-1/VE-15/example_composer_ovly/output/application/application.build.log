@@ -1,0 +1,80 @@
+============= BUILDING STARTED ============
+  Project: example_composer_ovly
+===========================================
+Assembling .a and .s files...
+C:/Users/pekez/Downloads/vezba1/example_composer_ovly/gen/src/example_composer_ovly_odt.a
+C:/CirrusDSP_7_1_7/bin/casm C:/Users/pekez/Downloads/vezba1/example_composer_ovly/gen/src/example_composer_ovly_odt.a
+ --debug
+ -c
+ -s
+ -e
+ --cdl
+ -D_TOOLS_VERSION_=0x0701
+ -D_SLOT_=0
+ -D_OVLY_=application
+ -D_OVLY_REVISION_=010000
+ -D_VERSION_=01
+ -D_DSP_=a
+ -D_COMMON_INC_PATH_=C:/CirrusDSP_7_1_7/crystal32/common/inc/
+ -D_TARGET_FAMILY_=crystal32
+ -D_MUI_VERSION_=010000
+ -IC:/CirrusDSP_7_1_7/include/
+ -lC:/Users/pekez/Downloads/vezba1/example_composer_ovly/output/application/gen/src/example_composer_ovly_odt.lst
+ -oC:/Users/pekez/Downloads/vezba1/example_composer_ovly/output/application/gen/src/example_composer_ovly_odt.O
+ -iC:/CirrusDSP_7_1_7/crystal32/common/inc/base.h
+ -D_LOCAL_SRC_PATH_=src/
+ -D_LOCAL_INC_PATH_=inc/
+ -D_ROUTER_INC_PATH_=rom_inc/
+Linking files...
+C:/CirrusDSP_7_1_7/bin/clink
+ -oC:/Users/pekez/Downloads/vezba1/example_composer_ovly/output/application/example_composer_ovly__application_1_0_0.img
+ -fC:/CirrusDSP_7_1_7/crystal32/memory_maps/v01.mem.xml
+ --output_type=RAM
+ --overlay_type=application
+ -lC:/CirrusDSP_7_1_7/lib/
+ -lC:/CirrusDSP_7_1_7/lib/dsplib
+ -lC:/CirrusDSP_7_1_7/lib/dsplib/crystal32/
+ -lC:/CirrusDSP_7_1_7/crystal32/common/lib/
+ -lC:/CirrusDSP_7_1_7/primitives/common_lib
+C:/Users/pekez/Downloads/vezba1/example_composer_ovly/output/application/gen/src/example_composer_ovly_odt.O
+C:/Users/pekez/Downloads/vezba1/example_composer_module/output/example_composer_module_1_0_0.olib
+C:/CirrusDSP_7_1_7/primitives/agnostic/__START__.olib
+C:/CirrusDSP_7_1_7/primitives/agnostic/__END__.olib
+C:/CirrusDSP_7_1_7/primitives/agnostic/simple_gain_db.olib
+C:/CirrusDSP_7_1_7/primitives/agnostic/simple_delay_ms.olib
+C:/CirrusDSP_7_1_7/primitives/agnostic/filter_highpass_transposed_direct_II.olib
+C:/CirrusDSP_7_1_7/primitives/agnostic/simple_sum.olib
+     [exec] 
+     [exec] List of linked library's modules:
+     [exec] C:\CirrusDSP_7_1_7\lib\dsplib\cl_biquad_asm.o
+     [exec] C:\CirrusDSP_7_1_7\lib\dsplib\crystal32\os_a
+     [exec] sm.o
+     [exec] C:\CirrusDSP_7_1_7\primitives\common_lib\cl_buffer_silence.o
+     [exec] C:\CirrusDSP_7_1_7\primitives\common_lib\cl_constant_zero_x.o
+     [exec] C:\CirrusDSP_7_1_7\primitives\common_lib\filter_pass_transposed_direct_II.o
+     [exec] C:\CirrusDSP_7_1_7\primitives\common_lib\gain_down_24db.o
+     [exec] C:\CirrusDSP_7_1_7\primitives\common_lib\gain_up_24db.o
+     [exec] C:\CirrusDSP_7_1_7\primitives\common_lib\subkernel.o
+     [exec] C:\CirrusDSP_7_1_7\primitives\common_lib\__mc_copy__.olib|src\mc_copy.o
+Creating .uld file...
+C:/CirrusDSP_7_1_7/bin/lnkuld
+ -ja
+ C:/Users/pekez/Downloads/vezba1/example_composer_ovly/output/application/example_composer_ovly__application_1_0_0.img
+ C:/Users/pekez/Downloads/vezba1/example_composer_ovly/output/application/example_composer_ovly__application_1_0_0.uld
+     [exec] 
+     [exec] Reading file: C:/Users/pekez/Downloads/vezba1/example_composer_ovly/output/application/example_composer_ovly__application_1_0_0.img ...
+     [exec] 	Processed 240 line(s).
+     [exec] 
+     [exec] Writing output to file: C:/Users/pekez/Downloads/vezba1/example_composer_ovly/output/appli
+     [exec] cation/example_composer_ovly__application_1_0_0.uld ...
+     [exec] 
+     [exec] Done!
+     [exec] 
+     [exec] Writing output to file: C:/Users/pekez/Downloads/vezba1/example_composer_ovly/output/application/example_composer_ovly__application_1_0_0.uldb ...
+     [exec] 
+     [exec] Done!
+     [exec] 
+     [exec] Writing output to file: C:/Users/pekez/Downloads/vezba1/example_composer_ovly/output/application/example_composer_ovly__application_1_0_0.uldc ...
+
+BUILD SUCCESSFUL
+Total time: 1 second

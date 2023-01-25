@@ -1,0 +1,72 @@
+1     						################################################################################
+2     						##*/**
+3     						##** @file main.a
+4     						##**
+5     						##** Module: AADSP2-Assignment01
+6     						##** Description: Main function
+7     						##** $Source: $
+8     						##** $Revision: $
+9     						##** $Date: $
+10    						##** $Author: $
+11    						##**
+12    						##**/
+13    						################################################################################
+14    	 0000				    .extern X_S_Task01
+15    	 0000				    .extern X_S_Task02
+16    						                    
+17    						main .code_ovly at 0x0000
+17     >> start of macro: .code_ovly at
+1+    									seg_at main, "CODE_OVLY", CODE, 0x0000
+1+     >> start of macro: seg_at
+1+    						main    segment "CODE_OVLY" at 0x0000
+2+    						  .if "main" != ""
+3+    	 0000				___SegStart_CODE_main
+4+    						  .endif
+5+    							#RememberSegmentType
+6+     >> end of macro: seg_at
+2+     >> end of macro: .code_ovly at
+18    						
+19    						
+20    						    #---------------------------------------------------------------------------
+21    						    # Task 01 
+22    	 0000	 80880000		 call X_S_Task01
+23    						    #---------------------------------------------------------------------------
+24    						
+25    						    #---------------------------------------------------------------------------
+26    						    # Task02 
+27    	 0001	 80880000	     call X_S_Task02
+28    						    #---------------------------------------------------------------------------
+29    						    
+30    								
+31    	 0002	 81C80000	    halt
+32    						################################################################################
+33    						#                                  End                                         #
+34    						################################################################################
+35    						(null)
+				 SYMBOL TABLE 
+
+    Name                                                                                    Type                  Value 
+
+X_S_Task01                                                                      					 External   
+X_S_Task02                                                                      					 External   
+_COMMON_INC_PATH_                                                               					 Define                 "C:/CirrusDSP/crystal32/common/inc/"
+_DSP_                                                                           					 Define                 "a"
+_LOCAL_INC_PATH_                                                                					 Define                 "inc/"
+_LOCAL_SRC_PATH_                                                                					 Define                 "src/"
+_MUI_VERSION_                                                                   					 Define                 "020000"
+_OVLY_                                                                          					 Define                 "standalone"
+_OVLY_REVISION_                                                                 					 Define                 "020000"
+_ROUTER_INC_PATH_                                                               					 Define                 "rom_inc/"
+_SLOT_                                                                          					 Define                 "0"
+_TARGET_FAMILY_                                                                 					 Define                 "crystal32"
+_TOOLS_VERSION_                                                                 					 Define                 "0x0701"
+_VERSION_                                                                       					 Define                 "00"
+__CASM_VER__                                                                    			  Unused Variable		        0 (701H)
+___SegStart_CODE_main                                                           			  Unused Absolute           main:0000H
+main                                                                            			  Unused Absolute           main:0000H
+
+	       SEGMENTS:
+
+Size			  Name										 Class
+0000H	 __INIT                                  			 CODE                                    
+0003H	 main                                    			 CODE_OVLY                               

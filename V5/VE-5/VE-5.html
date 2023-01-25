@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome file</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="aadsp2-202223">AADSP2 2022/23</h1>
+<h2 id="laboratorijska-vežba-ve-5">Laboratorijska vežba VE-5</h2>
+<h4 id="ve-50-analiza-modela-0">VE-50 Analiza Modela 0</h4>
+<p>Kreirati Visual Studio C++ console app projekat naziva “gainProc_m0” i uvući u src folder projekta izvorne C/C++ fajlove iz foldera VE-50 (radi se o rešenju urađenom tokom AU-5 auditornih). Prevesti i pokrenuti program. Analizirati izlaze u Audacity-u koristeći kao ulaz strimove “funky_sample.wav” i “WhiteNoise.wav”. Da li se DSP obrada vrši očekivano? Zakomentarisati neku od faza obrade (faze obrade za ovaj primer objašnjene su u AU-5) i opet proveriti izlaze. Vratiti sve faze obrade i promeniti G1 ili G2 na proizvoljne vrednosti. Ponovo analizirati izlaze. Izmeniti obradu tako da se ne vrši saturacija signala. Da li u tom slučaju dolazi do distorzije na nekom od izlaznih kanala?</p>
+<p><strong>Napomena:</strong> Uputstvo za kreiranje VS projekta:<br>
+<a href="https://learn.microsoft.com/en-us/cpp/build/vscpp-step-1-create?view=msvc-170">https://learn.microsoft.com/en-us/cpp/build/vscpp-step-1-create?view=msvc-170</a></p>
+<h4 id="ve-51-razvoj-modela-0">VE-51 Razvoj Modela 0</h4>
+<p>Umesto trenutne implemenatcije koja vrši obradu po svim fazama za jedan kanal, pre nego što pređe na naredni kanal, implementirati algoritam tako da se obrada vrši po svim kanalima i svim fazama u jednoj iteraciji procesing petlje. Iskoristiti već postojeće channel ID makroe u tu svrhu. Nakon toga izbaciti višak lokalnih promenljivih iz funkcije obrade. Verifikovati rad Modela 0 i utvrditi da su izlazi identični sa izlazima iz prethodne implementacije. Za verifikaciju koristiti PCMCompare alat.</p>
+<p><strong>Bonus zadatak:</strong> Dodati kontrole za mute i enable koje se prosleđuju kao dodatni argumenti aplikacije (main funkcije). Nakon toga dodati kao argumente main funkcije i dva parametra za kontrolu koeficijenata pojačanja G1 i G2. Verifikovati rad ovih kontrola kroz nekoliko različitih konfiguracija.</p>
+<h4 id="ve-52-razvoj-modela-1">VE-52 Razvoj Modela 1</h4>
+<p>Kreirati novi Visual Studio C++ console app projekat naziva “gainProc_m1” i uvući u src folder izvorne C/C++ fajlove iz prethodno završenog i verifikovanog Modela 0. Napraviti funkcionalne optimizacije C koda prema hardverskim proširenjima CS497xx platforme. Verifikovati rad Modela 1 sa ulaznim strimovima “funky_sample.wav” i “WhiteNoise.wav”, poredeći izlaze Modela 1 sa izlazima Modela 0 (koristeći PCMCompare). Utvrditi da je bitska razlika između dva modela ravno 0 (No differences encountered!).</p>
+<h4 id="ve-53-višestruki-eho-efekat-modeli-0-i-1">VE-53 Višestruki eho efekat (Modeli 0 i 1)</h4>
+<p>Otvoriti VS studio projekat “multitapEcho_model0” priložen u folderu VE-53. Analizirati kod i izlaze Modela 0. Verifikovati rad modela koristeći bar 2 proizvoljna ulazna strima (jedan muzički i jedan od testnih). Napraviti novi Visual Studio projekat naziva “multitapEcho_model1” i uvući datoteke sa izvornim kodom iz Modela 0. Napraviti funkcionalne optimizacije C koda prema hardverskim proširenjima CS497xx platforme. Verifikovati rad modela poredeći izlaze Modela 1 sa izlazima Modela 0 (koristeći PCMCompare). Utvrditi da je bitska razlika između dva modela ravno 0 (No differences encountered!).</p>
+<p><strong>Napomena:</strong> Opis “multitapEcho” sistema pročitati u Vezba3.pdf, <strong>3.4.2 Zadatak 2: Primena metodologije razvoja aplikacije zasnovane na C kompajleru za realizaciju bloka za dodavanje višestrukog eho efekta</strong></p>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+
+// _PROC_ASM
+
+	.if defined (_PROC_ASM)
+
+	.public __gainProcessing
+	
+ 	.code_ovly 
+ 	
+ 	# prema CCC2 pozivnoj konvenciji: 
+ 	# i0 - parametar pokazivac, pIn
+ 	# i1 - parametar pokazivac, pOut
+_gainProcessing:
+	
+
+	ret
+	
+	.endif
+	

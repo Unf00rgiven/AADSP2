@@ -1,0 +1,118 @@
+-----------------Global segment information:
+
+
+Address class CODE	Address:[0000...FFFF], length 10000
+	Address:[0000...0002], length 0003, <RESERVED for main, class CODE_OVLY>
+	Address:[0003...0025], length 0023, <RESERVED for AADSP2_Assignment01_code, class CODE_OVLY>
+	Address:[0026...FFFF], length FFDA, <FREE>
+
+Address class X	Address:[0000...FFFF], length 10000
+	Address:[0000...001F], length 0020, <RESERVED for AADSP2_Assignment01_xdata, class X_OVLY>
+	Address:[0020...FFFF], length FFE0, <FREE>
+
+Address class X_AVAIL	Address:[0000...FBFF], length FC00, subclass of X
+	Address:[0000...001F], length 0020, <RESERVED for AADSP2_Assignment01_xdata, class X_OVLY>
+	Address:[0020...FBFF], length FBE0, <FREE>
+
+Address class Y	Address:[0000...FFFF], length 10000
+	Address:[0000...0021], length 0022, <RESERVED for AADSP2_Assignment01_ydata, class Y_OVLY>
+	Address:[0022...FFFF], length FFDE, <FREE>
+
+-----------------Module:  main(Segment name)
+                               main, address 0000 ,length 0003, class  CODE_OVLY, at 0000
+
+-----------------Module:  Assignment01(Segment name)
+          AADSP2_Assignment01_xdata, address 0000 ,length 0020, class     X_OVLY
+          AADSP2_Assignment01_ydata, address 0000 ,length 0022, class     Y_OVLY
+           AADSP2_Assignment01_code, address 0003 ,length 0023, class  CODE_OVLY
+
+---------------SYMBOL(global symbols)							FILE						SEGMENT							CLASS		ADDRESS
+
+           AADSP2_Assignment01_code	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/Assignment01	      AADSP2_Assignment01_code		        CODE_OVLY		0003
+          AADSP2_Assignment01_xdata	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/Assignment01	     AADSP2_Assignment01_xdata		           X_OVLY		0000
+          AADSP2_Assignment01_ydata	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/Assignment01	     AADSP2_Assignment01_ydata		           Y_OVLY		0000
+                         X_S_Task01	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/Assignment01	      AADSP2_Assignment01_code		        CODE_OVLY		0003
+                         X_S_Task02	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/Assignment01	      AADSP2_Assignment01_code		        CODE_OVLY		000F
+                     __CLASS_E_ARGV	                      CLINK RESERVED	                -----------			   -----------			FFFF
+                     __CLASS_E_CODE	                      CLINK RESERVED	                -----------			   -----------			FFFF
+                __CLASS_E_CODE_OVLY	                      CLINK RESERVED	                -----------			   -----------			FFFF
+                        __CLASS_E_L	                      CLINK RESERVED	                -----------			   -----------			FFFF
+                   __CLASS_E_L_OVLY	                      CLINK RESERVED	                -----------			   -----------			FFFF
+                        __CLASS_E_X	                      CLINK RESERVED	                -----------			   -----------			FFFF
+                  __CLASS_E_X_AVAIL	                      CLINK RESERVED	                -----------			   -----------			FBFF
+                   __CLASS_E_X_OVLY	                      CLINK RESERVED	                -----------			   -----------			FBFF
+                        __CLASS_E_Y	                      CLINK RESERVED	                -----------			   -----------			FFFF
+                   __CLASS_E_Y_OVLY	                      CLINK RESERVED	                -----------			   -----------			FFFF
+                     __CLASS_F_CODE	                      CLINK RESERVED	                -----------			   -----------			0000
+                __CLASS_F_CODE_OVLY	                      CLINK RESERVED	                -----------			   -----------			0000
+                        __CLASS_F_X	                      CLINK RESERVED	                -----------			   -----------			0000
+                  __CLASS_F_X_AVAIL	                      CLINK RESERVED	                -----------			   -----------			0000
+                   __CLASS_F_X_OVLY	                      CLINK RESERVED	                -----------			   -----------			0000
+                        __CLASS_F_Y	                      CLINK RESERVED	                -----------			   -----------			0000
+                   __CLASS_F_Y_OVLY	                      CLINK RESERVED	                -----------			   -----------			0000
+                     __CLASS_L_CODE	                      CLINK RESERVED	                -----------			   -----------			0025
+                __CLASS_L_CODE_OVLY	                      CLINK RESERVED	                -----------			   -----------			0025
+                        __CLASS_L_X	                      CLINK RESERVED	                -----------			   -----------			001F
+                  __CLASS_L_X_AVAIL	                      CLINK RESERVED	                -----------			   -----------			001F
+                   __CLASS_L_X_OVLY	                      CLINK RESERVED	                -----------			   -----------			001F
+                        __CLASS_L_Y	                      CLINK RESERVED	                -----------			   -----------			0021
+                   __CLASS_L_Y_OVLY	                      CLINK RESERVED	                -----------			   -----------			0021
+                     __CLASS_S_ARGV	                      CLINK RESERVED	                -----------			   -----------			FC00
+                     __CLASS_S_CODE	                      CLINK RESERVED	                -----------			   -----------			0000
+                __CLASS_S_CODE_OVLY	                      CLINK RESERVED	                -----------			   -----------			0000
+                        __CLASS_S_L	                      CLINK RESERVED	                -----------			   -----------			0000
+                   __CLASS_S_L_OVLY	                      CLINK RESERVED	                -----------			   -----------			0000
+                        __CLASS_S_X	                      CLINK RESERVED	                -----------			   -----------			0000
+                  __CLASS_S_X_AVAIL	                      CLINK RESERVED	                -----------			   -----------			0000
+                   __CLASS_S_X_OVLY	                      CLINK RESERVED	                -----------			   -----------			0000
+                        __CLASS_S_Y	                      CLINK RESERVED	                -----------			   -----------			0000
+                   __CLASS_S_Y_OVLY	                      CLINK RESERVED	                -----------			   -----------			0000
+                             __INIT	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/main	                        __INIT		             CODE		0026
+                               main	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/main	                          main		        CODE_OVLY		0000
+
+---------------SYMBOL(relocation symbols)						FILE						SEGMENT							CLASS		ADDRESS  
+
+           AADSP2_Assignment01_code	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/Assignment01	      AADSP2_Assignment01_code		        CODE_OVLY		0003
+          AADSP2_Assignment01_xdata	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/Assignment01	     AADSP2_Assignment01_xdata		           X_OVLY		0000
+          AADSP2_Assignment01_ydata	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/Assignment01	     AADSP2_Assignment01_ydata		           Y_OVLY		0000
+                  X_BX_InputBuffer1	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/Assignment01	     AADSP2_Assignment01_xdata		           X_OVLY		0000
+                  X_BX_InputBuffer2	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/Assignment01	     AADSP2_Assignment01_xdata		           X_OVLY		0010
+                 X_BY_OutputBuffer1	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/Assignment01	     AADSP2_Assignment01_ydata		           Y_OVLY		0000
+                         X_S_Task01	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/Assignment01	      AADSP2_Assignment01_code		        CODE_OVLY		0003
+                     X_S_Task01_End	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/Assignment01	      AADSP2_Assignment01_code		        CODE_OVLY		000E
+                         X_S_Task02	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/Assignment01	      AADSP2_Assignment01_code		        CODE_OVLY		000F
+                     X_S_Task02_End	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/Assignment01	      AADSP2_Assignment01_code		        CODE_OVLY		0025
+                          X_VY_Min1	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/Assignment01	     AADSP2_Assignment01_ydata		           Y_OVLY		0020
+                          X_VY_Min2	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/Assignment01	     AADSP2_Assignment01_ydata		           Y_OVLY		0021
+            _AADSP2_Assignment01_a_	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/Assignment01	                        __INIT		             CODE		0026
+___SegStart_CODE_AADSP2_Assignment01_code	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/Assignment01	      AADSP2_Assignment01_code		        CODE_OVLY		0003
+___SegStart_X_AADSP2_Assignment01_xdata	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/Assignment01	     AADSP2_Assignment01_xdata		           X_OVLY		0000
+___SegStart_Y_AADSP2_Assignment01_ydata	D:/ra246-2014/IspitniZadatak1/AADSP2-Assignment01/output/standalone/src/Assignment01	     AADSP2_Assignment01_ydata		           Y_OVLY		0000
+
+----------- module main -----------
+
+LOCAL SYMBOL								TYPE		VALUE
+
+              ___SegStart_CODE_main		ABSOLUTE		0000
+                               main		ABSOLUTE		0000
+
+----------- module Assignment01 -----------
+
+LOCAL SYMBOL								TYPE		VALUE
+
+           AADSP2_Assignment01_code		RELOCATABLE		0003
+          AADSP2_Assignment01_xdata		RELOCATABLE		0000
+          AADSP2_Assignment01_ydata		RELOCATABLE		0000
+                  X_BX_InputBuffer1		RELOCATABLE		0000
+                  X_BX_InputBuffer2		RELOCATABLE		0010
+                 X_BY_OutputBuffer1		RELOCATABLE		0000
+                         X_S_Task01		RELOCATABLE		0003
+                     X_S_Task01_End		RELOCATABLE		000E
+                         X_S_Task02		RELOCATABLE		000F
+                     X_S_Task02_End		RELOCATABLE		0025
+                          X_VY_Min1		RELOCATABLE		0020
+                          X_VY_Min2		RELOCATABLE		0021
+            _AADSP2_Assignment01_a_		RELOCATABLE		0026
+___SegStart_CODE_AADSP2_Assignment01_code		RELOCATABLE		0003
+___SegStart_X_AADSP2_Assignment01_xdata		RELOCATABLE		0000
+___SegStart_Y_AADSP2_Assignment01_ydata		RELOCATABLE		0000

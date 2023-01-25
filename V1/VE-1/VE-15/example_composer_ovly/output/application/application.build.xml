@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<project basedir="C:/Users/pekez/Downloads/vezba1/example_composer_ovly" name="example_composer_ovly">
+	<target description="Assembling .a and .s files..." name="casm">
+		<delete file="C:/Users/pekez/Downloads/vezba1/example_composer_ovly/output/application/gen/src/example_composer_ovly_odt.O"/>
+		<exec executable="C:/CirrusDSP_7_1_7/bin/casm" failonerror="true" resultProperty="casmResult0">
+			<arg value="C:/Users/pekez/Downloads/vezba1/example_composer_ovly/gen/src/example_composer_ovly_odt.a"/>
+			<arg value="--debug"/>
+			<arg value="-c"/>
+			<arg value="-s"/>
+			<arg value="-e"/>
+			<arg value="--cdl"/>
+			<arg value="-D_TOOLS_VERSION_=0x0701"/>
+			<arg value="-D_SLOT_=0"/>
+			<arg value="-D_OVLY_=application"/>
+			<arg value="-D_OVLY_REVISION_=010000"/>
+			<arg value="-D_VERSION_=01"/>
+			<arg value="-D_DSP_=a"/>
+			<arg value="-D_COMMON_INC_PATH_=C:/CirrusDSP_7_1_7/crystal32/common/inc/"/>
+			<arg value="-D_TARGET_FAMILY_=crystal32"/>
+			<arg value="-D_MUI_VERSION_=010000"/>
+			<arg value="-IC:/CirrusDSP_7_1_7/include/"/>
+			<arg value="-lC:/Users/pekez/Downloads/vezba1/example_composer_ovly/output/application/gen/src/example_composer_ovly_odt.lst"/>
+			<arg value="-oC:/Users/pekez/Downloads/vezba1/example_composer_ovly/output/application/gen/src/example_composer_ovly_odt.O"/>
+			<arg value="-iC:/CirrusDSP_7_1_7/crystal32/common/inc/base.h"/>
+			<arg value="-D_LOCAL_SRC_PATH_=src/"/>
+			<arg value="-D_LOCAL_INC_PATH_=inc/"/>
+			<arg value="-D_ROUTER_INC_PATH_=rom_inc/"/>
+		</exec>
+		<condition property="assemblyError">
+			<or>
+				<not>
+					<equals arg1="${casmResult0}" arg2="0"/>
+				</not>
+			</or>
+		</condition>
+	</target>
+	<target if="assemblyError" name="checkAssemblyErrors">
+		<fail message="Please check assembler errors."/>
+	</target>
+	<target description="Linking files..." name="clink">
+		<exec executable="C:/CirrusDSP_7_1_7/bin/clink" failonerror="true">
+			<arg value="-oC:/Users/pekez/Downloads/vezba1/example_composer_ovly/output/application/example_composer_ovly__application_1_0_0.img"/>
+			<arg value="-fC:/CirrusDSP_7_1_7/crystal32/memory_maps/v01.mem.xml"/>
+			<arg value="C:/Users/pekez/Downloads/vezba1/example_composer_ovly/output/application/gen/src/example_composer_ovly_odt.O"/>
+			<arg value="C:/Users/pekez/Downloads/vezba1/example_composer_module/output/example_composer_module_1_0_0.olib"/>
+			<arg value="C:/CirrusDSP_7_1_7/primitives/agnostic/__START__.olib"/>
+			<arg value="C:/CirrusDSP_7_1_7/primitives/agnostic/__END__.olib"/>
+			<arg value="C:/CirrusDSP_7_1_7/primitives/agnostic/simple_gain_db.olib"/>
+			<arg value="C:/CirrusDSP_7_1_7/primitives/agnostic/simple_delay_ms.olib"/>
+			<arg value="C:/CirrusDSP_7_1_7/primitives/agnostic/filter_highpass_transposed_direct_II.olib"/>
+			<arg value="C:/CirrusDSP_7_1_7/primitives/agnostic/simple_sum.olib"/>
+			<arg value="--output_type=RAM"/>
+			<arg value="--overlay_type=application"/>
+			<arg value="-lC:/CirrusDSP_7_1_7/lib/"/>
+			<arg value="-lC:/CirrusDSP_7_1_7/lib/dsplib"/>
+			<arg value="-lC:/CirrusDSP_7_1_7/lib/dsplib/crystal32/"/>
+			<arg value="-lC:/CirrusDSP_7_1_7/crystal32/common/lib/"/>
+			<arg value="-lC:/CirrusDSP_7_1_7/primitives/common_lib"/>
+		</exec>
+	</target>
+	<target depends="clink" description="Creating .uld file..." name="lnkuld">
+		<exec executable="C:/CirrusDSP_7_1_7/bin/lnkuld" failonerror="true">
+			<arg value="-ja"/>
+			<arg value="C:/Users/pekez/Downloads/vezba1/example_composer_ovly/output/application/example_composer_ovly__application_1_0_0.img"/>
+			<arg value="C:/Users/pekez/Downloads/vezba1/example_composer_ovly/output/application/example_composer_ovly__application_1_0_0.uld"/>
+		</exec>
+	</target>
+</project>

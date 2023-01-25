@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AADSP2 22 23</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="aadsp2-202223">AADSP2 2022/23</h1>
+<h2 id="laboratorijska-vežba-ve-8">Laboratorijska vežba VE-8</h2>
+<h4 id="ve-80-model-3-gainproc-c-korak">VE-80 Model 3 (gainProc, C korak)</h4>
+<p>Napraviti u CLIDE okruženju Standalone projekat “gainProc_m3” i dodati izvorne datoteke iz VE-80 foldera. Dodati u argumente komandne linije kroz groovy skriptu ulazne i izlazne strimove. Prevesti i pokrenuti aplikaciju. Da li se na izlazu dobija identičan signal kao na ulazu?</p>
+<p>Ispratiti korake za Model 3 objašnjene u AU-8 i integrisati svoj gainProc iz Modela 2 u ovaj CLIDE projekat. Pokrenuti i verifikovati ručno ovo rešenje sa bar 2 različita ulazna strima. U bin folder iskopirati gainProc_m3.uld koji CLIDE generiše kao rezultat prevođenja u “output-&gt;standalone” folderu projekta.</p>
+<p><strong>Bonus zadatak:</strong> Verifikovati rešenje korišćenjem run_test.py skripte i okruženja. Preuzeti poslednju verziju okruženja iz foldera VE-80. (Napomena: nije potrebno parsirati argumente iz komandne linije Modela 3, samo proveriti difolt vrednosti).</p>
+<h4 id="ve-81-model-3-gainproc-asm-korak">VE-81 Model 3 (gainProc, ASM korak)</h4>
+<p>U prethodnom projektu sada implementirati funkciju obrade. U gainProc.a se nalazi okvir za poziv funkcije. Ispratiti korake iz AU-8 za sve izmene potrebne da bi se funkcija pozvala iz C-a (memorijski kvalifikatori, simboli, public/extern direktive, itd). Verifikovati rešenje ručno sa bar 2 različitia ulazna strima. Utvrditi da je razlika 0 bita u odnosu na izlaze Modela 2, tj. 1 bit u odnosu na izlaze Modela 0 i 1.</p>
+<h4 id="ve-82-model-3-multitapecho">VE-82 Model 3 (multitapEcho)</h4>
+<p>Kreirati novi CLIDE Standalone projekat “multitapEcho_model3” i dodati originalne izvorne datoteke iz VE-80 foldera. Integrisati rešenje multitapEcho Modela 2 u Model 3. Implementirati prvo čisto C, a potom i ASM rešenje funkcije obrade.</p>
+<p><strong>Napomena:</strong> U folderu VE-82 nalazi se rešenje multitapEcho i processing funkcija Modela 2 ukoliko niste stigli da ga implementirate u prethodnim vežbama. Date su samo funkcije, okvir i integraciju potrebno je uraditi samostalno.</p>
+</div>
+</body>
+
+</html>

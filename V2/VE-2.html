@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AADSP2 22 23</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="aadsp2-202223">AADSP2 2022/23</h1>
+<h2 id="laboratorijska-vežba-ve-2">Laboratorijska vežba VE-2</h2>
+<h4 id="ve-20-asm-lessons">VE-20 ASM lessons</h4>
+<p>Iz zbirke AADSP2 proći kroz zadatak <em>2.3.1 Primeri upotrebe asemblerskog jezika na procesoru CS48x</em>, prateći uputstvo i korake objašnjene u okviru zadatka.</p>
+<p>Napomena za uputstvo iz zbirke: umesto asmLekcije, priloženi projekat se zove asmLessons.</p>
+<h4 id="ve-21-asm-vežbanje-rad-sa-registrima-uslovni-skokovi-i-hardverska-petlja">VE-21 ASM vežbanje: rad sa registrima, uslovni skokovi i hardverska petlja</h4>
+<p>Napraviti novi Standalone (ULD) projekat i u src folderu kreirati fajl main.a. Napraviti main funkciju i okviru nje samostalno uraditi sledeći niz manjih zadataka (uz referencu na zbirku i zadatak VE-20):</p>
+<ol>
+<li>Smestiti vrednost 128 na mesto bita [32:47] registra a0</li>
+<li>Smestiti vrednost 0xFFEE na mesto bita [0:15] registra x0, a vrednost 0x8000 na mesto bita [0:15] registra y0 (o kojim decimalnim vrednostima se radi?)</li>
+<li>Upisati sadržaj registra x0 na mesto bita [0:31] registra a0</li>
+<li>Smestiti vrednost 0.75 u registar a0</li>
+<li>Smestiti vrednost 0xDEADBEEF na mesto bita [32:63] registra b0</li>
+<li>Smestiti vrednost 0x20 u registar i0</li>
+<li>Sabrati sadržaj registara a0 i b0</li>
+<li>Pomnožiti sadržaj registara x0 i y0</li>
+<li>Podeliti sadržaj registra b0 sa 2</li>
+<li>Pomnoziti sadržaj registra a0 sa 4</li>
+<li>Upisati sadržaj bita [32:63] registra a0 u registar y0</li>
+<li>Upisati sadržaj bita [0:31] registra a0 u registar x0</li>
+<li>Implementirati sledeće C izraze u asm:</li>
+</ol>
+<pre><code>if (a &gt; b)
+	b = 1;
+
+if (a &lt; b)
+	a = 1;
+else
+	a = 2;
+	
+for(int i = 0; i &lt; 16; ++i)
+{
+	a++;
+}
+
+for(int i = 0; i &lt; 16; ++i)
+{
+	b += a;
+	a++;
+} 
+
+const int n = 32;
+for(int i = 0; i &lt; n; ++i)
+{
+	a++;
+}
+</code></pre>
+<h4 id="ve-22-asm-vežbanje-alociranje-memorije-i-nizovi">VE-22 ASM vežbanje: alociranje memorije i nizovi</h4>
+<p>U prethodno kreiranom fajlu realizovati sledeće zadatke:</p>
+<ol>
+<li>Alocirati memoriju dužine 16 reči u X memoriji pod simbolom X_BX_buf1 i inicijalizovati vrednosti na 0xABBA</li>
+<li>Alocirati memoriju dužine 32 reči u Y memoriji pod simbolom X_BY_buf2 i incijalizovati vrednosti na 0.625</li>
+<li>Alocirati memoriju dužine 20 duplih reči u L memoriji pod simbolom X_BL_buf3 i inicijalizovati vrednosti na 0xFFFFFFFFEEEEEEEE</li>
+<li>Iščitati vrednost sa adrese X_BX_buf1 i smestiti je u registar x0</li>
+<li>Iščitati vrednost sa adrese X_BY_buf2 i smestiti je u registar y0</li>
+<li>Proizvod vrednosti koje se nalaze u registrima x0 i y0 smestiti u a0</li>
+<li>Zbir vrednosti koje se nalaze u registrima x0 i y0 smetiti u b0</li>
+<li>Upisati vrednost registra b0 u X deo memorijske zone na adresi X_BL_buf3</li>
+<li>Upisati vrednost registra a0 u Y deo memorijske zone na adresi X_BL_buf3</li>
+<li>Iterirati kroz niz X_BX_buf1 i svaku drugu vrednost podeliti sa 2</li>
+<li>Izracunati aritmetičku sredinu niza X_BX_buf1 i smestiti rezultat u registar a2</li>
+</ol>
+<h4 id="ve-23-prvi-samostalni-zadatak">VE-23 Prvi samostalni zadatak</h4>
+<p>Napraviti novi Standalone (ULD) projekat i dodati main.a. Alocirati nove nizove X_BX_Buffer1 u X mem. i X_BY_Buffer2 u Y mem. svaki da bude po 128 reči. Niz  X_BX_Buffer1 inicijalizovati vrednostima od 0 do 127. Niz X_BY_Buffer2 incijalizovati koristeći modulo adresiranje na sledeći način:</p>
+<p>X_BY_Buffer2[i] = X_BX_Buffer1[3*i]%128</p>
+<p>Napisati X_S_mean funkciju koja vrši računanje srednje vrednosti parova elemenata oba niza. Rezultat smestiti u X_BX_Buffer1. Za deljenje sa dva iskoristiti SRS jedinicu.</p>
+<p>X_BX_Buffer1[i] = (X_BX_Buffer1[i] + X_BX_Buffer2[i])/2</p>
+<p>Napomena: Ukoliko su potrebne detaljnije instrukcije za ovaj zadatak, pogledati u zbirci <em>Zadatak 2.3.2 Zadatak 2: Primena upotrebe asemblerskog jezika na procesoru CS48x</em> kao i fajl SimpleTasks.a iz projekta asmLessons (VE-20).</p>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings built="true" last_build_time="1669834160986">
+	<dependencies>
+		<source_file last_build_time="1669834159434" path="src/main.c">
+			<dependency>../../../../include/dsplib/wavefile.h</dependency>
+			<dependency>../../../../include/stdio.h</dependency>
+			<dependency>../../../../include/stdfix.h</dependency>
+			<dependency>../../../../include/scaling_coeff.h</dependency>
+			<dependency>../../../../include/string.h</dependency>
+			<dependency>../../../../include/stdlib.h</dependency>
+			<dependency>../inc/common.h</dependency>
+		</source_file>
+		<source_file last_build_time="1669833772380" path="src/processing.a"/>
+	</dependencies>
+</settings>
